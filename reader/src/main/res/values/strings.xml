@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="app_name">FTEReader</string>
+  <string name="empty_string"></string>
+  <string name="fbreader_menu_catalogue">Contents</string>
+  <string name="fbreader_menu_progress">Level</string>
+  <string name="fbreader_menu_brightness">Brightness</string>
+  <string name="fbreader_menu_setting">Structure</string>
+  <string name="fbreader_menu_more_setting">Additional settings</string>
+
+  <string name="fbreader_progress_tips">%1$d/%2$d Current page %3$.2f</string>
+  <string name="fbreader_progress_read_time">%d H %d You can read Nimi</string>
+  <string name="fbreader_progress_previous_chapter">The previous chapter</string>
+  <string name="fbreader_progress_next_chapter">The next chapter</string>
+
+  <string name="fbreader_brightness_background_type_daily">வெள்ளை</string>
+  <string name="fbreader_brightness_background_type_fresh">White</string>
+  <string name="fbreader_brightness_background_type_light_yellow">Yellow</string>
+  <string name="fbreader_brightness_background_type_light_blue">Blue</string>
+  <string name="fbreader_brightness_background_type_night">Night</string>
+
+
+  <string name="fbreader_setting_turn_page">Animation</string>
+  <string name="fbreader_setting_turn_page_type_simulation">Curl</string>
+  <string name="fbreader_setting_turn_page_type_shift">Shift</string>
+  <string name="fbreader_setting_turn_page_type_slide">Slide</string>
+  <string name="fbreader_setting_turn_page_type_none">NA</string>
+  <string name="fbreader_setting_font">Font</string>
+
+  <string name="fbreader_unknown">Unknown</string>
+
+  <string name="fbreader_catalogue_empty">No Contents</string>
+
+  <string name="fbreader_bookmark">Bookmark</string>
+  <string name="fbreader_bookmark_empty">There is no bookmark.</string>
+  <string name="fbreader_bookmark_add_success">Added bookmark</string>
+  <string name="fbreader_bookmark_delete_success">The bookmark has been deleted</string>
+
+  <string name="fbreader_more_setting_line_spacing">Line spacing</string>
+  <string name="fbreader_more_setting_line_spacing_type_minimum">Close</string>
+  <string name="fbreader_more_setting_line_spacing_type_less">Less than</string>
+  <string name="fbreader_more_setting_line_spacing_type_moderate">Uniform</string>
+  <string name="fbreader_more_setting_line_spacing_type_more">More</string>
+  <string name="fbreader_more_setting_line_spacing_type_maximum">Too much</string>
+
+  <string name="fbreader_more_setting_line_spacing_show_chapter_name">Show title</string>
+  <string name="fbreader_more_setting_line_spacing_show_battery_time">Time (s) battery</string>
+
+  <string name="fbreader_system">Default</string>
+
+  <string name="fbreader_turn_chapter_tips_cant_previous">This is the first chapter</string>
+  <string name="fbreader_turn_chapter_tips_cant_next">This is the final chapter</string>
+
+  <string name="fbreader_more_setting_alignment">Text alignment</string>
+  <string name="fbreader_more_setting_alignment_default">Default</string>
+  <string name="fbreader_more_setting_alignment_left">Left</string>
+  <string name="fbreader_more_setting_alignment_right">Right</string>
+  <string name="fbreader_more_setting_alignment_center">Center</string>
+  <string name="fbreader_more_setting_alignment_justified">Justified</string>
+
+  <string name="fbreader_selection_highlight">Highlights</string>
+  <string name="fbreader_selection_remove_highlight">Delete</string>
+  <string name="fbreader_selection_copy">Copy</string>
+  <string name="fbreader_selection_share">Share</string>
+  <string name="fbreader_selection_dictionary">Dictionary</string>
+</resources>
