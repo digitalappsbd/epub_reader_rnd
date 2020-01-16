@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "1070298285075",
+    "firebase_url": "https://ebook-d99b9.firebaseio.com",
+    "project_id": "ebook-d99b9",
+    "storage_bucket": "ebook-d99b9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1070298285075:android:a94e674ae14a1a3c196be6",
+        "android_client_info": {
+          "package_name": "com.jskaleel.aslam"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1070298285075-5s0icmk6pckif9skj2779aej2s7b40tv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCMctHDg5R2fMYJdJ57qmBQrhR0lgloZFM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1070298285075-5s0icmk6pckif9skj2779aej2s7b40tv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

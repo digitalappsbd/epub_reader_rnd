@@ -1,4 +1,4 @@
-package com.digitalappsbd.epurreader
+package com.jskaleel.aslam
 
 import org.junit.Assert.assertEquals
 import org.junit.Test
