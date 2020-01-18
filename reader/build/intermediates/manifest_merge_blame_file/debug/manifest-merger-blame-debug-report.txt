@@ -1,0 +1,1412 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    xmlns:tools="http://schemas.android.com/tools"
+4    package="org.geometerplus.zlibrary.ui.android"
+5    android:installLocation="auto"
+6    android:versionCode="2051010"
+7    android:versionName="2.5.10" >
+8
+9    <uses-sdk
+10        android:minSdkVersion="21"
+10-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml
+11        android:targetSdkVersion="28" />
+11-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml
+12
+13    <supports-screens
+13-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:8:5-13:40
+14        android:anyDensity="true"
+14-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:9:9-34
+15        android:largeScreens="true"
+15-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:10:9-36
+16        android:normalScreens="true"
+16-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:11:9-37
+17        android:smallScreens="true"
+17-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:12:9-36
+18        android:xlargeScreens="true" />
+18-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:13:9-37
+19
+20    <uses-permission android:name="android.permission.WAKE_LOCK" />
+20-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:15:5-68
+20-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:15:22-65
+21
+22    <!-- 连接网络权限，用于执行云端语音能力 -->
+23    <uses-permission android:name="android.permission.INTERNET" />
+23-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:18:5-66
+23-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:18:22-64
+24    <!-- 读取网络信息状态 -->
+25    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+25-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:20:5-78
+25-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:20:22-76
+26    <!-- 获取当前wifi状态 -->
+27    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+27-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:22:5-75
+27-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:22:22-73
+28    <!-- 允许程序改变网络连接状态 -->
+29    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
+29-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:24:5-78
+29-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:24:22-76
+30    <!-- 读取手机信息权限 -->
+31    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+31-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:26:5-74
+31-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:26:22-72
+32    <!-- 外存储写权限，构建语法需要用到此权限 -->
+33    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+33-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:28:5-80
+33-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:28:22-78
+34    <!-- 外存储读权限，构建语法需要用到此权限 -->
+35    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+35-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:30:5-79
+35-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:30:22-77
+36
+37    <application>
+37-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:32:5-698:19
+38        <activity
+38-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:33:9-46:20
+39            android:name="org.geometerplus.android.fbreader.error.BookReadingErrorActivity"
+39-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:34:13-92
+40            android:configChanges="orientation|keyboardHidden|screenSize"
+40-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:35:13-74
+41            android:process=":error"
+41-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:36:13-37
+42            android:theme="@style/FBReader.Dialog" >
+42-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:37:13-51
+43            <intent-filter>
+43-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:38:13-45:29
+44                <action android:name="android.fbreader.action.ERROR" />
+44-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:39:17-72
+44-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:39:25-69
+45
+46                <category android:name="android.intent.category.DEFAULT" />
+46-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:41:17-76
+46-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:41:27-73
+47
+48                <data
+48-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:43:17-44:52
+49                    android:scheme="BookReadingException"
+49-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:43:23-60
+50                    tools:ignore="AppLinkUrlError" />
+50-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:44:19-49
+51            </intent-filter>
+52        </activity>
+53        <activity
+53-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:47:9-53:56
+54            android:name="org.geometerplus.zlibrary.ui.android.error.BugReportActivity"
+54-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:48:13-52
+55            android:configChanges="orientation|keyboardHidden|screenSize"
+55-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:49:13-74
+56            android:exported="false"
+56-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:50:13-37
+57            android:label="FBReader crash"
+57-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:51:13-43
+58            android:process=":crash"
+58-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:52:13-37
+59            android:theme="@style/FBReader.Activity" />
+59-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:53:13-53
+60        <activity
+60-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:54:9-68:20
+61            android:name="org.geometerplus.android.fbreader.crash.FixBooksDirectoryActivity"
+61-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:55:13-93
+62            android:configChanges="orientation|keyboardHidden|screenSize"
+62-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:56:13-74
+63            android:exported="false"
+63-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:57:13-37
+64            android:process=":crash"
+64-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:58:13-37
+65            android:theme="@style/FBReader.Dialog" >
+65-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:59:13-51
+66            <intent-filter>
+66-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:60:13-67:29
+67                <action android:name="android.fbreader.action.CRASH" />
+67-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:61:17-72
+67-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:61:25-69
+68
+69                <category android:name="android.intent.category.DEFAULT" />
+69-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:41:17-76
+69-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:41:27-73
+70
+71                <data
+71-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:43:17-44:52
+72                    android:scheme="CachedCharStorageException"
+72-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:43:23-60
+73                    tools:ignore="AppLinkUrlError" />
+73-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:44:19-49
+74            </intent-filter>
+75        </activity>
+76        <activity
+76-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:69:9-91:20
+77            android:name="org.geometerplus.android.fbreader.crash.MissingNativeLibraryActivity"
+77-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:70:13-96
+78            android:configChanges="orientation|keyboardHidden|screenSize"
+78-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:71:13-74
+79            android:exported="false"
+79-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:72:13-37
+80            android:process=":crash"
+80-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:73:13-37
+81            android:theme="@style/FBReader.Dialog" >
+81-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:74:13-51
+82            <intent-filter>
+82-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:75:13-82:29
+83                <action android:name="android.fbreader.action.CRASH" />
+83-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:61:17-72
+83-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:61:25-69
+84
+85                <category android:name="android.intent.category.DEFAULT" />
+85-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:41:17-76
+85-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:41:27-73
+86
+87                <data
+87-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:43:17-44:52
+88                    android:scheme="ExceptionInInitializerError"
+88-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:43:23-60
+89                    tools:ignore="AppLinkUrlError" />
+89-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:44:19-49
+90            </intent-filter>
+91            <intent-filter>
+91-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:83:13-90:29
+92                <action android:name="android.fbreader.action.CRASH" />
+92-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:61:17-72
+92-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:61:25-69
+93
+94                <category android:name="android.intent.category.DEFAULT" />
+94-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:41:17-76
+94-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:41:27-73
+95
+96                <data
+96-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:43:17-44:52
+97                    android:scheme="UnsatisfiedLinkError"
+97-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:43:23-60
+98                    tools:ignore="AppLinkUrlError" />
+98-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:44:19-49
+99            </intent-filter>
+100        </activity>
+101
+102        <service
+102-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:93:9-101:19
+103            android:name="org.geometerplus.android.fbreader.api.ApiService"
+103-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:94:13-76
+104            android:launchMode="singleTask" >
+104-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:95:13-44
+105            <intent-filter>
+105-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:96:13-100:29
+106                <action android:name="android.fbreader.action.API" />
+106-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:97:17-70
+106-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:97:25-67
+107
+108                <category android:name="android.intent.category.DEFAULT" />
+108-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:41:17-76
+108-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:41:27-73
+109            </intent-filter>
+110        </service>
+111
+112        <activity
+112-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:103:9-237:20
+113            android:name="org.geometerplus.android.fbreader.FBReader"
+113-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:104:13-70
+114            android:configChanges="orientation|keyboardHidden|screenSize"
+114-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:105:13-74
+115            android:launchMode="singleTask"
+115-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:106:13-44
+116            android:theme="@style/FBReader.Activity" >
+116-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:107:13-53
+117
+118            <!-- <intent-filter> -->
+119            <!-- <action android:name="android.intent.action.MAIN" /> -->
+120
+121
+122            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+123            <!-- </intent-filter> -->
+124            <intent-filter>
+124-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:113:13-117:29
+125                <action android:name="android.fbreader.action.VIEW" />
+125-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:114:17-71
+125-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:114:25-68
+126
+127                <category android:name="android.intent.category.DEFAULT" />
+127-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:41:17-76
+127-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:41:27-73
+128            </intent-filter>
+129            <intent-filter>
+129-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:118:13-124:29
+130                <action android:name="android.fbreader.action.VIEW" />
+130-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:114:17-71
+130-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:114:25-68
+131
+132                <category android:name="android.intent.category.DEFAULT" />
+132-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:41:17-76
+132-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:41:27-73
+133
+134                <data android:scheme="file" />
+134-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:43:17-44:52
+134-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:43:23-60
+135            </intent-filter>
+136            <intent-filter>
+136-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:125:13-131:29
+137                <action android:name="android.intent.action.VIEW" />
+137-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:126:17-69
+137-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:126:25-66
+138
+139                <category android:name="android.intent.category.DEFAULT" />
+139-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:41:17-76
+139-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:41:27-73
+140
+141                <data android:scheme="fbreader-action" />
+141-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:43:17-44:52
+141-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:43:23-60
+142            </intent-filter>
+143            <intent-filter>
+143-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:132:13-136:29
+144                <action android:name="android.fbreader.action.PLUGIN" />
+144-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:133:17-73
+144-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:133:25-70
+145
+146                <category android:name="android.intent.category.DEFAULT" />
+146-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:41:17-76
+146-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:41:27-73
+147            </intent-filter>
+148            <intent-filter>
+148-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:137:13-157:29
+149                <action android:name="android.intent.action.VIEW" />
+149-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:126:17-69
+149-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:126:25-66
+150
+151                <category android:name="android.intent.category.DEFAULT" />
+151-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:41:17-76
+151-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:41:27-73
+152
+153                <data
+153-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:43:17-44:52
+154                    android:host="*"
+154-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:143:21-37
+155                    android:scheme="file" />
+155-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:43:23-60
+156                <data android:pathPattern=".*\\.epub" />
+156-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:43:17-44:52
+156-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:145:23-54
+157                <data android:pathPattern=".*\\.oeb" />
+157-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:43:17-44:52
+157-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:145:23-54
+158                <data android:pathPattern=".*\\.fb2" />
+158-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:43:17-44:52
+158-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:145:23-54
+159                <data android:pathPattern=".*\\.fb2\\.zip" />
+159-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:43:17-44:52
+159-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:145:23-54
+160                <data android:pathPattern=".*\\.mobi" />
+160-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:43:17-44:52
+160-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:145:23-54
+161                <data android:pathPattern=".*\\.prc" />
+161-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:43:17-44:52
+161-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:145:23-54
+162                <data android:pathPattern=".*\\.txt" />
+162-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:43:17-44:52
+162-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:145:23-54
+163                <data android:pathPattern=".*\\.rtf" />
+163-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:43:17-44:52
+163-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:145:23-54
+164                <data android:pathPattern=".*\\.pdf" />
+164-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:43:17-44:52
+164-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:145:23-54
+165                <data android:pathPattern=".*\\.djvu" />
+165-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:43:17-44:52
+165-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:145:23-54
+166                <data android:pathPattern=".*\\.cbr" />
+166-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:43:17-44:52
+166-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:145:23-54
+167                <data android:pathPattern=".*\\.cbz" />
+167-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:43:17-44:52
+167-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:145:23-54
+168            </intent-filter>
+169            <intent-filter>
+169-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:158:13-178:29
+170                <action android:name="android.intent.action.VIEW" />
+170-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:126:17-69
+170-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:126:25-66
+171
+172                <category android:name="android.intent.category.DEFAULT" />
+172-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:41:17-76
+172-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:41:27-73
+173
+174                <data
+174-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:43:17-44:52
+175                    android:host="*"
+175-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:143:21-37
+176                    android:mimeType="text/plain"
+176-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:165:21-50
+177                    android:scheme="file" />
+177-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:43:23-60
+178                <data android:pathPattern=".*\\.epub" />
+178-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:43:17-44:52
+178-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:145:23-54
+179                <data android:pathPattern=".*\\.oeb" />
+179-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:43:17-44:52
+179-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:145:23-54
+180                <data android:pathPattern=".*\\.fb2" />
+180-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:43:17-44:52
+180-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:145:23-54
+181                <data android:pathPattern=".*\\.mobi" />
+181-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:43:17-44:52
+181-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:145:23-54
+182                <data android:pathPattern=".*\\.prc" />
+182-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:43:17-44:52
+182-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:145:23-54
+183                <data android:pathPattern=".*\\.txt" />
+183-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:43:17-44:52
+183-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:145:23-54
+184                <data android:pathPattern=".*\\.rtf" />
+184-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:43:17-44:52
+184-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:145:23-54
+185                <data android:pathPattern=".*\\.pdf" />
+185-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:43:17-44:52
+185-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:145:23-54
+186                <data android:pathPattern=".*\\.djvu" />
+186-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:43:17-44:52
+186-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:145:23-54
+187                <data android:pathPattern=".*\\.cbr" />
+187-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:43:17-44:52
+187-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:145:23-54
+188                <data android:pathPattern=".*\\.cbz" />
+188-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:43:17-44:52
+188-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:145:23-54
+189            </intent-filter>
+190            <!--
+191            intent-filter>
+192				<action android:name="android.intent.action.VIEW"/>
+193				<category android:name="android.intent.category.DEFAULT"/>
+194				<category android:name="android.intent.category.BROWSABLE"/>
+195				<data android:scheme="content" android:pathPattern=".*\\.fb2"/>
+196			</intent-filter
+197            -->
+198            <intent-filter>
+198-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:187:13-210:29
+199                <action android:name="android.intent.action.VIEW" />
+199-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:126:17-69
+199-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:126:25-66
+200
+201                <category android:name="android.intent.category.DEFAULT" />
+201-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:41:17-76
+201-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:41:27-73
+202                <category android:name="android.intent.category.BROWSABLE" />
+202-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:191:17-78
+202-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:191:27-75
+203
+204                <data
+204-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:43:17-44:52
+205                    android:host="*"
+205-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:143:21-37
+206                    android:scheme="file" />
+206-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:43:23-60
+207                <data android:mimeType="application/epub+zip" />
+207-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:43:17-44:52
+207-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:165:21-50
+208                <data android:mimeType="application/x-pilot-prc" />
+208-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:43:17-44:52
+208-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:165:21-50
+209                <data android:mimeType="application/x-mobipocket-ebook" />
+209-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:43:17-44:52
+209-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:165:21-50
+210                <data android:mimeType="application/x-fictionbook+xml" />
+210-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:43:17-44:52
+210-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:165:21-50
+211                <data android:mimeType="application/x-fictionbook" />
+211-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:43:17-44:52
+211-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:165:21-50
+212                <data android:mimeType="application/pdf" />
+212-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:43:17-44:52
+212-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:165:21-50
+213                <data android:mimeType="application/x-pdf" />
+213-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:43:17-44:52
+213-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:165:21-50
+214                <data android:mimeType="application/djvu" />
+214-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:43:17-44:52
+214-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:165:21-50
+215                <data android:mimeType="application/x-djvu" />
+215-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:43:17-44:52
+215-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:165:21-50
+216                <data android:mimeType="application/x-cbr" />
+216-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:43:17-44:52
+216-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:165:21-50
+217                <data android:mimeType="application/x-cbz" />
+217-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:43:17-44:52
+217-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:165:21-50
+218                <data android:mimeType="image/vnd.djvu" />
+218-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:43:17-44:52
+218-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:165:21-50
+219                <data android:mimeType="image/x-djvu" />
+219-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:43:17-44:52
+219-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:165:21-50
+220                <data android:mimeType="text/plain" />
+220-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:43:17-44:52
+220-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:165:21-50
+221            </intent-filter>
+222            <intent-filter tools:ignore="AppLinkUrlError" >
+222-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:211:13-218:29
+222-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:211:28-58
+223                <action android:name="android.intent.action.VIEW" />
+223-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:126:17-69
+223-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:126:25-66
+224
+225                <category android:name="android.intent.category.DEFAULT" />
+225-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:41:17-76
+225-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:41:27-73
+226
+227                <data android:mimeType="text/*" />
+227-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:43:17-44:52
+227-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:165:21-50
+228                <data android:mimeType="application/epub+zip" />
+228-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:43:17-44:52
+228-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:165:21-50
+229                <data android:mimeType="application/zip" />
+229-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:43:17-44:52
+229-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:165:21-50
+230                <data android:mimeType="application/rar" />
+230-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:43:17-44:52
+230-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:165:21-50
+231            </intent-filter>
+232            <intent-filter>
+232-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:219:13-221:29
+233                <action android:name="android.intent.action.SEARCH" />
+233-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:220:17-71
+233-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:220:25-68
+234            </intent-filter>
+235
+236            <meta-data
+236-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:223:13-225:54
+237                android:name="android.app.searchable"
+237-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:224:17-54
+238                android:resource="@xml/searchable" />
+238-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:225:17-51
+239
+240            <intent-filter>
+240-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:227:13-231:29
+241                <action android:name="android.fbreader.action.CLOSE" />
+241-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:228:17-72
+241-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:228:25-69
+242
+243                <category android:name="android.intent.category.DEFAULT" />
+243-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:41:17-76
+243-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:41:27-73
+244            </intent-filter>
+245            <intent-filter>
+245-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:232:13-236:29
+246                <action android:name="android.fbreader.action.PLUGIN_CRASH" />
+246-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:233:17-79
+246-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:233:25-76
+247
+248                <category android:name="android.intent.category.DEFAULT" />
+248-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:41:17-76
+248-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:41:27-73
+249            </intent-filter>
+250        </activity>
+251        <activity
+251-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:238:9-242:54
+252            android:name="org.geometerplus.android.fbreader.dict.DictionaryNotInstalledActivity"
+252-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:239:13-97
+253            android:configChanges="orientation|keyboardHidden|screenSize"
+253-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:240:13-74
+254            android:exported="false"
+254-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:241:13-37
+255            android:theme="@style/FBReader.Dialog" />
+255-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:242:13-51
+256        <activity
+256-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:243:9-252:20
+257            android:name="org.geometerplus.android.fbreader.CancelActivity"
+257-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:244:13-76
+258            android:configChanges="orientation|keyboardHidden|screenSize"
+258-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:245:13-74
+259            android:theme="@style/FBReader.Dialog" >
+259-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:246:13-51
+260            <intent-filter>
+260-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:247:13-251:29
+261                <action android:name="android.fbreader.action.CANCEL_MENU" />
+261-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:248:17-78
+261-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:248:25-75
+262
+263                <category android:name="android.intent.category.DEFAULT" />
+263-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:41:17-76
+263-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:41:27-73
+264            </intent-filter>
+265        </activity>
+266        <activity
+266-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:253:9-256:54
+267            android:name="org.geometerplus.android.fbreader.PluginListActivity"
+267-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:254:13-80
+268            android:configChanges="orientation|keyboardHidden|screenSize"
+268-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:255:13-74
+269            android:theme="@style/FBReader.Dialog" />
+269-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:256:13-51
+270        <activity
+270-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:257:9-276:20
+271            android:name="org.geometerplus.android.fbreader.bookmark.BookmarksActivity"
+271-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:258:13-88
+272            android:configChanges="orientation|keyboardHidden|screenSize"
+272-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:259:13-74
+273            android:launchMode="singleTask"
+273-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:260:13-44
+274            android:process=":bookmarks"
+274-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:261:13-41
+275            android:theme="@style/FBReader.Activity.NoActionBar" >
+275-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:262:13-65
+276            <intent-filter>
+276-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:219:13-221:29
+277                <action android:name="android.intent.action.SEARCH" />
+277-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:220:17-71
+277-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:220:25-68
+278            </intent-filter>
+279
+280            <meta-data
+280-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:223:13-225:54
+281                android:name="android.app.searchable"
+281-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:224:17-54
+282                android:resource="@xml/searchable" />
+282-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:225:17-51
+283
+284            <intent-filter>
+284-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:271:13-275:29
+285                <action android:name="android.fbreader.action.BOOKMARKS" />
+285-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:272:17-76
+285-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:272:25-73
+286
+287                <category android:name="android.intent.category.DEFAULT" />
+287-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:41:17-76
+287-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:41:27-73
+288            </intent-filter>
+289        </activity>
+290        <activity
+290-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:277:9-286:20
+291            android:name="org.geometerplus.android.fbreader.bookmark.EditBookmarkActivity"
+291-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:278:13-91
+292            android:configChanges="orientation|keyboardHidden|screenSize"
+292-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:279:13-74
+293            android:theme="@style/FBReader.Dialog" >
+293-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:280:13-51
+294            <intent-filter>
+294-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:281:13-285:29
+295                <action android:name="android.fbreader.action.EDIT_BOOKMARK" />
+295-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:282:17-80
+295-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:282:25-77
+296
+297                <category android:name="android.intent.category.DEFAULT" />
+297-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:41:17-76
+297-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:41:27-73
+298            </intent-filter>
+299        </activity>
+300        <activity
+300-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:287:9-296:20
+301            android:name="org.geometerplus.android.fbreader.bookmark.EditStyleActivity"
+301-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:288:13-88
+302            android:configChanges="orientation|keyboardHidden|screenSize"
+302-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:289:13-74
+303            android:theme="@style/FBReader.Dialog" >
+303-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:290:13-51
+304            <intent-filter>
+304-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:291:13-295:29
+305                <action android:name="android.fbreader.action.EDIT_STYLES" />
+305-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:292:17-78
+305-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:292:25-75
+306
+307                <category android:name="android.intent.category.DEFAULT" />
+307-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:41:17-76
+307-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:41:27-73
+308            </intent-filter>
+309        </activity>
+310        <activity
+310-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:297:9-301:56
+311            android:name="org.geometerplus.android.fbreader.image.ImageViewActivity"
+311-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:298:13-85
+312            android:configChanges="orientation|keyboardHidden|screenSize"
+312-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:299:13-74
+313            android:process=":imageView"
+313-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:300:13-41
+314            android:theme="@style/FBReader.Activity" />
+314-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:301:13-53
+315
+316        <service
+316-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:303:9-310:19
+317            android:name="org.geometerplus.android.fbreader.libraryService.LibraryService"
+317-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:304:13-91
+318            android:launchMode="singleTask"
+318-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:305:13-44
+319            android:process=":libraryService" >
+319-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:306:13-46
+320            <intent-filter>
+320-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:307:13-309:29
+321                <action android:name="android.fbreader.action.LIBRARY_SERVICE" />
+321-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:308:17-82
+321-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:308:25-79
+322            </intent-filter>
+323        </service>
+324        <service
+324-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:311:9-318:19
+325            android:name="org.geometerplus.android.fbreader.config.ConfigService"
+325-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:312:13-82
+326            android:launchMode="singleTask"
+326-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:313:13-44
+327            android:process=":configService" >
+327-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:314:13-45
+328            <intent-filter>
+328-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:315:13-317:29
+329                <action android:name="android.fbreader.action.CONFIG_SERVICE" />
+329-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:316:17-81
+329-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:316:25-78
+330            </intent-filter>
+331        </service>
+332        <service
+332-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:319:9-329:19
+333            android:name="org.geometerplus.android.fbreader.sync.SyncService"
+333-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:320:13-78
+334            android:launchMode="singleTask"
+334-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:321:13-44
+335            android:process=":synchroniser" >
+335-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:322:13-44
+336            <intent-filter>
+336-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:323:13-325:29
+337                <action android:name="android.fbreader.action.sync.START" />
+337-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:324:17-77
+337-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:324:25-74
+338            </intent-filter>
+339            <intent-filter>
+339-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:326:13-328:29
+340                <action android:name="android.fbreader.action.sync.QUICK_SYNC" />
+340-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:327:17-82
+340-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:327:25-79
+341            </intent-filter>
+342        </service>
+343
+344        <activity
+344-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:331:9-341:20
+345            android:name="org.geometerplus.android.fbreader.library.BookInfoActivity"
+345-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:332:13-86
+346            android:configChanges="orientation|keyboardHidden|screenSize"
+346-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:333:13-74
+347            android:process=":library"
+347-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:334:13-39
+348            android:theme="@style/FBReader.Activity" >
+348-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:335:13-53
+349            <intent-filter>
+349-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:336:13-340:29
+350                <action android:name="android.fbreader.action.BOOK_INFO" />
+350-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:337:17-76
+350-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:337:25-73
+351
+352                <category android:name="android.intent.category.DEFAULT" />
+352-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:41:17-76
+352-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:41:27-73
+353            </intent-filter>
+354        </activity>
+355        <activity
+355-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:342:9-353:20
+356            android:name="org.geometerplus.android.fbreader.library.LibrarySearchActivity"
+356-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:343:13-91
+357            android:process=":library"
+357-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:344:13-39
+358            android:theme="@android:style/Theme.NoDisplay" >
+358-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:345:13-59
+359            <intent-filter>
+359-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:219:13-221:29
+360                <action android:name="android.intent.action.SEARCH" />
+360-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:220:17-71
+360-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:220:25-68
+361            </intent-filter>
+362
+363            <meta-data
+363-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:223:13-225:54
+364                android:name="android.app.searchable"
+364-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:224:17-54
+365                android:resource="@xml/searchable" />
+365-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:225:17-51
+366        </activity>
+367        <activity
+367-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:354:9-369:20
+368            android:name="org.geometerplus.android.fbreader.library.LibraryActivity"
+368-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:355:13-85
+369            android:configChanges="orientation|keyboardHidden|screenSize"
+369-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:356:13-74
+370            android:launchMode="singleTask"
+370-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:357:13-44
+371            android:process=":library"
+371-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:358:13-39
+372            android:theme="@style/FBReader.Activity" >
+372-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:359:13-53
+373            <meta-data
+373-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:360:13-362:99
+374                android:name="android.app.default_searchable"
+374-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:361:17-62
+375                android:value="org.geometerplus.android.fbreader.library.LibrarySearchActivity" />
+375-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:362:17-96
+376
+377            <intent-filter>
+377-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:364:13-368:29
+378                <action android:name="android.fbreader.action.LIBRARY" />
+378-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:365:17-74
+378-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:365:25-71
+379
+380                <category android:name="android.intent.category.DEFAULT" />
+380-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:41:17-76
+380-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:41:27-73
+381            </intent-filter>
+382        </activity>
+383        <activity
+383-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:370:9-373:56
+384            android:name="org.geometerplus.android.fbreader.TOCActivity"
+384-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:371:13-73
+385            android:configChanges="orientation|keyboardHidden|screenSize"
+385-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:372:13-74
+386            android:theme="@style/FBReader.Activity" />
+386-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:373:13-53
+387        <activity
+387-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:374:9-391:20
+388            android:name="org.geometerplus.android.fbreader.preferences.PreferenceActivity"
+388-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:375:13-92
+389            android:configChanges="orientation|keyboardHidden|screenSize"
+389-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:376:13-74
+390            android:process=":preferences"
+390-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:377:13-43
+391            android:theme="@style/FBReader.Activity" >
+391-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:378:13-53
+392            <intent-filter>
+392-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:379:13-385:29
+393                <action android:name="android.intent.action.VIEW" />
+393-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:126:17-69
+393-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:126:25-66
+394
+395                <category android:name="android.intent.category.DEFAULT" />
+395-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:41:17-76
+395-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:41:27-73
+396
+397                <data android:scheme="fbreader-preferences" />
+397-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:43:17-44:52
+397-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:43:23-60
+398            </intent-filter>
+399            <intent-filter>
+399-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:386:13-390:29
+400                <action android:name="android.fbreader.action.PREFERENCES" />
+400-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:387:17-78
+400-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:387:25-75
+401
+402                <category android:name="android.intent.category.DEFAULT" />
+402-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:41:17-76
+402-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:41:27-73
+403            </intent-filter>
+404        </activity>
+405        <activity
+405-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:392:9-396:56
+406            android:name="org.geometerplus.android.fbreader.preferences.EditBookInfoActivity"
+406-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:393:13-94
+407            android:configChanges="orientation|keyboardHidden|screenSize"
+407-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:394:13-74
+408            android:process=":library"
+408-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:395:13-39
+409            android:theme="@style/FBReader.Activity" />
+409-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:396:13-53
+410        <activity
+410-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:397:9-401:54
+411            android:name="org.geometerplus.android.fbreader.sync.MissingBookActivity"
+411-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:398:13-86
+412            android:configChanges="orientation|keyboardHidden|screenSize"
+412-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:399:13-74
+413            android:process=":networkLibrary"
+413-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:400:13-46
+414            android:theme="@style/FBReader.Dialog" />
+414-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:401:13-51
+415        <activity
+415-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:402:9-483:20
+416            android:name="org.geometerplus.android.fbreader.network.BookDownloader"
+416-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:403:13-84
+417            android:process=":networkLibrary"
+417-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:404:13-46
+418            android:theme="@android:style/Theme.NoDisplay" >
+418-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:405:13-59
+419            <intent-filter>
+419-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:406:13-426:29
+420                <action android:name="android.intent.action.VIEW" />
+420-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:126:17-69
+420-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:126:25-66
+421
+422                <category android:name="android.intent.category.DEFAULT" />
+422-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:41:17-76
+422-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:41:27-73
+423                <category android:name="android.intent.category.BROWSABLE" />
+423-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:191:17-78
+423-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:191:27-75
+424
+425                <data
+425-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:43:17-44:52
+426                    android:host="*"
+426-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:143:21-37
+427                    android:scheme="http" />
+427-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:43:23-60
+428                <data android:pathPattern=".*\\.epub" />
+428-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:43:17-44:52
+428-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:145:23-54
+429                <data android:pathPattern=".*\\.oeb" />
+429-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:43:17-44:52
+429-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:145:23-54
+430                <data android:pathPattern=".*\\.fb2" />
+430-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:43:17-44:52
+430-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:145:23-54
+431                <data android:pathPattern=".*\\.fb2\\.zip" />
+431-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:43:17-44:52
+431-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:145:23-54
+432                <data android:pathPattern=".*\\.mobi" />
+432-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:43:17-44:52
+432-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:145:23-54
+433                <data android:pathPattern=".*\\.prc" />
+433-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:43:17-44:52
+433-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:145:23-54
+434                <data android:pathPattern=".*\\.txt" />
+434-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:43:17-44:52
+434-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:145:23-54
+435                <data android:pathPattern=".*\\.rtf" />
+435-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:43:17-44:52
+435-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:145:23-54
+436                <data android:pathPattern=".*\\.djvu" />
+436-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:43:17-44:52
+436-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:145:23-54
+437                <data android:pathPattern=".*\\.cbr" />
+437-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:43:17-44:52
+437-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:145:23-54
+438                <data android:pathPattern=".*\\.cbz" />
+438-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:43:17-44:52
+438-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:145:23-54
+439            </intent-filter>
+440            <intent-filter>
+440-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:427:13-447:29
+441                <action android:name="android.intent.action.VIEW" />
+441-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:126:17-69
+441-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:126:25-66
+442
+443                <category android:name="android.intent.category.DEFAULT" />
+443-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:41:17-76
+443-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:41:27-73
+444                <category android:name="android.intent.category.BROWSABLE" />
+444-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:191:17-78
+444-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:191:27-75
+445
+446                <data
+446-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:43:17-44:52
+447                    android:host="*"
+447-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:143:21-37
+448                    android:scheme="http" />
+448-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:43:23-60
+449                <data android:mimeType="application/epub+zip" />
+449-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:43:17-44:52
+449-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:165:21-50
+450                <data android:mimeType="application/x-pilot-prc" />
+450-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:43:17-44:52
+450-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:165:21-50
+451                <data android:mimeType="application/x-mobipocket-ebook" />
+451-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:43:17-44:52
+451-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:165:21-50
+452                <data android:mimeType="application/x-fictionbook+xml" />
+452-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:43:17-44:52
+452-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:165:21-50
+453                <data android:mimeType="application/x-fictionbook" />
+453-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:43:17-44:52
+453-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:165:21-50
+454                <data android:mimeType="application/djvu" />
+454-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:43:17-44:52
+454-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:165:21-50
+455                <data android:mimeType="application/x-djvu" />
+455-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:43:17-44:52
+455-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:165:21-50
+456                <data android:mimeType="application/x-cbr" />
+456-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:43:17-44:52
+456-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:165:21-50
+457                <data android:mimeType="application/x-cbz" />
+457-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:43:17-44:52
+457-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:165:21-50
+458                <data android:mimeType="image/vnd.djvu" />
+458-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:43:17-44:52
+458-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:165:21-50
+459                <data android:mimeType="image/x-djvu" />
+459-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:43:17-44:52
+459-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:165:21-50
+460            </intent-filter>
+461            <intent-filter>
+461-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:448:13-462:29
+462                <action android:name="android.intent.action.VIEW" />
+462-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:126:17-69
+462-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:126:25-66
+463
+464                <category android:name="android.intent.category.DEFAULT" />
+464-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:41:17-76
+464-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:41:27-73
+465                <category android:name="android.intent.category.BROWSABLE" />
+465-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:191:17-78
+465-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:191:27-75
+466
+467                <data
+467-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:43:17-44:52
+468                    android:host="*rus.ec"
+468-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:143:21-37
+469                    android:mimeType="application/zip"
+469-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:165:21-50
+470                    android:scheme="http" />
+470-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:43:23-60
+471                <data
+471-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:43:17-44:52
+472                    android:host="lib.ololo.cc"
+472-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:143:21-37
+473                    android:mimeType="application/zip"
+473-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:165:21-50
+474                    android:scheme="http" />
+474-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:43:23-60
+475            </intent-filter>
+476            <intent-filter>
+476-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:463:13-472:29
+477                <action android:name="android.intent.action.VIEW" />
+477-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:126:17-69
+477-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:126:25-66
+478
+479                <category android:name="android.intent.category.DEFAULT" />
+479-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:41:17-76
+479-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:41:27-73
+480                <category android:name="android.intent.category.BROWSABLE" />
+480-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:191:17-78
+480-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:191:27-75
+481
+482                <data
+482-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:43:17-44:52
+483                    android:host="*"
+483-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:143:21-37
+484                    android:scheme="book" />
+484-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:43:23-60
+485            </intent-filter>
+486            <intent-filter>
+486-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:473:13-482:29
+487                <action android:name="android.intent.action.VIEW" />
+487-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:126:17-69
+487-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:126:25-66
+488
+489                <category android:name="android.intent.category.DEFAULT" />
+489-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:41:17-76
+489-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:41:27-73
+490                <category android:name="android.intent.category.BROWSABLE" />
+490-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:191:17-78
+490-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:191:27-75
+491
+492                <data
+492-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:43:17-44:52
+493                    android:host="*"
+493-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:143:21-37
+494                    android:scheme="epub" />
+494-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:43:23-60
+495            </intent-filter>
+496        </activity>
+497
+498        <service
+498-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:485:9-489:49
+499            android:name="org.geometerplus.android.fbreader.network.BookDownloaderService"
+499-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:486:13-91
+500            android:exported="false"
+500-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:487:13-37
+501            android:launchMode="singleTask"
+501-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:488:13-44
+502            android:process=":networkLibrary" />
+502-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:489:13-46
+503
+504        <activity
+504-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:491:9-502:20
+505            android:name="org.geometerplus.android.fbreader.network.NetworkSearchActivity"
+505-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:492:13-91
+506            android:process=":networkLibrary"
+506-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:493:13-46
+507            android:theme="@android:style/Theme.NoDisplay" >
+507-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:494:13-59
+508            <intent-filter>
+508-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:219:13-221:29
+509                <action android:name="android.intent.action.SEARCH" />
+509-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:220:17-71
+509-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:220:25-68
+510            </intent-filter>
+511
+512            <meta-data
+512-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:223:13-225:54
+513                android:name="android.app.searchable"
+513-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:224:17-54
+514                android:resource="@xml/searchable" />
+514-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:225:17-51
+515        </activity>
+516        <activity
+516-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:503:9-508:56
+517            android:name="org.geometerplus.android.fbreader.network.auth.WebAuthorisationScreen"
+517-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:504:13-97
+518            android:configChanges="orientation|keyboardHidden|screenSize"
+518-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:505:13-74
+519            android:exported="false"
+519-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:506:13-37
+520            android:process=":networkLibrary"
+520-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:507:13-46
+521            android:theme="@style/FBReader.Activity" />
+521-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:508:13-53
+522        <activity
+522-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:509:9-536:20
+523            android:name="org.geometerplus.android.fbreader.network.NetworkLibraryPrimaryActivity"
+523-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:510:13-99
+524            android:configChanges="orientation|keyboardHidden|screenSize"
+524-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:511:13-74
+525            android:launchMode="singleTask"
+525-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:512:13-44
+526            android:process=":networkLibrary"
+526-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:513:13-46
+527            android:theme="@style/FBReader.Activity" >
+527-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:514:13-53
+528            <meta-data
+528-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:360:13-362:99
+529                android:name="android.app.default_searchable"
+529-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:361:17-62
+530                android:value="org.geometerplus.android.fbreader.network.NetworkSearchActivity" />
+530-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:362:17-96
+531
+532            <intent-filter>
+532-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:519:13-530:29
+533                <action android:name="android.fbreader.action.OPEN_NETWORK_CATALOG" />
+533-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:520:17-87
+533-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:520:25-84
+534
+535                <category android:name="android.intent.category.DEFAULT" />
+535-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:41:17-76
+535-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:41:27-73
+536
+537                <data
+537-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:43:17-44:52
+538                    android:host="*"
+538-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:143:21-37
+539                    android:scheme="http" />
+539-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:43:23-60
+540                <data
+540-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:43:17-44:52
+541                    android:host="*"
+541-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:143:21-37
+542                    android:scheme="https" />
+542-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:43:23-60
+543            </intent-filter>
+544            <intent-filter>
+544-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:531:13-535:29
+545                <action android:name="android.fbreader.action.NETWORK_LIBRARY" />
+545-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:532:17-82
+545-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:532:25-79
+546
+547                <category android:name="android.intent.category.DEFAULT" />
+547-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:41:17-76
+547-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:41:27-73
+548            </intent-filter>
+549        </activity>
+550        <activity
+550-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:537:9-541:56
+551            android:name="org.geometerplus.android.fbreader.network.NetworkLibrarySecondaryActivity"
+551-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:538:13-101
+552            android:configChanges="orientation|keyboardHidden|screenSize"
+552-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:539:13-74
+553            android:process=":networkLibrary"
+553-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:540:13-46
+554            android:theme="@style/FBReader.Activity" />
+554-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:541:13-53
+555        <activity
+555-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:542:9-546:54
+556            android:name="org.geometerplus.android.fbreader.network.AuthenticationActivity"
+556-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:543:13-92
+557            android:configChanges="orientation|keyboardHidden|screenSize"
+557-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:544:13-74
+558            android:process=":networkLibrary"
+558-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:545:13-46
+559            android:theme="@style/FBReader.Dialog" />
+559-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:546:13-51
+560        <activity
+560-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:547:9-551:54
+561            android:name="org.geometerplus.android.fbreader.network.BuyBooksActivity"
+561-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:548:13-86
+562            android:configChanges="orientation|keyboardHidden|screenSize"
+562-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:549:13-74
+563            android:process=":networkLibrary"
+563-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:550:13-46
+564            android:theme="@style/FBReader.Dialog" />
+564-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:551:13-51
+565        <activity
+565-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:552:9-556:54
+566            android:name="org.geometerplus.android.fbreader.network.AddCatalogMenuActivity"
+566-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:553:13-92
+567            android:configChanges="orientation|keyboardHidden|screenSize"
+567-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:554:13-74
+568            android:process=":networkLibrary"
+568-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:555:13-46
+569            android:theme="@style/FBReader.Dialog" />
+569-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:556:13-51
+570        <activity
+570-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:557:9-600:20
+571            android:name="org.geometerplus.android.fbreader.network.AddCustomCatalogActivity"
+571-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:558:13-94
+572            android:configChanges="orientation|keyboardHidden|screenSize"
+572-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:559:13-74
+573            android:process=":networkLibrary"
+573-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:560:13-46
+574            android:theme="@style/FBReader.Dialog" >
+574-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:561:13-51
+575            <intent-filter>
+575-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:562:13-571:29
+576                <action android:name="android.fbreader.action.ADD_OPDS_CATALOG" />
+576-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:563:17-83
+576-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:563:25-80
+577
+578                <category android:name="android.intent.category.DEFAULT" />
+578-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:41:17-76
+578-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:41:27-73
+579
+580                <data
+580-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:43:17-44:52
+581                    android:host="data.fbreader.org"
+581-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:143:21-37
+582                    android:path="/add_catalog/editUrl"
+582-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:569:21-56
+583                    android:scheme="http" />
+583-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:43:23-60
+584            </intent-filter>
+585            <intent-filter>
+585-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:572:13-581:29
+586                <action android:name="android.intent.action.VIEW" />
+586-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:126:17-69
+586-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:126:25-66
+587
+588                <category android:name="android.intent.category.DEFAULT" />
+588-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:41:17-76
+588-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:41:27-73
+589                <category android:name="android.intent.category.BROWSABLE" />
+589-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:191:17-78
+589-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:191:27-75
+590
+591                <data
+591-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:43:17-44:52
+592                    android:host="*"
+592-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:143:21-37
+593                    android:scheme="opds" />
+593-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:43:23-60
+594            </intent-filter>
+595            <intent-filter>
+595-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:582:13-590:29
+596                <action android:name="android.fbreader.action.ADD_OPDS_CATALOG_URL" />
+596-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:583:17-87
+596-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:583:25-84
+597
+598                <category android:name="android.intent.category.DEFAULT" />
+598-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:41:17-76
+598-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:41:27-73
+599
+600                <data
+600-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:43:17-44:52
+601                    android:host="*"
+601-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:143:21-37
+602                    android:scheme="http" />
+602-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:43:23-60
+603            </intent-filter>
+604            <intent-filter>
+604-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:591:13-599:29
+605                <action android:name="android.fbreader.action.ADD_OPDS_CATALOG_URL" />
+605-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:583:17-87
+605-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:583:25-84
+606
+607                <category android:name="android.intent.category.DEFAULT" />
+607-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:41:17-76
+607-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:41:27-73
+608
+609                <data
+609-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:43:17-44:52
+610                    android:host="*"
+610-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:143:21-37
+611                    android:scheme="https" />
+611-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:43:23-60
+612            </intent-filter>
+613        </activity>
+614        <activity
+614-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:601:9-605:54
+615            android:name="org.geometerplus.android.fbreader.network.AuthorisationMenuActivity"
+615-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:602:13-95
+616            android:configChanges="orientation|keyboardHidden|screenSize"
+616-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:603:13-74
+617            android:process=":networkLibrary"
+617-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:604:13-46
+618            android:theme="@style/FBReader.Dialog" />
+618-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:605:13-51
+619        <activity
+619-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:606:9-610:54
+620            android:name="org.geometerplus.android.fbreader.network.litres.UserRegistrationActivity"
+620-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:607:13-101
+621            android:configChanges="orientation|keyboardHidden|screenSize"
+621-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:608:13-74
+622            android:process=":networkLibrary"
+622-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:609:13-46
+623            android:theme="@style/FBReader.Dialog" />
+623-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:610:13-51
+624        <activity
+624-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:611:9-615:54
+625            android:name="org.geometerplus.android.fbreader.network.litres.AutoRegistrationActivity"
+625-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:612:13-101
+626            android:configChanges="orientation|keyboardHidden|screenSize"
+626-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:613:13-74
+627            android:process=":networkLibrary"
+627-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:614:13-46
+628            android:theme="@style/FBReader.Dialog" />
+628-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:615:13-51
+629        <activity
+629-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:616:9-620:54
+630            android:name="org.geometerplus.android.fbreader.network.TopupMenuActivity"
+630-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:617:13-87
+631            android:configChanges="orientation|keyboardHidden|screenSize"
+631-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:618:13-74
+632            android:process=":networkLibrary"
+632-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:619:13-46
+633            android:theme="@style/FBReader.Dialog" />
+633-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:620:13-51
+634        <activity
+634-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:621:9-635:20
+635            android:name="org.geometerplus.android.fbreader.network.NetworkBookInfoActivity"
+635-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:622:13-93
+636            android:configChanges="orientation|keyboardHidden|screenSize"
+636-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:623:13-74
+637            android:process=":networkLibrary"
+637-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:624:13-46
+638            android:theme="@style/FBReader.Activity" >
+638-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:625:13-53
+639            <intent-filter>
+639-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:626:13-634:29
+640                <action android:name="android.intent.action.VIEW" />
+640-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:126:17-69
+640-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:126:25-66
+641
+642                <category android:name="android.intent.category.DEFAULT" />
+642-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:41:17-76
+642-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:41:27-73
+643
+644                <data
+644-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:43:17-44:52
+645                    android:host="*"
+645-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:143:21-37
+646                    android:scheme="litres-book" />
+646-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:43:23-60
+647            </intent-filter>
+648        </activity>
+649
+650        <receiver
+650-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:637:9-645:20
+651            android:name="org.geometerplus.android.fbreader.network.ListenerCallback"
+651-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:638:13-86
+652            android:process=":networkLibrary" >
+652-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:639:13-46
+653            <intent-filter>
+653-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:640:13-644:29
+654                <action android:name="android.fbreader.action.network.SIGNIN" />
+654-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:641:17-81
+654-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:641:25-78
+655
+656                <category android:name="android.intent.category.DEFAULT" />
+656-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:41:17-76
+656-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:41:27-73
+657            </intent-filter>
+658        </receiver>
+659
+660        <activity
+660-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:647:9-650:54
+661            android:name="org.geometerplus.android.fbreader.tips.TipsActivity"
+661-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:648:13-79
+662            android:configChanges="orientation|keyboardHidden|screenSize"
+662-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:649:13-74
+663            android:theme="@style/FBReader.Dialog" />
+663-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:650:13-51
+664        <activity
+664-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:651:9-654:59
+665            android:name="com.paragon.dictionary.fbreader.OpenDictionaryActivity"
+665-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:652:13-82
+666            android:configChanges="orientation|keyboardHidden|screenSize"
+666-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:653:13-74
+667            android:theme="@style/FBReader.Transparent" />
+667-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:654:13-56
+668
+669        <service
+669-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:656:9-660:46
+670            android:name="org.geometerplus.android.fbreader.httpd.DataService"
+670-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:657:13-79
+671            android:exported="false"
+671-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:658:13-37
+672            android:launchMode="singleTask"
+672-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:659:13-44
+673            android:process=":dataService" />
+673-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:660:13-43
+674
+675        <activity
+675-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:661:9-665:54
+676            android:name="org.geometerplus.android.fbreader.preferences.background.Chooser"
+676-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:662:13-92
+677            android:configChanges="orientation|screenSize|keyboard|keyboardHidden"
+677-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:663:13-83
+678            android:exported="false"
+678-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:664:13-37
+679            android:theme="@style/FBReader.Dialog" />
+679-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:665:13-51
+680        <activity
+680-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:666:9-670:54
+681            android:name="org.geometerplus.android.fbreader.preferences.background.PredefinedImages"
+681-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:667:13-101
+682            android:configChanges="orientation|screenSize|keyboard|keyboardHidden"
+682-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:668:13-83
+683            android:exported="false"
+683-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:669:13-37
+684            android:theme="@style/FBReader.Dialog" />
+684-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:670:13-51
+685        <activity
+685-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:671:9-675:54
+686            android:name="org.geometerplus.android.util.FolderListDialogActivity"
+686-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:672:13-82
+687            android:configChanges="orientation|screenSize|keyboard|keyboardHidden"
+687-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:673:13-83
+688            android:exported="false"
+688-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:674:13-37
+689            android:theme="@style/FBReader.Dialog" />
+689-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:675:13-51
+690        <activity
+690-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:676:9-680:54
+691            android:name="org.geometerplus.android.util.EditTagsDialogActivity"
+691-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:677:13-80
+692            android:configChanges="orientation|screenSize|keyboard|keyboardHidden"
+692-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:678:13-83
+693            android:exported="false"
+693-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:679:13-37
+694            android:theme="@style/FBReader.Dialog" />
+694-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:680:13-51
+695        <activity
+695-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:681:9-685:54
+696            android:name="org.geometerplus.android.util.EditAuthorsDialogActivity"
+696-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:682:13-83
+697            android:configChanges="orientation|screenSize|keyboard|keyboardHidden"
+697-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:683:13-83
+698            android:exported="false"
+698-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:684:13-37
+699            android:theme="@style/FBReader.Dialog" />
+699-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:685:13-51
+700        <activity
+700-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:686:9-688:55
+701            android:name="org.geometerplus.android.fbreader.FBReaderSettingActivity"
+701-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:686:19-91
+702            android:configChanges="orientation|keyboardHidden|screenSize"
+702-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:687:13-74
+703            android:theme="@style/FBReader.Activity" />
+703-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:688:13-53
+704
+705        <provider
+705-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:689:9-697:20
+706            android:name="org.geometerplus.android.fbreader.util.fileprovider.FileProvider"
+706-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:690:13-92
+707            android:authorities="dollar_openBracket_applicationId_closeBracket.reader.fileProvider"
+707-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:691:13-71
+708            android:exported="false"
+708-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:692:13-37
+709            android:grantUriPermissions="true" >
+709-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:693:13-47
+710            <meta-data
+710-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:694:13-696:54
+711                android:name="android.support.FILE_PROVIDER_PATHS"
+711-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:695:17-67
+712                android:resource="@xml/file_paths" />
+712-->D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\reader\src\main\AndroidManifest.xml:696:17-51
+713        </provider>
+714    </application>
+715
+716</manifest>

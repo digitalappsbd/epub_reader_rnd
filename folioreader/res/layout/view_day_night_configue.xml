@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  android:id="@+id/container"
+  android:layout_width="match_parent"
+  android:layout_height="wrap_content"
+  android:layout_gravity="bottom"
+  android:layout_marginBottom="60dp"
+  android:orientation="horizontal"
+  android:weightSum="2">
+  <ImageButton
+    android:id="@+id/view_config_ib_day_mode"
+    android:layout_width="0dp"
+    android:layout_height="50dp"
+    android:layout_weight="1"
+    android:background="@android:color/transparent"
+    app:srcCompat="@drawable/icon_sun_sel" />
+
+  <ImageButton
+    android:id="@+id/view_config_ib_night_mode"
+    android:layout_width="0dp"
+    android:layout_height="50dp"
+    android:layout_weight="1"
+    android:background="@android:color/transparent"
+    app:srcCompat="@drawable/icon_moon_sel" />
+</LinearLayout>
