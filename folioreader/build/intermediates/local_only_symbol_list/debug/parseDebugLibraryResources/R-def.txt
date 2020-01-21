@@ -127,7 +127,8 @@ drawable style_text_color_selector
 drawable thumb
 drawable transparent_selector
 drawable trash
-id action_day_night
+id action_day
+id action_night
 id appBarLayout
 id arrow_down
 id arrow_up

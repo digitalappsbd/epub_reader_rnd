@@ -1,7 +1,6 @@
 package com.folioreader.ui.fragment
 
 import android.annotation.SuppressLint
-import android.app.Activity
 import android.content.Intent
 import android.graphics.Color
 import android.graphics.PorterDuff
@@ -343,13 +342,13 @@ class FolioPageFragment : Fragment(),
         it.allowFileAccess = true
         it.defaultTextEncodingName = "utf-8"
       }
-     web.setScrollListener(object : FolioWebView.ScrollListener {
-       override fun onScrollChange(percent: Int) {
+      web.setScrollListener(object : FolioWebView.ScrollListener {
+        override fun onScrollChange(percent: Int) {
 
-         mScrollSeekbar!!.setProgressAndThumb(percent)
-         updatePagesLeftText(percent)
-       }
-     })
+          mScrollSeekbar!!.setProgressAndThumb(percent)
+          updatePagesLeftText(percent)
+        }
+      })
     }
 
     HtmlTask(this).execute(chapterUrl.toString())
@@ -359,11 +358,11 @@ class FolioPageFragment : Fragment(),
 
     override fun onPageFinished(view: WebView, url: String) {
 
-      mWebview!!.loadUrl("javascript:checkCompatMode()")
-      mWebview!!.loadUrl("javascript:alert(getReadingTime())")
+      mWebview?.loadUrl("javascript:checkCompatMode()")
+      mWebview?.loadUrl("javascript:alert(getReadingTime())")
 
       if (mActivityCallback!!.direction == Config.Direction.HORIZONTAL)
-        mWebview!!.loadUrl("javascript:initHorizontalDirection()")
+        mWebview?.loadUrl("javascript:initHorizontalDirection()")
 
       view.loadUrl(
         String.format(
@@ -376,7 +375,7 @@ class FolioPageFragment : Fragment(),
 
       val rangy = HighlightUtil.generateRangyString(pageName)
       this@FolioPageFragment.rangy = rangy
-      if (!rangy.isEmpty())
+      if (rangy.isNotEmpty())
         loadRangy(rangy)
 
       if (mIsPageReloaded) {
@@ -386,30 +385,30 @@ class FolioPageFragment : Fragment(),
             getString(R.string.callHighlightSearchLocator),
             searchLocatorVisible?.locations?.cfi
           )
-          mWebview!!.loadUrl(callHighlightSearchLocator)
+          mWebview?.loadUrl(callHighlightSearchLocator)
 
         } else if (isCurrentFragment) {
-          val cfi = lastReadLocator!!.locations.cfi
-          mWebview!!.loadUrl(String.format(getString(R.string.callScrollToCfi), cfi))
+          val cfi = lastReadLocator?.locations?.cfi
+          mWebview?.loadUrl(String.format(getString(R.string.callScrollToCfi), cfi))
 
         } else {
           if (spineIndex == mActivityCallback!!.currentChapterIndex - 1) {
             // Scroll to last, the page before current page
-            mWebview!!.loadUrl("javascript:scrollToLast()")
+            mWebview?.loadUrl("javascript:scrollToLast()")
           } else {
             // Make loading view invisible for all other fragments
-            loadingView!!.hide()
+            loadingView?.hide()
           }
         }
 
         mIsPageReloaded = false
 
       } else if (!TextUtils.isEmpty(mAnchorId)) {
-        mWebview!!.loadUrl(String.format(getString(R.string.go_to_anchor), mAnchorId))
+        mWebview?.loadUrl(String.format(getString(R.string.go_to_anchor), mAnchorId))
         mAnchorId = null
 
       } else if (!TextUtils.isEmpty(highlightId)) {
-        mWebview!!.loadUrl(String.format(getString(R.string.go_to_highlight), highlightId))
+        mWebview?.loadUrl(String.format(getString(R.string.go_to_highlight), highlightId))
         highlightId = null
 
       } else if (searchLocatorVisible != null) {
@@ -427,16 +426,16 @@ class FolioPageFragment : Fragment(),
           readLocator = mActivityCallback!!.entryReadLocator
         } else {
           Log.v(LOG_TAG, "-> onPageFinished -> took from bundle")
-          readLocator = savedInstanceState!!.getParcelable(BUNDLE_READ_LOCATOR_CONFIG_CHANGE)
-          savedInstanceState!!.remove(BUNDLE_READ_LOCATOR_CONFIG_CHANGE)
+          readLocator = savedInstanceState?.getParcelable(BUNDLE_READ_LOCATOR_CONFIG_CHANGE)
+          savedInstanceState?.remove(BUNDLE_READ_LOCATOR_CONFIG_CHANGE)
         }
 
         if (readLocator != null) {
           val cfi = readLocator.locations.cfi
           Log.v(LOG_TAG, "-> onPageFinished -> readLocator -> " + cfi!!)
-          mWebview!!.loadUrl(String.format(getString(R.string.callScrollToCfi), cfi))
+          mWebview?.loadUrl(String.format(getString(R.string.callScrollToCfi), cfi))
         } else {
-          loadingView!!.hide()
+          loadingView?.hide()
         }
 
       } else {
@@ -525,7 +524,7 @@ class FolioPageFragment : Fragment(),
         val p =
           Pattern.compile("[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}")
         if (!p.matcher(message).matches() && message != "undefined" && isCurrentFragment) {
-          mediaController!!.speakAudio(message)
+          mediaController?.speakAudio(message)
         }
       }
 

@@ -181,7 +181,7 @@ class FolioWebView : WebView {
         //Log.d(LOG_TAG, "-> onFling -> completing scroll");
         uiHandler.postDelayed({
           // Delayed to avoid inconsistency of scrolling in WebView
-          scrollTo(getScrollXPixelsForPage(webViewPager!!.currentItem), 0)
+          scrollTo(getScrollXPixelsForPage(webViewPager.currentItem), 0)
         }, 100)
       }
 
@@ -200,7 +200,7 @@ class FolioWebView : WebView {
 
   @JavascriptInterface
   fun dismissPopupWindow(): Boolean {
-    Log.d(LOG_TAG, "-> dismissPopupWindow -> " + parentFragment.spineItem?.href)
+    Log.d(LOG_TAG, "-> dismissPopupWindow -> " + parentFragment.spineItem.href)
     val wasShowing = popupWindow.isShowing
     if (Looper.getMainLooper().thread == Thread.currentThread()) {
       popupWindow.dismiss()

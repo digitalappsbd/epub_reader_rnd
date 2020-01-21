@@ -1239,7 +1239,7 @@ id action_bar_subtitle
 id action_bar_title
 id action_container
 id action_context_bar
-id action_day_night
+id action_day
 id action_divider
 id action_image
 id action_menu_divider
@@ -1247,6 +1247,7 @@ id action_menu_presenter
 id action_mode_bar
 id action_mode_bar_stub
 id action_mode_close_button
+id action_night
 id action_text
 id actions
 id activity_chooser_view_content

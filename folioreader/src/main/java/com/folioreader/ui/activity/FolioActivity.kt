@@ -1,6 +1,9 @@
 package com.folioreader.ui.activity
 
 import android.Manifest
+import android.animation.Animator
+import android.animation.ArgbEvaluator
+import android.animation.ValueAnimator
 import android.app.Activity
 import android.app.ActivityManager
 import android.content.BroadcastReceiver
@@ -28,6 +31,7 @@ import androidx.appcompat.app.AppCompatDelegate
 import androidx.appcompat.widget.Toolbar
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.fragment.app.Fragment
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import com.folioreader.Config
 import com.folioreader.Constants.*
@@ -36,6 +40,7 @@ import com.folioreader.R
 import com.folioreader.model.DisplayUnit
 import com.folioreader.model.HighlightImpl
 import com.folioreader.model.event.MediaOverlayPlayPauseEvent
+import com.folioreader.model.event.ReloadDataEvent
 import com.folioreader.model.locators.ReadLocator
 import com.folioreader.model.locators.SearchLocator
 import com.folioreader.ui.adapter.FolioPageFragmentAdapter
@@ -46,7 +51,6 @@ import com.folioreader.ui.view.DirectionalViewpager
 import com.folioreader.ui.view.FolioAppBarLayout
 import com.folioreader.ui.view.MediaControllerCallback
 import com.folioreader.ui.view.settings.ConfigBottomSheetDialogFragment
-import com.folioreader.ui.view.settings.ConfigDayNightBottomSheet
 import com.folioreader.util.AppUtil
 import com.folioreader.util.FileUtil
 import com.folioreader.util.UiUtil
@@ -119,6 +123,7 @@ class FolioActivity : AppCompatActivity(), FolioActivityCallback, MediaControlle
     const val EXTRA_SEARCH_ITEM = "EXTRA_SEARCH_ITEM"
     const val ACTION_SEARCH_CLEAR = "ACTION_SEARCH_CLEAR"
     private const val HIGHLIGHT_ITEM = "highlight_item"
+    const val FADE_DAY_NIGHT_MODE = 500
   }
 
 
@@ -191,6 +196,13 @@ class FolioActivity : AppCompatActivity(), FolioActivityCallback, MediaControlle
     setupBookAfterPermission()
     initBottomNav()
 
+    AppUtil.getSavedConfig(this)?.let {
+      config = it
+    }
+
+    isNightMode = config.isNightMode
+
+
   }
 
 
@@ -238,14 +250,100 @@ class FolioActivity : AppCompatActivity(), FolioActivityCallback, MediaControlle
 
   private fun initBottomNav() {
     navigation.setOnNavigationItemSelectedListener {
-      if (it.itemId == R.id.action_day_night) {
-        ConfigDayNightBottomSheet().show(
-          supportFragmentManager,
-          ConfigDayNightBottomSheet.LOG_TAG
-        )
-        return@setOnNavigationItemSelectedListener true
-      } else return@setOnNavigationItemSelectedListener true
+      when (it.itemId) {
+        R.id.action_day -> {
+          isNightMode = true
+          toggleBlackTheme()
+          setToolBarColor()
+          setAudioPlayerBackground()
+          return@setOnNavigationItemSelectedListener true
+        }
+        R.id.action_night -> {
+          isNightMode = false
+          toggleBlackTheme()
+          setToolBarColor()
+          setAudioPlayerBackground()
+          return@setOnNavigationItemSelectedListener true
+        }
+        else -> return@setOnNavigationItemSelectedListener true
+      }
     }
+  }
+
+  private fun setAudioPlayerBackground() {
+
+    val mediaController: Fragment?
+    mediaController = mediaControllerFragment as MediaControllerFragment
+    if (isNightMode) {
+      mediaController.setDayMode()
+    } else {
+      mediaController.setNightMode()
+    }
+  }
+
+  private fun setToolBarColor() {
+    if (isNightMode) {
+      setDayMode()
+    } else {
+      setNightMode()
+    }
+  }
+
+  private fun toggleBlackTheme() {
+
+    val day = ContextCompat.getColor(this, R.color.white)
+    val night = ContextCompat.getColor(this, R.color.night)
+
+    val colorAnimation = ValueAnimator.ofObject(
+      ArgbEvaluator(),
+      if (isNightMode) night else day, if (isNightMode) day else night
+    )
+    colorAnimation.duration = FADE_DAY_NIGHT_MODE.toLong()
+
+
+    colorAnimation.addListener(object : Animator.AnimatorListener {
+      override fun onAnimationStart(animator: Animator) {}
+
+      override fun onAnimationEnd(animator: Animator) {
+        isNightMode = !isNightMode
+        config.isNightMode = isNightMode
+        AppUtil.saveConfig(this@FolioActivity, config)
+        EventBus.getDefault().post(ReloadDataEvent())
+      }
+
+      override fun onAnimationCancel(animator: Animator) {}
+
+      override fun onAnimationRepeat(animator: Animator) {}
+    })
+
+    colorAnimation.duration = FADE_DAY_NIGHT_MODE.toLong()
+
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+
+      val attrs = intArrayOf(android.R.attr.navigationBarColor)
+      val typedArray = this.theme?.obtainStyledAttributes(attrs)
+      val defaultNavigationBarColor = typedArray?.getColor(
+        0,
+        ContextCompat.getColor(this, R.color.white)
+      )
+      val black = ContextCompat.getColor(this, R.color.black)
+
+      val navigationColorAnim = ValueAnimator.ofObject(
+        ArgbEvaluator(),
+        if (isNightMode) black else defaultNavigationBarColor,
+        if (isNightMode) defaultNavigationBarColor else black
+      )
+
+      navigationColorAnim.addUpdateListener { valueAnimator ->
+        val value = valueAnimator.animatedValue as Int
+        this.window?.navigationBarColor = value
+      }
+
+      navigationColorAnim.duration = FADE_DAY_NIGHT_MODE.toLong()
+      navigationColorAnim.start()
+    }
+
+    colorAnimation.start()
   }
 
   override fun setDayMode() {
@@ -558,13 +656,15 @@ class FolioActivity : AppCompatActivity(), FolioActivityCallback, MediaControlle
     hideSystemUI()
     showSystemUI()
     distractionFreeMode =
-      savedInstanceState != null && savedInstanceState.getBoolean(BUNDLE_DISTRACTION_FREE_MODE)
+      (savedInstanceState != null && savedInstanceState.getBoolean(BUNDLE_DISTRACTION_FREE_MODE))
   }
 
   override fun onPostCreate(savedInstanceState: Bundle?) {
     super.onPostCreate(savedInstanceState)
     if (distractionFreeMode) {
-      handler!!.post { hideSystemUI() }
+      handler?.post {
+        hideSystemUI()
+      }
     }
   }
 

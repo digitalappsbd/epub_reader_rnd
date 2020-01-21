@@ -1,8 +1,13 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
   xmlns:app="http://schemas.android.com/apk/res-auto">
   <item
-    android:id="@+id/action_day_night"
+    android:id="@+id/action_day"
     android:icon="@drawable/ic_wb_sunny_black_24dp"
+    android:title=""
+    app:showAsAction="always" />
+  <item
+    android:id="@+id/action_night"
+    android:icon="@drawable/icon_moon_normal"
     android:title=""
     app:showAsAction="always"/>
 </menu>
