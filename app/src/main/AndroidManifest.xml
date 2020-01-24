@@ -1,24 +1,186 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-  xmlns:dist="http://schemas.android.com/apk/distribution"
-  package="com.digitalappsbd.epurreader">
 
-  <dist:module dist:instant="true" />
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:tools="http://schemas.android.com/tools"
+  package="com.digitalappsbd.app.epurreader">
+
+  <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+  <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+  <uses-permission android:name="android.permission.INTERNET" />
+  <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
   <application
-    android:allowBackup="true"
+    android:name="com.digitalappsbd.app.epurreader.R2App"
+    android:allowBackup="false"
     android:icon="@mipmap/ic_launcher"
     android:label="@string/app_name"
-    android:roundIcon="@mipmap/ic_launcher_round"
     android:supportsRtl="true"
-    android:theme="@style/AppTheme">
-    <activity android:name=".MainActivity">
+    android:theme="@style/AppTheme"
+    android:usesCleartextTraffic="true"
+    tools:replace="android:allowBackup"
+    tools:targetApi="m">
+    <activity
+      android:name="com.digitalappsbd.app.epurreader.library.LibraryActivity"
+      android:configChanges="orientation|screenSize">
       <intent-filter>
         <action android:name="android.intent.action.MAIN" />
 
         <category android:name="android.intent.category.LAUNCHER" />
       </intent-filter>
     </activity>
+    <activity
+      android:name="com.digitalappsbd.app.epurreader.utils.R2DispatcherActivity"
+      android:launchMode="singleInstance"
+      android:noHistory="true"
+      android:theme="@android:style/Theme.NoDisplay">
+      <intent-filter>
+        <action android:name="android.intent.action.VIEW" />
+
+        <category android:name="android.intent.category.DEFAULT" />
+        <category android:name="android.intent.category.BROWSABLE" />
+
+        <data
+          android:host="*"
+          android:mimeType="*/*"
+          android:pathPattern=".*\\.epub"
+          android:scheme="content" />
+      </intent-filter>
+      <intent-filter>
+        <action android:name="android.intent.action.SEND" />
+
+        <category android:name="android.intent.category.DEFAULT" />
+        <category android:name="android.intent.category.BROWSABLE" />
+
+        <data
+          android:host="*"
+          android:mimeType="*/*"
+          android:pathPattern=".*\\.epub" />
+      </intent-filter>
+      <intent-filter>
+        <action android:name="android.intent.action.VIEW" />
+
+        <category android:name="android.intent.category.DEFAULT" />
+        <category android:name="android.intent.category.BROWSABLE" />
+
+        <data
+          android:host="*"
+          android:mimeType="*/*"
+          android:pathPattern=".*\\.lcpl"
+          android:scheme="content" />
+      </intent-filter>
+      <intent-filter>
+        <action android:name="android.intent.action.SEND" />
+
+        <category android:name="android.intent.category.DEFAULT" />
+        <category android:name="android.intent.category.BROWSABLE" />
+
+        <data
+          android:host="*"
+          android:mimeType="*/*"
+          android:pathPattern=".*\\.lcpl" />
+      </intent-filter>
+      <intent-filter>
+        <action android:name="android.intent.action.VIEW" />
+
+        <category android:name="android.intent.category.DEFAULT" />
+        <category android:name="android.intent.category.BROWSABLE" />
+
+        <data
+          android:host="*"
+          android:mimeType="*/*"
+          android:pathPattern=".*\\.divina"
+          android:scheme="content" />
+      </intent-filter>
+      <intent-filter>
+        <action android:name="android.intent.action.SEND" />
+
+        <category android:name="android.intent.category.DEFAULT" />
+        <category android:name="android.intent.category.BROWSABLE" />
+
+        <data
+          android:host="*"
+          android:mimeType="*/*"
+          android:pathPattern=".*\\.divina" />
+      </intent-filter>
+      <intent-filter>
+        <action android:name="android.intent.action.VIEW" />
+
+        <category android:name="android.intent.category.DEFAULT" />
+        <category android:name="android.intent.category.BROWSABLE" />
+
+        <data
+          android:host="*"
+          android:mimeType="*/*"
+          android:pathPattern=".*\\.audiobook"
+          android:scheme="content" />
+      </intent-filter>
+      <intent-filter>
+        <action android:name="android.intent.action.SEND" />
+
+        <category android:name="android.intent.category.DEFAULT" />
+        <category android:name="android.intent.category.BROWSABLE" />
+
+        <data
+          android:host="*"
+          android:mimeType="*/*"
+          android:pathPattern=".*\\.audiobook" />
+      </intent-filter>
+      <intent-filter>
+        <action android:name="android.intent.action.VIEW" />
+
+        <category android:name="android.intent.category.DEFAULT" />
+        <category android:name="android.intent.category.BROWSABLE" />
+
+        <data
+          android:host="*"
+          android:mimeType="*/*"
+          android:pathPattern=".*\\.cbz"
+          android:scheme="content" />
+      </intent-filter>
+      <intent-filter>
+        <action android:name="android.intent.action.SEND" />
+
+        <category android:name="android.intent.category.DEFAULT" />
+        <category android:name="android.intent.category.BROWSABLE" />
+
+        <data
+          android:host="*"
+          android:mimeType="*/*"
+          android:pathPattern=".*\\.cbz" />
+      </intent-filter>
+
+    </activity>
+    <activity
+      android:name="com.digitalappsbd.app.epurreader.opds.OPDSCatalogActivity"
+      android:label="@string/title_activity_opdscatalog" />
+    <activity
+      android:name="com.digitalappsbd.app.epurreader.R2AboutActivity"
+      android:label="@string/title_activity_r2_about" />
+    <activity
+      android:name="com.digitalappsbd.app.epurreader.epub.EpubActivity"
+      android:label="@string/title_activity_epub" />
+    <activity
+      android:name="com.digitalappsbd.app.epurreader.comic.DiViNaActivity"
+      android:label="@string/title_activity_epub" />
+    <activity
+      android:name="com.digitalappsbd.app.epurreader.comic.ComicActivity"
+      android:label="@string/title_activity_epub" />
+    <activity
+      android:name="com.digitalappsbd.app.epurreader.DRMManagementActivity"
+      android:label="DRM Management"
+      android:theme="@style/AppTheme" />
+    <activity
+      android:name="com.digitalappsbd.app.epurreader.outline.R2OutlineActivity"
+      android:label="@string/title_activity_outline" />
+    <activity
+      android:name="com.digitalappsbd.app.epurreader.opds.OPDSListActivity"
+      android:label="@string/title_activity_opds_list" />
+    <activity
+      android:name="com.digitalappsbd.app.epurreader.opds.OPDSDetailActivity"
+      android:label="@string/title_activity_opds_detail" />
+    <activity
+      android:name="com.digitalappsbd.app.epurreader.audiobook.AudiobookActivity"
+      android:label="@string/title_activity_epub" />
   </application>
 
 </manifest>

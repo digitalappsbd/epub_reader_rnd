@@ -1,72 +1,174 @@
 apply plugin: 'com.android.application'
-apply plugin: 'checkstyle'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'com.github.dcendents.android-maven'
+group = 'com.github.readium'
+
+
+int major = 2
+int minor = 1
+int patch = 0
+int build = 23
+String type = ""
+
+def version = "$major.$minor.$patch"
+boolean appendBuild = build != 0
+if (appendBuild || !type.empty) {
+    version += "-$type"
+    if (appendBuild) {
+        version += build
+    }
+}
+
+project.ext.versionName = version
+project.ext.versionCode = 1_000_000 * major + 10_000 * minor + 100 * patch + build
+
 
 android {
-
-    compileSdkVersion versions.androidCompileSdk
-
-    defaultConfig {
-        applicationId "com.digitalappsbd.epurreader"
-        minSdkVersion versions.androidMinSdk
-        targetSdkVersion versions.androidTargetSdk
-        versionCode versions.projectVersionCode
-        versionName versions.projectVersionName
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-        multiDexEnabled true
+    compileSdkVersion 29
+    //Error: Invoke-customs are only supported starting with Android O (--min-api 26)
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
     }
 
+    defaultConfig {
+        applicationId "com.digitalappsbd.app.epurreader"
+        minSdkVersion 21
+        targetSdkVersion 29
+        versionCode project.ext.versionCode
+        versionName project.ext.versionName
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        ndk.abiFilters 'armeabi-v7a', 'arm64-v8a', 'x86', 'x86_64'
+    }
+    compileOptions {
+        sourceCompatibility 1.8
+        targetCompatibility 1.8
+    }
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
-
-    dexOptions {
-        javaMaxHeapSize "4G"
-    }
-
     packagingOptions {
-        exclude 'META-INF/ASL2.0'
-        exclude 'META-INF/DEPENDENCIES.txt'
-        exclude 'META-INF/LICENSE.txt'
-        exclude 'META-INF/NOTICE.txt'
-        exclude 'META-INF/NOTICE'
-        exclude 'META-INF/LICENSE'
-        exclude 'META-INF/DEPENDENCIES'
-        exclude 'META-INF/notice.txt'
-        exclude 'META-INF/license.txt'
-        exclude 'META-INF/dependencies.txt'
-        exclude 'META-INF/LGPL2.1'
-        exclude 'META-INF/services/javax.annotation.processing.Processor'
+        exclude 'META-INF/*'
     }
 
-    lintOptions {
-        abortOnError false
+    sourceSets {
+        main {
+            java.srcDirs = ['src/main/java']
+            res.srcDirs = ['src/main/res']
+            assets.srcDirs = ['src/main/assets']
+            if (findProject(':r2-lcp')) {
+                java.srcDirs = ['src/main/java', 'src/withlcp/java']
+            } else {
+                java.srcDirs = ['src/main/java', 'src/nondrm/java']
+            }
+        }
     }
 }
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    implementation "androidx.appcompat:appcompat:$versions.appcompat"
-    implementation "androidx.constraintlayout:constraintlayout:$versions.constraintLayout"
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation "androidx.test.ext:junit:1.1.1"
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
-
-    implementation project(':folioreader')
-    implementation "com.fasterxml.jackson.core:jackson-core:$versions.jackson"
-    implementation "com.fasterxml.jackson.core:jackson-annotations:$versions.jackson"
-    implementation "com.fasterxml.jackson.core:jackson-databind:$versions.jackson"
-    implementation "com.fasterxml.jackson.module:jackson-module-kotlin:$versions.jackson"
-
-    //progressBar error solve
-    configurations.matching { it.name == '_internal_aapt2_binary' }.all { config ->
-        config.resolutionStrategy.eachDependency { details ->
-            details.useVersion("3.3.2-5309881")
-        }
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
+    implementation 'com.jakewharton.timber:timber:4.7.1'
+    if (findProject(':r2-shared')) {
+        implementation project(':r2-shared')
+    } else {
+        implementation "com.github.readium:r2-shared-kotlin:1.1.6"
     }
+    if (findProject(':r2-navigator')) {
+        implementation project(':r2-navigator')
+    } else {
+        implementation "com.github.readium:r2-navigator-kotlin:1.1.5"
+    }
+    if (findProject(':r2-streamer')) {
+        implementation project(':r2-streamer')
+    } else {
+        implementation "com.github.readium:r2-streamer-kotlin:1.1.5"
+    }
+    if (findProject(':r2-opds')) {
+        implementation project(':r2-opds')
+    } else {
+        implementation "com.github.readium:r2-opds-kotlin:1.1.4"
+    }
+    if (findProject(':r2-lcp')) {
+        implementation project(':r2-lcp')
+    }
+
+
+    implementation('com.mcxiaoke.koi:core:0.5.5') {
+        exclude module: 'support-v4'
+    }
+    implementation('com.mcxiaoke.koi:async:0.5.5') {
+        exclude module: 'support-v4'
+    }
+
+    implementation "androidx.appcompat:appcompat:1.2.0-alpha01"
+    implementation "androidx.recyclerview:recyclerview:1.1.0"
+    implementation "androidx.cardview:cardview:1.0.0"
+    implementation 'androidx.webkit:webkit:1.1.0'
+    implementation "com.google.android.material:material:1.2.0-alpha04"
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+
+    implementation('com.github.edrlab.nanohttpd:nanohttpd-nanolets:2.3.2') {
+        exclude group: 'org.parboiled'
+    }
+
+    implementation('com.github.edrlab.nanohttpd:nanohttpd:2.3.2') {
+        exclude group: 'org.parboiled'
+    }
+
+    implementation 'com.google.code.gson:gson:2.8.6'
+    implementation 'com.squareup.picasso:picasso:2.5.2'
+    implementation 'io.reactivex.rxjava2:rxjava:2.2.11'
+    implementation 'org.jetbrains.anko:anko-design:0.10.8'
+
+    // For SnackBars
+    implementation 'org.jetbrains.anko:anko-commons:0.10.8'
+
+    // Anko Layouts
+    implementation 'org.jetbrains.anko:anko-sdk25:0.10.8'
+
+    // sdk15, sdk19, sdk21, sdk23 are also available
+    implementation 'org.jetbrains.anko:anko-appcompat-v7:0.10.8'
+    implementation 'org.jetbrains.anko:anko-recyclerview-v7:0.10.8'
+
+    // Coroutine listeners for Anko Layouts
+    implementation 'org.jetbrains.anko:anko-sdk25-coroutines:0.10.8'
+    implementation 'org.jetbrains.anko:anko-appcompat-v7-coroutines:0.10.8'
+
+    // Anko SQLite
+    implementation 'org.jetbrains.anko:anko-sqlite:0.10.8'
+    implementation 'com.github.kittinunf.fuel:fuel:1.16.0'
+
+    //for JVM
+    implementation 'com.github.kittinunf.fuel:fuel-android:1.16.0'
+
+    // async functions (only ~70k)
+    final KOVENANT_VERSION = '3.3.0'
+    implementation "nl.komponents.kovenant:kovenant:$KOVENANT_VERSION"
+    implementation "nl.komponents.kovenant:kovenant-core:$KOVENANT_VERSION"
+    implementation "nl.komponents.kovenant:kovenant-android:$KOVENANT_VERSION"
+    implementation "nl.komponents.kovenant:kovenant-combine:$KOVENANT_VERSION"
+    implementation "nl.komponents.kovenant:kovenant-jvm:$KOVENANT_VERSION"
+    implementation "nl.komponents.kovenant:kovenant-functional:$KOVENANT_VERSION"
+
+    implementation 'org.zeroturnaround:zt-zip:1.13'
+    implementation 'joda-time:joda-time:2.10.1'
+    implementation 'org.slf4j:slf4j-nop:1.7.25'
+
+    implementation 'com.duolingo.open:rtl-viewpager:1.0.3'
+    implementation 'androidx.viewpager2:viewpager2:1.0.0'
+
+    implementation 'com.commonsware.cwac:merge:1.1.2'
+    implementation 'com.github.abacritt:sectionedmergeadapter:0.2'
+    implementation 'org.jsoup:jsoup:1.12.1'
+
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test:runner:1.2.0'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+    testImplementation "org.jetbrains.kotlin:kotlin-test-junit:$kotlin_version"
 
 }

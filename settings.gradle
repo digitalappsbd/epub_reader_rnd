@@ -1,2 +1,1 @@
-include ':app', ':folioreader'
-rootProject.name='epub_reader_rnd'
+include ':app'
