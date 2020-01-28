@@ -1,0 +1,65 @@
+-- Merging decision tree log ---
+manifest
+ADDED from D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\r2-navigator\src\main\AndroidManifest.xml:11:1-38:12
+INJECTED from D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\r2-navigator\src\main\AndroidManifest.xml:11:1-38:12
+INJECTED from D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\r2-navigator\src\main\AndroidManifest.xml:11:1-38:12
+	package
+		ADDED from D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\r2-navigator\src\main\AndroidManifest.xml:13:5-39
+		INJECTED from D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\r2-navigator\src\main\AndroidManifest.xml
+		INJECTED from D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\r2-navigator\src\main\AndroidManifest.xml
+	xmlns:tools
+		ADDED from D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\r2-navigator\src\main\AndroidManifest.xml:12:5-51
+	xmlns:android
+		ADDED from D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\r2-navigator\src\main\AndroidManifest.xml:11:11-69
+uses-permission#android.permission.WRITE_SETTINGS
+ADDED from D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\r2-navigator\src\main\AndroidManifest.xml:15:5-16:47
+	tools:ignore
+		ADDED from D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\r2-navigator\src\main\AndroidManifest.xml:16:9-44
+	android:name
+		ADDED from D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\r2-navigator\src\main\AndroidManifest.xml:15:22-70
+application
+ADDED from D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\r2-navigator\src\main\AndroidManifest.xml:18:5-36:19
+	android:supportsRtl
+		ADDED from D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\r2-navigator\src\main\AndroidManifest.xml:20:9-35
+	android:allowBackup
+		ADDED from D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\r2-navigator\src\main\AndroidManifest.xml:19:9-36
+	tools:replace
+		ADDED from D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\r2-navigator\src\main\AndroidManifest.xml:21:9-44
+activity#org.readium.r2.navigator.epub.R2EpubActivity
+ADDED from D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\r2-navigator\src\main\AndroidManifest.xml:23:9-25:47
+	android:theme
+		ADDED from D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\r2-navigator\src\main\AndroidManifest.xml:25:13-44
+	android:name
+		ADDED from D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\r2-navigator\src\main\AndroidManifest.xml:24:13-48
+activity#org.readium.r2.navigator.cbz.R2CbzActivity
+ADDED from D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\r2-navigator\src\main\AndroidManifest.xml:26:9-28:47
+	android:theme
+		ADDED from D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\r2-navigator\src\main\AndroidManifest.xml:28:13-44
+	android:name
+		ADDED from D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\r2-navigator\src\main\AndroidManifest.xml:27:13-46
+activity#org.readium.r2.navigator.audiobook.R2AudiobookActivity
+ADDED from D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\r2-navigator\src\main\AndroidManifest.xml:29:9-31:47
+	android:theme
+		ADDED from D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\r2-navigator\src\main\AndroidManifest.xml:31:13-44
+	android:name
+		ADDED from D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\r2-navigator\src\main\AndroidManifest.xml:30:13-58
+activity#org.readium.r2.navigator.divina.R2DiViNaActivity
+ADDED from D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\r2-navigator\src\main\AndroidManifest.xml:32:9-34:47
+	android:theme
+		ADDED from D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\r2-navigator\src\main\AndroidManifest.xml:34:13-44
+	android:name
+		ADDED from D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\r2-navigator\src\main\AndroidManifest.xml:33:13-52
+uses-sdk
+INJECTED from D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\r2-navigator\src\main\AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\r2-navigator\src\main\AndroidManifest.xml
+INJECTED from D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\r2-navigator\src\main\AndroidManifest.xml
+INJECTED from D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\r2-navigator\src\main\AndroidManifest.xml
+INJECTED from D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\r2-navigator\src\main\AndroidManifest.xml
+	android:targetSdkVersion
+		INJECTED from D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\r2-navigator\src\main\AndroidManifest.xml
+		ADDED from D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\r2-navigator\src\main\AndroidManifest.xml
+		INJECTED from D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\r2-navigator\src\main\AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\r2-navigator\src\main\AndroidManifest.xml
+		ADDED from D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\r2-navigator\src\main\AndroidManifest.xml
+		INJECTED from D:\Profession\Aslam\Project\digital_apps_bd\epub_reader_rnd\r2-navigator\src\main\AndroidManifest.xml

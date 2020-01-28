@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <title>DiViNa Player</title>
+  <style type="text/css">
+		body, html {
+			height: 100%;
+			margin: 0;
+			padding: 0;
+			overflow: hidden;
+			background-color: rgb(0, 0, 0);
+		}
+
+  </style>
+  <script src="./divinaTouchHandling.js" type="text/javascript"></script>
+  <script src="./divinaPlayer.js" type="text/javascript"></script>
+</head>
+<body>
+<script type="text/javascript">
+		var player = null
+		window.onload = function() {
+			const Player = window.divinaPlayer
+			player = new Player(window.document.body)
+		}
+
+</script>
+</body>
+</html> 
