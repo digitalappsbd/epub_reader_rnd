@@ -7,11 +7,11 @@
   <item
     android:id="@+id/highlight"
     android:title="Highlight"
-    app:showAsAction="always"></item>
+    app:showAsAction="always" />
 
   <item
     android:id="@+id/note"
     android:title="Note"
-    app:showAsAction="always"></item>
+    app:showAsAction="always" />
 
 </menu>

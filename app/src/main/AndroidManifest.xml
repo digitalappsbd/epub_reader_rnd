@@ -154,9 +154,6 @@
       android:name="com.digitalappsbd.app.epurreader.opds.OPDSCatalogActivity"
       android:label="@string/title_activity_opdscatalog" />
     <activity
-      android:name="com.digitalappsbd.app.epurreader.R2AboutActivity"
-      android:label="@string/title_activity_r2_about" />
-    <activity
       android:name="com.digitalappsbd.app.epurreader.epub.EpubActivity"
       android:label="@string/title_activity_epub" />
     <activity
@@ -172,9 +169,6 @@
     <activity
       android:name="com.digitalappsbd.app.epurreader.outline.R2OutlineActivity"
       android:label="@string/title_activity_outline" />
-    <activity
-      android:name="com.digitalappsbd.app.epurreader.opds.OPDSListActivity"
-      android:label="@string/title_activity_opds_list" />
     <activity
       android:name="com.digitalappsbd.app.epurreader.opds.OPDSDetailActivity"
       android:label="@string/title_activity_opds_detail" />

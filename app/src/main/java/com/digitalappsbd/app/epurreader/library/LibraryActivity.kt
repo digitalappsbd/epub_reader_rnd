@@ -16,7 +16,9 @@ import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
 import android.text.TextUtils
-import android.view.*
+import android.view.Gravity
+import android.view.LayoutInflater
+import android.view.View
 import android.webkit.MimeTypeMap
 import android.webkit.URLUtil
 import android.widget.Button
@@ -36,7 +38,6 @@ import com.digitalappsbd.app.epurreader.epub.EpubActivity
 import com.digitalappsbd.app.epurreader.epub.R2SyntheticPageList
 import com.digitalappsbd.app.epurreader.opds.GridAutoFitLayoutManager
 import com.digitalappsbd.app.epurreader.opds.OPDSDownloader
-import com.digitalappsbd.app.epurreader.opds.OPDSListActivity
 import com.digitalappsbd.app.epurreader.permissions.PermissionHelper
 import com.digitalappsbd.app.epurreader.permissions.Permissions
 import com.digitalappsbd.app.epurreader.utils.ContentResolverUtil
@@ -699,28 +700,6 @@ open class LibraryActivity : AppCompatActivity(), BooksAdapter.RecyclerViewClick
         }
       }
     }
-  }
-
-  override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-    menuInflater.inflate(R.menu.menu_main, menu)
-    return super.onCreateOptionsMenu(menu)
-  }
-
-  override fun onOptionsItemSelected(item: MenuItem): Boolean {
-    return when (item.itemId) {
-
-      R.id.opds -> {
-        startActivity(intentFor<OPDSListActivity>())
-        false
-      }
-      R.id.about -> {
-        startActivity(intentFor<com.digitalappsbd.app.epurreader.R2AboutActivity>())
-        false
-      }
-
-      else -> super.onOptionsItemSelected(item)
-    }
-
   }
 
   override fun onRequestPermissionsResult(
