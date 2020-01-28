@@ -1,0 +1,49 @@
+<RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+  android:id="@+id/appearance"
+  android:layout_width="match_parent"
+  android:layout_height="wrap_content"
+  android:layout_marginBottom="10dp"
+  android:orientation="horizontal">
+
+
+  <RadioButton
+    android:id="@+id/appearance_default"
+    android:layout_width="match_parent"
+    android:layout_height="48dp"
+    android:layout_weight="1"
+    android:background="@drawable/rbtn_selector"
+    android:button="@null"
+    android:checked="true"
+    android:gravity="center"
+    android:padding="5dp"
+    android:text="@string/usersettings_appearance_default"
+    android:textColor="@drawable/rbtn_textcolor_selector"
+    android:textSize="16sp" />
+
+  <RadioButton
+    android:id="@+id/appearance_sepia"
+    android:layout_width="match_parent"
+    android:layout_height="48dp"
+    android:layout_weight="1"
+    android:background="@drawable/rbtn_selector"
+    android:button="@null"
+    android:gravity="center"
+    android:padding="5dp"
+    android:text="@string/usersettings_appearance_sepia"
+    android:textColor="@drawable/rbtn_textcolor_selector"
+    android:textSize="16sp" />
+
+  <RadioButton
+    android:id="@+id/appearance_night"
+    android:layout_width="match_parent"
+    android:layout_height="48dp"
+    android:layout_weight="1"
+    android:background="@drawable/rbtn_selector"
+    android:button="@null"
+    android:gravity="center"
+    android:padding="5dp"
+    android:text="@string/usersettings_appearance_night"
+    android:textColor="@drawable/rbtn_textcolor_selector"
+    android:textSize="16sp" />
+
+</RadioGroup>
