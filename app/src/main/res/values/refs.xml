@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
   <item name="activity_r2_viewpager" type="layout">@layout/activity_epub</item>
-  <item name="activity_r2_audiobook" type="layout">@layout/activity_audiobook</item>
 </resources>

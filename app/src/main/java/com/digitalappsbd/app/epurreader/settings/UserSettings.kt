@@ -1,4 +1,4 @@
-package com.digitalappsbd.app.epurreader.epub
+package com.digitalappsbd.app.epurreader.settings
 
 import android.content.Context
 import android.content.SharedPreferences
@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import com.digitalappsbd.app.epurreader.R
+import com.digitalappsbd.app.epurreader.epub.EpubActivity
 import com.digitalappsbd.app.epurreader.utils.color
 import org.json.JSONArray
 import org.readium.r2.navigator.R2BasicWebView

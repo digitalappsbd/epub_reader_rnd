@@ -157,12 +157,6 @@
       android:name="com.digitalappsbd.app.epurreader.epub.EpubActivity"
       android:label="@string/title_activity_epub" />
     <activity
-      android:name="com.digitalappsbd.app.epurreader.comic.DiViNaActivity"
-      android:label="@string/title_activity_epub" />
-    <activity
-      android:name="com.digitalappsbd.app.epurreader.comic.ComicActivity"
-      android:label="@string/title_activity_epub" />
-    <activity
       android:name="com.digitalappsbd.app.epurreader.DRMManagementActivity"
       android:label="DRM Management"
       android:theme="@style/AppTheme" />
@@ -172,9 +166,6 @@
     <activity
       android:name="com.digitalappsbd.app.epurreader.opds.OPDSDetailActivity"
       android:label="@string/title_activity_opds_detail" />
-    <activity
-      android:name="com.digitalappsbd.app.epurreader.audiobook.AudiobookActivity"
-      android:label="@string/title_activity_epub" />
   </application>
 
 </manifest>

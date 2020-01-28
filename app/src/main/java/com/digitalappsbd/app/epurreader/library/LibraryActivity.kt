@@ -29,9 +29,6 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.digitalappsbd.app.epurreader.BuildConfig.DEBUG
 import com.digitalappsbd.app.epurreader.R
-import com.digitalappsbd.app.epurreader.audiobook.AudiobookActivity
-import com.digitalappsbd.app.epurreader.comic.ComicActivity
-import com.digitalappsbd.app.epurreader.comic.DiViNaActivity
 import com.digitalappsbd.app.epurreader.db.*
 import com.digitalappsbd.app.epurreader.drm.LCPLibraryActivityService
 import com.digitalappsbd.app.epurreader.epub.EpubActivity
@@ -1167,10 +1164,8 @@ open class LibraryActivity : AppCompatActivity(), BooksAdapter.RecyclerViewClick
 
     val intent = Intent(
       this, when (publication.type) {
-        Publication.TYPE.AUDIO -> AudiobookActivity::class.java
-        Publication.TYPE.CBZ -> ComicActivity::class.java
-        Publication.TYPE.DiViNa -> DiViNaActivity::class.java
-        else -> EpubActivity::class.java
+        Publication.TYPE.EPUB -> EpubActivity::class.java
+        else -> null
       }
     )
     intent.putExtra("publicationPath", publicationPath)

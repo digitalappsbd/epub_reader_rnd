@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/epub_reader_rnd.iml" filepath="$PROJECT_DIR$/.idea/epub_reader_rnd.iml" />
+      <module fileurl="file://$PROJECT_DIR$/r2-navigator/r2-navigator.iml" filepath="$PROJECT_DIR$/r2-navigator/r2-navigator.iml" />
     </modules>
   </component>
 </project>

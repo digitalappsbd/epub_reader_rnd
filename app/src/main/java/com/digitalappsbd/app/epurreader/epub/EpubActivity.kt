@@ -29,6 +29,7 @@ import com.digitalappsbd.app.epurreader.search.MarkJSSearchEngine
 import com.digitalappsbd.app.epurreader.search.SearchLocator
 import com.digitalappsbd.app.epurreader.search.SearchLocatorAdapter
 import com.digitalappsbd.app.epurreader.settings.AppearenceSettings
+import com.digitalappsbd.app.epurreader.settings.UserSettings
 import com.google.gson.Gson
 import kotlinx.android.synthetic.main.activity_epub.*
 import kotlinx.coroutines.CoroutineScope
@@ -84,7 +85,7 @@ class EpubActivity : R2EpubActivity(), CoroutineScope,
     get() = Dispatchers.Main
 
   private lateinit var userSettings: UserSettings
-  private lateinit var apperanceSettinngs: AppearenceSettings
+  private lateinit var appearanceSettings: AppearenceSettings
   private var isExploreByTouchEnabled = false
   private var pageEnded = false
 
@@ -215,12 +216,12 @@ class EpubActivity : R2EpubActivity(), CoroutineScope,
       })
     search_listView.adapter = searchResultAdapter
     search_listView.layoutManager = LinearLayoutManager(this)
-//    bottom_nav.setOnClickListener {
-//      apperanceSettinngs.userAppearancePopUp()
-//        .showAsDropDown(this.findViewById(R.id.appearance), 0, 0, Gravity.BOTTOM)
-//    }
 
     accesssibiltyManager = getSystemService(ACCESSIBILITY_SERVICE) as AccessibilityManager
+    button_appearance.setOnClickListener {
+      appearanceSettings.userAppearancePopUp()
+        .showAsDropDown(this.findViewById(R.id.button_appearance))
+    }
 
 
   }
@@ -921,7 +922,11 @@ class EpubActivity : R2EpubActivity(), CoroutineScope,
       publication.userSettingsUIPreset[ReadiumCSSName.ref(SCROLL_REF)] = true
       preferences.edit().putBoolean(SCROLL_REF, true).apply()
 
-      userSettings = UserSettings(preferences, this, publication.userSettingsUIPreset)
+      userSettings = UserSettings(
+        preferences,
+        this,
+        publication.userSettingsUIPreset
+      )
       userSettings.saveChanges()
 
       Handler().postDelayed({
@@ -933,7 +938,11 @@ class EpubActivity : R2EpubActivity(), CoroutineScope,
         publication.userSettingsUIPreset.remove(ReadiumCSSName.ref(SCROLL_REF))
       }
 
-      userSettings = UserSettings(preferences, this, publication.userSettingsUIPreset)
+      userSettings = UserSettings(
+        preferences,
+        this,
+        publication.userSettingsUIPreset
+      )
       userSettings.resourcePager = resourcePager
     }
 
@@ -946,20 +955,20 @@ class EpubActivity : R2EpubActivity(), CoroutineScope,
       publication.userSettingsUIPreset[ReadiumCSSName.ref(SCROLL_REF)] = true
       preferences.edit().putBoolean(SCROLL_REF, true).apply()
 
-      apperanceSettinngs = AppearenceSettings(preferences, this, publication.userSettingsUIPreset)
-      apperanceSettinngs.saveAppearanceChanges()
+      appearanceSettings = AppearenceSettings(preferences, this, publication.userSettingsUIPreset)
+      appearanceSettings.saveAppearanceChanges()
 
       Handler().postDelayed({
-        apperanceSettinngs.resourcePager = resourcePager
-        apperanceSettinngs.updateViewCSS(SCROLL_REF)
+        appearanceSettings.resourcePager = resourcePager
+        appearanceSettings.updateViewCSS(SCROLL_REF)
       }, 500)
     } else {
       if (publication.cssStyle != ContentLayoutStyle.cjkv.name) {
         publication.userSettingsUIPreset.remove(ReadiumCSSName.ref(SCROLL_REF))
       }
 
-      apperanceSettinngs = AppearenceSettings(preferences, this, publication.userSettingsUIPreset)
-      apperanceSettinngs.resourcePager = resourcePager
+      appearanceSettings = AppearenceSettings(preferences, this, publication.userSettingsUIPreset)
+      appearanceSettings.resourcePager = resourcePager
     }
 
   }

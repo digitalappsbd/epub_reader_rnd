@@ -63,17 +63,6 @@ class AppearenceSettings(
     saveAppearanceChanges()
   }
 
-
-  private fun updateSwitchable(switchable: Switchable) {
-    preferences.edit().putBoolean(switchable.ref, switchable.on).apply()
-    saveAppearanceChanges()
-  }
-
-  private fun updateIncremental(incremental: Incremental) {
-    preferences.edit().putFloat(incremental.ref, incremental.value).apply()
-    saveAppearanceChanges()
-  }
-
   fun updateViewCSS(ref: String) {
     for (i in 0 until resourcePager.childCount) {
       val webView = resourcePager.getChildAt(i).findViewById(R.id.webView) as? R2WebView
@@ -114,9 +103,7 @@ class AppearenceSettings(
     userSettingsPopup.height = ListPopupWindow.WRAP_CONTENT
     userSettingsPopup.isOutsideTouchable = true
     userSettingsPopup.isFocusable = true
-
     val appearance = userProperties.getByRef<Enumerable>(APPEARANCE_REF)
-
 
     fun findIndexOfId(id: Int, list: MutableList<RadioButton>): Int {
       for (i in 0..list.size) {

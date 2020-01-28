@@ -78,11 +78,7 @@ dependencies {
     } else {
         implementation "com.github.readium:r2-shared-kotlin:1.1.6"
     }
-    if (findProject(':r2-navigator')) {
-        implementation project(':r2-navigator')
-    } else {
-        implementation "com.github.readium:r2-navigator-kotlin:1.1.5"
-    }
+    implementation project(':r2-navigator')
     if (findProject(':r2-streamer')) {
         implementation project(':r2-streamer')
     } else {
