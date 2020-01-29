@@ -8,40 +8,40 @@
   -->
 
 <org.readium.r2.navigator.epub.fxl.R2FXLLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/r2FXLLayout"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:id="@+id/r2FXLLayout"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent">
+
+  <ScrollView
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:scrollbars="none">
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:fillViewport="true"
-        android:scrollbars="none">
+    <RelativeLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_gravity="center">
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center">
+      <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal"
+        tools:ignore="UselessParent">
 
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:gravity="center_horizontal"
-                android:orientation="horizontal"
-                tools:ignore="UselessParent">
+        <org.readium.r2.navigator.R2BasicWebView
+          android:id="@+id/webViewSingle"
+          android:layout_width="0dp"
+          android:layout_height="wrap_content"
+          android:layout_weight="1"
+          android:layerType="hardware" />
 
-                <org.readium.r2.navigator.R2BasicWebView
-                    android:id="@+id/webViewSingle"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:layerType="hardware" />
+      </LinearLayout>
 
-            </LinearLayout>
-
-        </RelativeLayout>
-    </ScrollView>
+    </RelativeLayout>
+  </ScrollView>
 
 </org.readium.r2.navigator.epub.fxl.R2FXLLayout>

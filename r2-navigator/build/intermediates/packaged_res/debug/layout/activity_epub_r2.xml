@@ -18,16 +18,16 @@
 
 
   <androidx.constraintlayout.widget.ConstraintLayout
-    app:layout_constraintTop_toTopOf="parent"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintBottom_toTopOf="@+id/button_appearance"
     android:id="@+id/search_overlay"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorAccent"
     android:fitsSystemWindows="true"
-    android:visibility="invisible">
+    android:visibility="invisible"
+    app:layout_constraintBottom_toTopOf="@+id/button_appearance"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent">
 
     <androidx.recyclerview.widget.RecyclerView
       android:id="@+id/search_listView"
@@ -41,15 +41,15 @@
   </androidx.constraintlayout.widget.ConstraintLayout>
 
   <androidx.constraintlayout.widget.ConstraintLayout
-    app:layout_constraintTop_toTopOf="parent"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintBottom_toTopOf="@+id/button_appearance"
     android:id="@+id/tts_overlay"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorAccent"
-    android:visibility="invisible">
+    android:visibility="invisible"
+    app:layout_constraintBottom_toTopOf="@+id/button_appearance"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent">
 
 
     <androidx.constraintlayout.widget.ConstraintLayout

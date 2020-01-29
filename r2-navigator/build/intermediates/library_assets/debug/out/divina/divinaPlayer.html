@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="utf-8" />
-	<title>DiViNa Player</title>
-	<style type="text/css">
+  <meta charset="utf-8"/>
+  <title>DiViNa Player</title>
+  <style type="text/css">
 		body, html {
 			height: 100%;
 			margin: 0;
@@ -11,17 +11,19 @@
 			overflow: hidden;
 			background-color: rgb(0, 0, 0);
 		}
-	</style>
-	<script type="text/javascript" src="./divinaTouchHandling.js"></script>
-	<script type="text/javascript" src="./divinaPlayer.js"></script>
+
+  </style>
+  <script src="./divinaTouchHandling.js" type="text/javascript"></script>
+  <script src="./divinaPlayer.js" type="text/javascript"></script>
 </head>
 <body>
-	<script type="text/javascript">
+<script type="text/javascript">
 		var player = null
 		window.onload = function() {
 			const Player = window.divinaPlayer
 			player = new Player(window.document.body)
 		}
-	</script>
+
+</script>
 </body>
 </html> 

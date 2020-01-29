@@ -14,7 +14,7 @@ import org.readium.r2.navigator.pager.R2ViewPager
 import org.readium.r2.shared.*
 import java.io.File
 
-class AppearenceSettings(
+class AppearanceSettings(
   var preferences: SharedPreferences,
   val context: Context,
   private val UIPreset: MutableMap<ReadiumCSSName, Boolean>
@@ -34,10 +34,12 @@ class AppearenceSettings(
   }
 
   private fun getAppearanceSettings(): UserProperties {
+
     val userProperties = UserProperties()
     userProperties.addEnumerable(appearance, appearanceValues, APPEARANCE_REF, APPEARANCE_NAME)
     return userProperties
   }
+
 
   private fun makeJson(): JSONArray {
     val array = JSONArray()
@@ -99,7 +101,7 @@ class AppearenceSettings(
     val layout = layoutInflater.inflate(R.layout.layout_appearance_settings, null)
     val userSettingsPopup = PopupWindow(context)
     userSettingsPopup.contentView = layout
-    userSettingsPopup.width = ListPopupWindow.WRAP_CONTENT
+    userSettingsPopup.width = ListPopupWindow.MATCH_PARENT
     userSettingsPopup.height = ListPopupWindow.WRAP_CONTENT
     userSettingsPopup.isOutsideTouchable = true
     userSettingsPopup.isFocusable = true
