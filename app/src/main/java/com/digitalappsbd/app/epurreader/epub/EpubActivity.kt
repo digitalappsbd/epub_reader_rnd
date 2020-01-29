@@ -28,9 +28,10 @@ import com.digitalappsbd.app.epurreader.outline.R2OutlineActivity
 import com.digitalappsbd.app.epurreader.search.MarkJSSearchEngine
 import com.digitalappsbd.app.epurreader.search.SearchLocator
 import com.digitalappsbd.app.epurreader.search.SearchLocatorAdapter
-import com.digitalappsbd.app.epurreader.settings.AppearenceSettings
+import com.digitalappsbd.app.epurreader.settings.AppearanceSettings
 import com.digitalappsbd.app.epurreader.settings.UserSettings
 import com.google.gson.Gson
+import com.mcxiaoke.koi.ext.pxToDp
 import kotlinx.android.synthetic.main.activity_epub.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -85,7 +86,7 @@ class EpubActivity : R2EpubActivity(), CoroutineScope,
     get() = Dispatchers.Main
 
   private lateinit var userSettings: UserSettings
-  private lateinit var appearanceSettings: AppearenceSettings
+  private lateinit var appearanceSettings: AppearanceSettings
   private var isExploreByTouchEnabled = false
   private var pageEnded = false
 
@@ -220,7 +221,7 @@ class EpubActivity : R2EpubActivity(), CoroutineScope,
     accesssibiltyManager = getSystemService(ACCESSIBILITY_SERVICE) as AccessibilityManager
     button_appearance.setOnClickListener {
       appearanceSettings.userAppearancePopUp()
-        .showAsDropDown(this.findViewById(R.id.button_appearance))
+        .showAtLocation(this.findViewById(R.id.button_appearance), Gravity.BOTTOM, 0, 56.pxToDp())
     }
 
 
@@ -955,7 +956,7 @@ class EpubActivity : R2EpubActivity(), CoroutineScope,
       publication.userSettingsUIPreset[ReadiumCSSName.ref(SCROLL_REF)] = true
       preferences.edit().putBoolean(SCROLL_REF, true).apply()
 
-      appearanceSettings = AppearenceSettings(preferences, this, publication.userSettingsUIPreset)
+      appearanceSettings = AppearanceSettings(preferences, this, publication.userSettingsUIPreset)
       appearanceSettings.saveAppearanceChanges()
 
       Handler().postDelayed({
@@ -967,7 +968,7 @@ class EpubActivity : R2EpubActivity(), CoroutineScope,
         publication.userSettingsUIPreset.remove(ReadiumCSSName.ref(SCROLL_REF))
       }
 
-      appearanceSettings = AppearenceSettings(preferences, this, publication.userSettingsUIPreset)
+      appearanceSettings = AppearanceSettings(preferences, this, publication.userSettingsUIPreset)
       appearanceSettings.resourcePager = resourcePager
     }
 
