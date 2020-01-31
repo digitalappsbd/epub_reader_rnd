@@ -96,10 +96,6 @@ var activitiesLaunched: AtomicInteger = AtomicInteger(0)
 open class LibraryActivity : AppCompatActivity(), BooksAdapter.RecyclerViewClickListener,
   LCPLibraryActivityService, CoroutineScope {
 
-
-  /**
-   * Context of this scope.
-   */
   override val coroutineContext: CoroutineContext
     get() = Dispatchers.Main
 

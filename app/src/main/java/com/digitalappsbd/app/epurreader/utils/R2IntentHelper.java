@@ -13,7 +13,7 @@ package com.digitalappsbd.app.epurreader.utils;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
-import com.digitalappsbd.app.epurreader.CatalogActivity;
+import com.digitalappsbd.app.epurreader.library.LibraryActivity;
 import org.readium.r2.shared.Publication;
 
 /**
@@ -27,7 +27,7 @@ public class R2IntentHelper {
 
 
   public Intent catalogActivityIntent(Context context, Uri uri, Publication.EXTENSION extension) {
-    Intent i = new Intent(context, CatalogActivity.class);
+    Intent i = new Intent(context, LibraryActivity.class);
     i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
     i.putExtra(EXTENSION, extension.getValue());
     i.putExtra(URI, uri.toString());
