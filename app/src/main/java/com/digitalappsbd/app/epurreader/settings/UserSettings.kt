@@ -697,4 +697,111 @@ class UserSettings(
 
     return userSettingsPopup
   }
+
+  fun userAppearancePopUp(): PopupWindow {
+
+    val layoutInflater = LayoutInflater.from(context)
+    val layout = layoutInflater.inflate(R.layout.layout_appearance_settings, null)
+    val userSettingsPopup = PopupWindow(context)
+    userSettingsPopup.contentView = layout
+    userSettingsPopup.width = ListPopupWindow.MATCH_PARENT
+    userSettingsPopup.height = ListPopupWindow.WRAP_CONTENT
+    userSettingsPopup.isOutsideTouchable = true
+    userSettingsPopup.isFocusable = true
+    val appearance = userProperties.getByRef<Enumerable>(APPEARANCE_REF)
+
+    fun findIndexOfId(id: Int, list: MutableList<RadioButton>): Int {
+      for (i in 0..list.size) {
+        if (list[i].id == id) {
+          return i
+        }
+      }
+      return 0
+    }
+    // Appearance
+    val appearanceGroup = layout.findViewById(R.id.appearance) as RadioGroup
+    val appearanceRadios = mutableListOf<RadioButton>()
+    appearanceRadios.add(layout.findViewById(R.id.appearance_default) as RadioButton)
+    (layout.findViewById(R.id.appearance_default) as RadioButton).contentDescription =
+      "Appearance Default"
+    appearanceRadios.add(layout.findViewById(R.id.appearance_sepia) as RadioButton)
+    (layout.findViewById(R.id.appearance_sepia) as RadioButton).contentDescription =
+      "Appearance Sepia"
+    appearanceRadios.add(layout.findViewById(R.id.appearance_night) as RadioButton)
+    (layout.findViewById(R.id.appearance_night) as RadioButton).contentDescription =
+      "Appearance Night"
+
+    UIPreset[ReadiumCSSName.appearance]?.let {
+      appearanceGroup.isEnabled = false
+      for (appearanceRadio in appearanceRadios) {
+        appearanceRadio.isEnabled = false
+      }
+    } ?: run {
+      appearanceRadios[appearance.index].isChecked = true
+
+      appearanceGroup.setOnCheckedChangeListener { _, id ->
+        val i = findIndexOfId(id, list = appearanceRadios)
+        appearance.index = i
+        when (i) {
+          0 -> {
+            resourcePager.setBackgroundColor(Color.parseColor("#ffffff"))
+            (resourcePager.focusedChild?.findViewById(R.id.book_title) as? TextView)?.setTextColor(
+              Color.parseColor("#000000")
+            )
+          }
+          1 -> {
+            resourcePager.setBackgroundColor(Color.parseColor("#faf4e8"))
+            (resourcePager.focusedChild?.findViewById(R.id.book_title) as? TextView)?.setTextColor(
+              Color.parseColor("#000000")
+            )
+          }
+          2 -> {
+            resourcePager.setBackgroundColor(Color.parseColor("#000000"))
+            (resourcePager.focusedChild?.findViewById(R.id.book_title) as? TextView)?.setTextColor(
+              Color.parseColor("#ffffff")
+            )
+          }
+        }
+        updateEnumerable(appearance)
+        updateViewCSS(APPEARANCE_REF)
+      }
+    }
+
+    return userSettingsPopup
+  }
+
+  fun fontSettingsPopUp(): PopupWindow {
+    val layoutInflater = LayoutInflater.from(context)
+    val layout = layoutInflater.inflate(R.layout.layout_font_settings, null)
+    val popupWindow = PopupWindow(context)
+    popupWindow.contentView = layout
+    popupWindow.width = androidx.appcompat.widget.ListPopupWindow.MATCH_PARENT
+    popupWindow.height = androidx.appcompat.widget.ListPopupWindow.WRAP_CONTENT
+    popupWindow.isOutsideTouchable = true
+    popupWindow.isFocusable = true
+    val fontSize = userProperties.getByRef<Incremental>(FONT_SIZE_REF)
+
+    val fontDecreaseButton = layout.findViewById(R.id.font_decrease) as ImageButton
+    val fontIncreaseButton = layout.findViewById(R.id.font_increase) as ImageButton
+
+    UIPreset[ReadiumCSSName.fontSize]?.let {
+      fontDecreaseButton.isEnabled = false
+      fontIncreaseButton.isEnabled = false
+    } ?: run {
+      fontDecreaseButton.setOnClickListener {
+        fontSize.decrement()
+        updateIncremental(fontSize)
+        updateViewCSS(FONT_SIZE_REF)
+      }
+
+      fontIncreaseButton.setOnClickListener {
+        fontSize.increment()
+        updateIncremental(fontSize)
+        updateViewCSS(FONT_SIZE_REF)
+      }
+    }
+
+    return popupWindow
+
+  }
 }

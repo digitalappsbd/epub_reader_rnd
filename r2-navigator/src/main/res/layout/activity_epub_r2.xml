@@ -11,7 +11,7 @@
     android:id="@+id/resourcePager"
     android:layout_width="0dp"
     android:layout_height="0dp"
-    app:layout_constraintBottom_toTopOf="@+id/button_appearance"
+    app:layout_constraintBottom_toTopOf="@+id/button_container"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toTopOf="parent" />
@@ -24,7 +24,7 @@
     android:background="@color/colorAccent"
     android:fitsSystemWindows="true"
     android:visibility="invisible"
-    app:layout_constraintBottom_toTopOf="@+id/button_appearance"
+    app:layout_constraintBottom_toTopOf="@+id/button_container"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toTopOf="parent">
@@ -46,7 +46,7 @@
     android:layout_height="match_parent"
     android:background="@color/colorAccent"
     android:visibility="invisible"
-    app:layout_constraintBottom_toTopOf="@+id/button_appearance"
+    app:layout_constraintBottom_toTopOf="@+id/button_container"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toTopOf="parent">
@@ -184,14 +184,34 @@
     </LinearLayout>
 
   </androidx.constraintlayout.widget.ConstraintLayout>
-  <Button
-    android:id="@+id/button_appearance"
-    android:layout_width="match_parent"
+  <LinearLayout
+    android:id="@+id/button_container"
+    android:layout_width="0dp"
     android:layout_height="wrap_content"
-    android:text="Appearance"
+    android:orientation="horizontal"
+    android:weightSum="2"
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintStart_toStartOf="parent" />
+    app:layout_constraintStart_toStartOf="parent">
+    <Button
+      android:id="@+id/button_appearance"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:layout_weight="1"
+      android:text="Appearance"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent" />
+    <Button
+      android:id="@+id/button_font"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:layout_weight="1"
+      android:text="Font"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent" />
+  </LinearLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -28,7 +28,6 @@ import com.digitalappsbd.app.epurreader.outline.R2OutlineActivity
 import com.digitalappsbd.app.epurreader.search.MarkJSSearchEngine
 import com.digitalappsbd.app.epurreader.search.SearchLocator
 import com.digitalappsbd.app.epurreader.search.SearchLocatorAdapter
-import com.digitalappsbd.app.epurreader.settings.AppearanceSettings
 import com.digitalappsbd.app.epurreader.settings.UserSettings
 import com.google.gson.Gson
 import com.mcxiaoke.koi.ext.pxToDp
@@ -86,7 +85,6 @@ class EpubActivity : R2EpubActivity(), CoroutineScope,
     get() = Dispatchers.Main
 
   private lateinit var userSettings: UserSettings
-  private lateinit var appearanceSettings: AppearanceSettings
   private var isExploreByTouchEnabled = false
   private var pageEnded = false
 
@@ -220,8 +218,14 @@ class EpubActivity : R2EpubActivity(), CoroutineScope,
 
     accesssibiltyManager = getSystemService(ACCESSIBILITY_SERVICE) as AccessibilityManager
     button_appearance.setOnClickListener {
-      appearanceSettings.userAppearancePopUp()
+      userSettings.userAppearancePopUp()
         .showAtLocation(this.findViewById(R.id.button_appearance), Gravity.BOTTOM, 0, 56.pxToDp())
+    }
+
+    val fontAnchorView = this.findViewById(R.id.button_font) as Button
+    button_font.setOnClickListener {
+      userSettings.fontSettingsPopUp()
+        .showAtLocation(fontAnchorView, Gravity.BOTTOM, 0, fontAnchorView.height)
     }
 
 
@@ -881,7 +885,6 @@ class EpubActivity : R2EpubActivity(), CoroutineScope,
   override fun onResume() {
     super.onResume()
     updateSettings()
-    updateAppearanceSettings()
     if (this::screenReader.isInitialized) {
       if (tts_overlay.visibility == View.VISIBLE) {
         if (screenReader.currentResource != resourcePager.currentItem) {
@@ -949,30 +952,6 @@ class EpubActivity : R2EpubActivity(), CoroutineScope,
 
   }
 
-  private fun updateAppearanceSettings() {
-    isExploreByTouchEnabled = accesssibiltyManager.isTouchExplorationEnabled
-
-    if (isExploreByTouchEnabled) {
-      publication.userSettingsUIPreset[ReadiumCSSName.ref(SCROLL_REF)] = true
-      preferences.edit().putBoolean(SCROLL_REF, true).apply()
-
-      appearanceSettings = AppearanceSettings(preferences, this, publication.userSettingsUIPreset)
-      appearanceSettings.saveAppearanceChanges()
-
-      Handler().postDelayed({
-        appearanceSettings.resourcePager = resourcePager
-        appearanceSettings.updateViewCSS(SCROLL_REF)
-      }, 500)
-    } else {
-      if (publication.cssStyle != ContentLayoutStyle.cjkv.name) {
-        publication.userSettingsUIPreset.remove(ReadiumCSSName.ref(SCROLL_REF))
-      }
-
-      appearanceSettings = AppearanceSettings(preferences, this, publication.userSettingsUIPreset)
-      appearanceSettings.resourcePager = resourcePager
-    }
-
-  }
 
   override fun toggleActionBar() {
     val am = getSystemService(ACCESSIBILITY_SERVICE) as AccessibilityManager

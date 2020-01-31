@@ -1527,6 +1527,8 @@ id bottom
 id bottom_btn
 id buttonPanel
 id button_appearance
+id button_container
+id button_font
 id cancel_action
 id cancel_button
 id center
