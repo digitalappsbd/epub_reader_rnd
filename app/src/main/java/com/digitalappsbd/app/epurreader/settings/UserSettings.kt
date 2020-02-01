@@ -298,29 +298,7 @@ class UserSettings(
     userSettingsPopup.isOutsideTouchable = true
     userSettingsPopup.isFocusable = true
 
-    val host = layout.findViewById(R.id.tabhost) as TabHost
-    host.setup()
 
-    //Tab 1
-    var spec: TabHost.TabSpec = host.newTabSpec("Settings")
-    spec.setContent(R.id.SettingsTab)
-    spec.setIndicator("Settings")
-    host.addTab(spec)
-
-    //Tab 2
-    spec = host.newTabSpec("Advanced")
-    spec.setContent(R.id.Advanced)
-    spec.setIndicator("Advanced")
-    host.addTab(spec)
-
-    val tw = host.findViewById(android.R.id.tabs) as TabWidget
-    (tw.getChildTabViewAt(0).findViewById(android.R.id.title) as TextView).textSize = 10f
-    (tw.getChildTabViewAt(1).findViewById(android.R.id.title) as TextView).textSize = 10f
-
-    val fontFamily = (userProperties.getByRef<Enumerable>(FONT_FAMILY_REF))
-    val fontOverride = (userProperties.getByRef<Switchable>(FONT_OVERRIDE_REF))
-    val appearance = userProperties.getByRef<Enumerable>(APPEARANCE_REF)
-    val fontSize = userProperties.getByRef<Incremental>(FONT_SIZE_REF)
     val publisherDefault = userProperties.getByRef<Switchable>(PUBLISHER_DEFAULT_REF)
     val scrollMode = userProperties.getByRef<Switchable>(SCROLL_REF)
     val alignment = userProperties.getByRef<Enumerable>(TEXT_ALIGNMENT_REF)
@@ -330,31 +308,6 @@ class UserSettings(
     val letterSpacing = userProperties.getByRef<Incremental>(LETTER_SPACING_REF)
     val lineHeight = userProperties.getByRef<Incremental>(LINE_HEIGHT_REF)
 
-    val fontSpinner: Spinner =
-      layout.findViewById(R.id.spinner_action_settings_intervall_values) as Spinner
-
-    val fonts = context.resources.getStringArray(R.array.font_list)
-
-    val dataAdapter = object : ArrayAdapter<String>(context, R.layout.item_spinner_font, fonts) {
-
-      override fun getDropDownView(position: Int, convertView: View?, parent: ViewGroup): View {
-        val v: View? = super.getDropDownView(position, null, parent)
-        // Makes the selected font appear in dark
-        // If this is the selected item position
-        if (position == fontFamily.index) {
-          v!!.setBackgroundColor(context.color(R.color.colorPrimaryDark))
-          v.findViewById<TextView>(android.R.id.text1).setTextColor(Color.WHITE)
-
-        } else {
-          // for other views
-          v!!.setBackgroundColor(Color.WHITE)
-          v.findViewById<TextView>(android.R.id.text1).setTextColor(Color.BLACK)
-
-        }
-        return v
-      }
-    }
-
     fun findIndexOfId(id: Int, list: MutableList<RadioButton>): Int {
       for (i in 0..list.size) {
         if (list[i].id == id) {
@@ -363,97 +316,6 @@ class UserSettings(
       }
       return 0
     }
-
-    // Font family
-    dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-    fontSpinner.adapter = dataAdapter
-    fontSpinner.setSelection(fontFamily.index)
-    fontSpinner.contentDescription = "Font Family"
-    fontSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-      override fun onItemSelected(parent: AdapterView<*>, view: View, pos: Int, id: Long) {
-        fontFamily.index = pos
-        fontOverride.on = (pos != 0)
-        updateSwitchable(fontOverride)
-        updateEnumerable(fontFamily)
-        updateViewCSS(FONT_OVERRIDE_REF)
-        updateViewCSS(FONT_FAMILY_REF)
-      }
-
-      override fun onNothingSelected(parent: AdapterView<out Adapter>?) {
-        // fontSpinner.setSelection(selectedFontIndex)
-      }
-    }
-
-    // Appearance
-    val appearanceGroup = layout.findViewById(R.id.appearance) as RadioGroup
-    val appearanceRadios = mutableListOf<RadioButton>()
-    appearanceRadios.add(layout.findViewById(R.id.appearance_default) as RadioButton)
-    (layout.findViewById(R.id.appearance_default) as RadioButton).contentDescription =
-      "Appearance Default"
-    appearanceRadios.add(layout.findViewById(R.id.appearance_sepia) as RadioButton)
-    (layout.findViewById(R.id.appearance_sepia) as RadioButton).contentDescription =
-      "Appearance Sepia"
-    appearanceRadios.add(layout.findViewById(R.id.appearance_night) as RadioButton)
-    (layout.findViewById(R.id.appearance_night) as RadioButton).contentDescription =
-      "Appearance Night"
-
-    UIPreset[ReadiumCSSName.appearance]?.let {
-      appearanceGroup.isEnabled = false
-      for (appearanceRadio in appearanceRadios) {
-        appearanceRadio.isEnabled = false
-      }
-    } ?: run {
-      appearanceRadios[appearance.index].isChecked = true
-
-      appearanceGroup.setOnCheckedChangeListener { _, id ->
-        val i = findIndexOfId(id, list = appearanceRadios)
-        appearance.index = i
-        when (i) {
-          0 -> {
-            resourcePager.setBackgroundColor(Color.parseColor("#ffffff"))
-            (resourcePager.focusedChild?.findViewById(R.id.book_title) as? TextView)?.setTextColor(
-              Color.parseColor("#000000")
-            )
-          }
-          1 -> {
-            resourcePager.setBackgroundColor(Color.parseColor("#faf4e8"))
-            (resourcePager.focusedChild?.findViewById(R.id.book_title) as? TextView)?.setTextColor(
-              Color.parseColor("#000000")
-            )
-          }
-          2 -> {
-            resourcePager.setBackgroundColor(Color.parseColor("#000000"))
-            (resourcePager.focusedChild?.findViewById(R.id.book_title) as? TextView)?.setTextColor(
-              Color.parseColor("#ffffff")
-            )
-          }
-        }
-        updateEnumerable(appearance)
-        updateViewCSS(APPEARANCE_REF)
-      }
-    }
-
-    // Font size
-    val fontDecreaseButton = layout.findViewById(R.id.font_decrease) as ImageButton
-    val fontIncreaseButton = layout.findViewById(R.id.font_increase) as ImageButton
-
-    UIPreset[ReadiumCSSName.fontSize]?.let {
-      fontDecreaseButton.isEnabled = false
-      fontIncreaseButton.isEnabled = false
-    } ?: run {
-      fontDecreaseButton.setOnClickListener {
-        fontSize.decrement()
-        updateIncremental(fontSize)
-        updateViewCSS(FONT_SIZE_REF)
-      }
-
-      fontIncreaseButton.setOnClickListener {
-        fontSize.increment()
-        updateIncremental(fontSize)
-        updateViewCSS(FONT_SIZE_REF)
-      }
-    }
-
     // Publisher defaults
     val publisherDefaultSwitch = layout.findViewById(R.id.publisher_default) as Switch
     publisherDefaultSwitch.contentDescription = "\u00A0"
@@ -702,30 +564,6 @@ class UserSettings(
         updateViewCSS(LINE_HEIGHT_REF)
       }
     }
-
-    // Brightness
-    val brightnessSeekbar = layout.findViewById(R.id.brightness) as SeekBar
-    val brightness = preferences.getInt("reader_brightness", 50)
-    brightnessSeekbar.progress = brightness
-    brightnessSeekbar.setOnSeekBarChangeListener(
-      object : SeekBar.OnSeekBarChangeListener {
-        override fun onProgressChanged(bar: SeekBar, progress: Int, from_user: Boolean) {
-          val backLightValue = progress.toFloat() / 100
-          val layoutParams = (context as AppCompatActivity).window.attributes
-          layoutParams.screenBrightness = backLightValue
-          context.window.attributes = layoutParams
-          preferences.edit().putInt("reader_brightness", progress).apply()
-        }
-
-        override fun onStartTrackingTouch(bar: SeekBar) {
-          // Nothing
-        }
-
-        override fun onStopTrackingTouch(bar: SeekBar) {
-          // Nothing
-        }
-      })
-
     // Speech speed
     val speechSeekBar = layout.findViewById(R.id.TTS_speech_speed) as SeekBar
 
