@@ -188,22 +188,42 @@ class EpubActivity : R2EpubActivity(), CoroutineScope,
       when (it.itemId) {
         R.id.appearance -> {
           userSettings.userAppearancePopUp()
-            .showAtLocation(anchorView, Gravity.BOTTOM, 0, anchorView.height)
+            .showAtLocation(
+              anchorView,
+              Gravity.BOTTOM,
+              ListPopupWindow.MATCH_PARENT,
+              anchorView.height
+            )
           return@setOnNavigationItemSelectedListener true
         }
         R.id.font_size -> {
           userSettings.fontSettingsPopUp()
-            .showAtLocation(anchorView, Gravity.BOTTOM, 0, anchorView.height)
+            .showAtLocation(
+              anchorView,
+              Gravity.BOTTOM,
+              ListPopupWindow.MATCH_PARENT,
+              anchorView.height
+            )
           return@setOnNavigationItemSelectedListener true
         }
         R.id.font_change -> {
           userSettings.fontChangePopUp()
-            .showAtLocation(anchorView, Gravity.BOTTOM, 0, anchorView.height)
+            .showAtLocation(
+              anchorView,
+              Gravity.BOTTOM,
+              ListPopupWindow.MATCH_PARENT,
+              anchorView.height
+            )
           return@setOnNavigationItemSelectedListener true
         }
         R.id.brightness -> {
           userSettings.brightnessSettingsPopUp()
-            .showAtLocation(anchorView, Gravity.BOTTOM, 0, anchorView.height)
+            .showAtLocation(
+              anchorView,
+              Gravity.BOTTOM,
+              ListPopupWindow.MATCH_PARENT,
+              anchorView.height
+            )
           return@setOnNavigationItemSelectedListener true
         }
         else -> return@setOnNavigationItemSelectedListener true

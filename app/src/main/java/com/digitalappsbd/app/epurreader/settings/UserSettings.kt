@@ -282,6 +282,7 @@ class UserSettings(
         // fontSpinner.setSelection(selectedFontIndex)
       }
     }
+    fontSettingsPopup.setBackgroundDrawable(context.getDrawable(android.R.drawable.picture_frame))
     return fontSettingsPopup
 
   }
@@ -293,7 +294,7 @@ class UserSettings(
     val layout = layoutInflater.inflate(R.layout.popup_window_user_settings, null)
     val userSettingsPopup = PopupWindow(context)
     userSettingsPopup.contentView = layout
-    userSettingsPopup.width = ListPopupWindow.WRAP_CONTENT
+    userSettingsPopup.width = ListPopupWindow.MATCH_PARENT
     userSettingsPopup.height = ListPopupWindow.WRAP_CONTENT
     userSettingsPopup.isOutsideTouchable = true
     userSettingsPopup.isFocusable = true
@@ -592,7 +593,7 @@ class UserSettings(
           (context as EpubActivity).updateScreenReaderSpeed(speechSpeed, true)
         }
       })
-
+    userSettingsPopup.setBackgroundDrawable(context.getDrawable(android.R.drawable.picture_frame))
     return userSettingsPopup
   }
 
@@ -664,6 +665,7 @@ class UserSettings(
         updateViewCSS(APPEARANCE_REF)
       }
     }
+    userSettingsPopup.setBackgroundDrawable(context.getDrawable(android.R.drawable.picture_frame))
 
     return userSettingsPopup
   }
@@ -698,7 +700,7 @@ class UserSettings(
         updateViewCSS(FONT_SIZE_REF)
       }
     }
-
+    popupWindow.setBackgroundDrawable(context.getDrawable(android.R.drawable.picture_frame))
     return popupWindow
 
   }
@@ -734,7 +736,7 @@ class UserSettings(
           // Nothing
         }
       })
-
+    brightnessPopUp.setBackgroundDrawable(context.getDrawable(android.R.drawable.picture_frame))
     return brightnessPopUp
   }
 }
