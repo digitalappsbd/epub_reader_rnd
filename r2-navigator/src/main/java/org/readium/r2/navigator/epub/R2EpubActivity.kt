@@ -11,8 +11,10 @@ import android.util.DisplayMetrics
 import android.view.ActionMode
 import android.view.View
 import android.widget.Button
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager.widget.ViewPager
+import kotlinx.android.synthetic.main.activity_epub_r2.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -534,12 +536,16 @@ open class R2EpubActivity : AppCompatActivity(), IR2Activity, IR2Selectable, IR2
               or View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
               or View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
               or View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
-              or View.SYSTEM_UI_FLAG_FULLSCREEN // hide status bar
+              or View.SYSTEM_UI_FLAG_FULLSCREEN
               or View.SYSTEM_UI_FLAG_IMMERSIVE)
+          Toast.makeText(this@R2EpubActivity, "Hide Actionbar", Toast.LENGTH_LONG).show()
+          button_container.visibility = View.GONE
         } else {
           resourcePager.systemUiVisibility = (View.SYSTEM_UI_FLAG_LAYOUT_STABLE
               or View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
               or View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN)
+          Toast.makeText(this@R2EpubActivity, "Show Actionbar", Toast.LENGTH_LONG).show()
+          button_container.visibility = View.VISIBLE
         }
       }
     }

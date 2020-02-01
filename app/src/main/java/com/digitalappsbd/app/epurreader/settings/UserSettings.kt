@@ -226,6 +226,66 @@ class UserSettings(
     view.setProperty(userSetting.name, userSetting.toString())
   }
 
+  fun fontChangePopUp(): PopupWindow {
+
+    val layoutInflater = LayoutInflater.from(context)
+    val layout = layoutInflater.inflate(R.layout.layout_change_font, null)
+    val fontSettingsPopup = PopupWindow(context)
+    fontSettingsPopup.contentView = layout
+    fontSettingsPopup.width = ListPopupWindow.MATCH_PARENT
+    fontSettingsPopup.height = ListPopupWindow.WRAP_CONTENT
+    fontSettingsPopup.isOutsideTouchable = true
+    fontSettingsPopup.isFocusable = true
+
+    val fontFamily = (userProperties.getByRef<Enumerable>(FONT_FAMILY_REF))
+    val fontOverride = (userProperties.getByRef<Switchable>(FONT_OVERRIDE_REF))
+    val fontSpinner: Spinner =
+      layout.findViewById(R.id.spinner_action_settings_intervall_values) as Spinner
+
+    val fonts = context.resources.getStringArray(R.array.font_list)
+
+    val dataAdapter = object : ArrayAdapter<String>(context, R.layout.item_spinner_font, fonts) {
+
+      override fun getDropDownView(position: Int, convertView: View?, parent: ViewGroup): View {
+        val v: View? = super.getDropDownView(position, null, parent)
+        // Makes the selected font appear in dark
+        // If this is the selected item position
+        if (position == fontFamily.index) {
+          v!!.setBackgroundColor(context.color(R.color.colorPrimaryDark))
+          v.findViewById<TextView>(android.R.id.text1).setTextColor(Color.WHITE)
+
+        } else {
+          // for other views
+          v!!.setBackgroundColor(Color.WHITE)
+          v.findViewById<TextView>(android.R.id.text1).setTextColor(Color.BLACK)
+
+        }
+        return v
+      }
+    }
+    // Font family
+    dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+    fontSpinner.adapter = dataAdapter
+    fontSpinner.setSelection(fontFamily.index)
+    fontSpinner.contentDescription = "Font Family"
+    fontSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+      override fun onItemSelected(parent: AdapterView<*>, view: View, pos: Int, id: Long) {
+        fontFamily.index = pos
+        fontOverride.on = (pos != 0)
+        updateSwitchable(fontOverride)
+        updateEnumerable(fontFamily)
+        updateViewCSS(FONT_OVERRIDE_REF)
+        updateViewCSS(FONT_FAMILY_REF)
+      }
+
+      override fun onNothingSelected(parent: AdapterView<out Adapter>?) {
+        // fontSpinner.setSelection(selectedFontIndex)
+      }
+    }
+    return fontSettingsPopup
+
+  }
+
 
   fun userSettingsPopUp(): PopupWindow {
 

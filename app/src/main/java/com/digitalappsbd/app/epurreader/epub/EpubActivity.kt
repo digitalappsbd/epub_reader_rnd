@@ -198,6 +198,10 @@ class EpubActivity : R2EpubActivity(), CoroutineScope,
       userSettings.brightnessSettingsPopUp()
         .showAtLocation(anchorView, Gravity.BOTTOM, 0, anchorView.height)
     }
+    button_font_change.setOnClickListener {
+      userSettings.fontChangePopUp()
+        .showAtLocation(anchorView, Gravity.BOTTOM, 0, anchorView.height)
+    }
   }
 
   private fun initDatabase() {
