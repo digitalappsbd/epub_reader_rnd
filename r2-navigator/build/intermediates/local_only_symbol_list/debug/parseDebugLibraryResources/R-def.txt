@@ -20,8 +20,10 @@ drawable ic_skip_previous_white_24dp
 id book_title
 id bottom_btn
 id button_appearance
+id button_brightness
 id button_container
 id button_font
+id button_font_change
 id chapterTime
 id chapterView
 id constraint

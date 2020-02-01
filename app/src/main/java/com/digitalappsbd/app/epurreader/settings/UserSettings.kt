@@ -804,4 +804,39 @@ class UserSettings(
     return popupWindow
 
   }
+
+  fun brightnessSettingsPopUp(): PopupWindow {
+    val layoutInflater = LayoutInflater.from(context)
+    val layout = layoutInflater.inflate(R.layout.layout_brightness_settings, null)
+    val brightnessPopUp = PopupWindow(context)
+    brightnessPopUp.contentView = layout
+    brightnessPopUp.width = ListPopupWindow.MATCH_PARENT
+    brightnessPopUp.height = ListPopupWindow.WRAP_CONTENT
+    brightnessPopUp.isOutsideTouchable = true
+    brightnessPopUp.isFocusable = true
+    // Brightness
+    val brightnessSeekBar = layout.findViewById(R.id.brightness) as SeekBar
+    val brightness = preferences.getInt("reader_brightness", 50)
+    brightnessSeekBar.progress = brightness
+    brightnessSeekBar.setOnSeekBarChangeListener(
+      object : SeekBar.OnSeekBarChangeListener {
+        override fun onProgressChanged(bar: SeekBar, progress: Int, from_user: Boolean) {
+          val backLightValue = progress.toFloat() / 100
+          val layoutParams = (context as AppCompatActivity).window.attributes
+          layoutParams.screenBrightness = backLightValue
+          context.window.attributes = layoutParams
+          preferences.edit().putInt("reader_brightness", progress).apply()
+        }
+
+        override fun onStartTrackingTouch(bar: SeekBar) {
+          // Nothing
+        }
+
+        override fun onStopTrackingTouch(bar: SeekBar) {
+          // Nothing
+        }
+      })
+
+    return brightnessPopUp
+  }
 }

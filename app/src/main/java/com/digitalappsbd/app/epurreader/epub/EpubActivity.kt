@@ -30,7 +30,6 @@ import com.digitalappsbd.app.epurreader.search.SearchLocator
 import com.digitalappsbd.app.epurreader.search.SearchLocatorAdapter
 import com.digitalappsbd.app.epurreader.settings.UserSettings
 import com.google.gson.Gson
-import com.mcxiaoke.koi.ext.pxToDp
 import kotlinx.android.synthetic.main.activity_epub.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -117,11 +116,7 @@ class EpubActivity : R2EpubActivity(), CoroutineScope,
       finish()
     }
     super.onCreate(savedInstanceState)
-    bookmarksDB = BookmarksDatabase(this)
-    booksDB = BooksDatabase(this)
-    positionsDB = PositionsDatabase(this)
-    highlightDB = HighligtsDatabase(this)
-
+    initDatabase()
     navigatorDelegate = this
     bookId = intent.getLongExtra("bookId", -1)
 
@@ -147,7 +142,73 @@ class EpubActivity : R2EpubActivity(), CoroutineScope,
     resourcePager.currentItem = currentPagerPosition
 
     titleView.text = publication.metadata.title
+    initAudioBook()
+    // SEARCH
+    searchStorage = getSharedPreferences("org.readium.r2.search", Context.MODE_PRIVATE)
+    searchResult = mutableListOf()
+    searchResultAdapter = SearchLocatorAdapter(
+      this,
+      searchResult,
+      object : SearchLocatorAdapter.RecyclerViewClickListener {
+        override fun recyclerViewListClicked(v: View, position: Int) {
 
+          search_overlay.visibility = View.INVISIBLE
+          val searchView = menuSearch?.actionView as SearchView
+
+          searchView.clearFocus()
+          if (searchView.isShown) {
+            menuSearch?.collapseActionView()
+            resourcePager.offscreenPageLimit = 1
+          }
+
+          val locator = searchResult[position]
+          val intent = Intent()
+          intent.putExtra("publicationPath", publicationPath)
+          intent.putExtra("epubName", publicationFileName)
+          intent.putExtra("publication", publication)
+          intent.putExtra("bookId", bookId)
+          intent.putExtra("locator", locator)
+          onActivityResult(2, Activity.RESULT_OK, intent)
+        }
+
+      })
+    search_listView.adapter = searchResultAdapter
+    search_listView.layoutManager = LinearLayoutManager(this)
+
+    accesssibiltyManager = getSystemService(ACCESSIBILITY_SERVICE) as AccessibilityManager
+
+    initBottomNavSettings()
+
+  }
+
+  private fun initBottomNavSettings() {
+    val anchorView = this.findViewById(R.id.button_container) as LinearLayout
+
+    button_appearance.setOnClickListener {
+      userSettings.userAppearancePopUp()
+        .showAtLocation(anchorView, Gravity.BOTTOM, 0, anchorView.height)
+    }
+
+
+    button_font.setOnClickListener {
+      userSettings.fontSettingsPopUp()
+        .showAtLocation(anchorView, Gravity.BOTTOM, 0, anchorView.height)
+    }
+    button_brightness.setOnClickListener {
+      userSettings.brightnessSettingsPopUp()
+        .showAtLocation(anchorView, Gravity.BOTTOM, 0, anchorView.height)
+    }
+  }
+
+  private fun initDatabase() {
+    bookmarksDB = BookmarksDatabase(this)
+    booksDB = BooksDatabase(this)
+    positionsDB = PositionsDatabase(this)
+    highlightDB = HighligtsDatabase(this)
+
+  }
+
+  private fun initAudioBook() {
     play_pause.setOnClickListener {
       if (screenReader.isPaused) {
         screenReader.resumeReading()
@@ -183,51 +244,6 @@ class EpubActivity : R2EpubActivity(), CoroutineScope,
         play_pause.setImageResource(android.R.drawable.ic_media_pause)
       }
     }
-
-    // SEARCH
-    searchStorage = getSharedPreferences("org.readium.r2.search", Context.MODE_PRIVATE)
-    searchResult = mutableListOf()
-    searchResultAdapter = SearchLocatorAdapter(
-      this,
-      searchResult,
-      object : SearchLocatorAdapter.RecyclerViewClickListener {
-        override fun recyclerViewListClicked(v: View, position: Int) {
-
-          search_overlay.visibility = View.INVISIBLE
-          val searchView = menuSearch?.actionView as SearchView
-
-          searchView.clearFocus()
-          if (searchView.isShown) {
-            menuSearch?.collapseActionView()
-            resourcePager.offscreenPageLimit = 1
-          }
-
-          val locator = searchResult[position]
-          val intent = Intent()
-          intent.putExtra("publicationPath", publicationPath)
-          intent.putExtra("epubName", publicationFileName)
-          intent.putExtra("publication", publication)
-          intent.putExtra("bookId", bookId)
-          intent.putExtra("locator", locator)
-          onActivityResult(2, Activity.RESULT_OK, intent)
-        }
-
-      })
-    search_listView.adapter = searchResultAdapter
-    search_listView.layoutManager = LinearLayoutManager(this)
-
-    accesssibiltyManager = getSystemService(ACCESSIBILITY_SERVICE) as AccessibilityManager
-    button_appearance.setOnClickListener {
-      userSettings.userAppearancePopUp()
-        .showAtLocation(this.findViewById(R.id.button_appearance), Gravity.BOTTOM, 0, 56.pxToDp())
-    }
-
-    val fontAnchorView = this.findViewById(R.id.button_font) as Button
-    button_font.setOnClickListener {
-      userSettings.fontSettingsPopUp()
-        .showAtLocation(fontAnchorView, Gravity.BOTTOM, 0, fontAnchorView.height)
-    }
-
 
   }
 

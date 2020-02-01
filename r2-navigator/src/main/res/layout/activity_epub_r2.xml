@@ -189,11 +189,12 @@
     android:layout_width="0dp"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
-    android:weightSum="2"
+    android:weightSum="4"
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent">
     <Button
+      android:textAllCaps="false"
       android:id="@+id/button_appearance"
       android:layout_width="0dp"
       android:layout_height="wrap_content"
@@ -203,11 +204,32 @@
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintStart_toStartOf="parent" />
     <Button
+      android:text="Font Size"
       android:id="@+id/button_font"
       android:layout_width="0dp"
       android:layout_height="wrap_content"
       android:layout_weight="1"
-      android:text="Font"
+      android:textAllCaps="false"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent" />
+    <Button
+      android:id="@+id/button_brightness"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:layout_weight="1"
+      android:text="Brightness"
+      android:textAllCaps="false"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent" />
+    <Button
+      android:id="@+id/button_font_change"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:layout_weight="1"
+      android:text="Font Change"
+      android:textAllCaps="false"
       app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintStart_toStartOf="parent" />
