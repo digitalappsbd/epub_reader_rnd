@@ -29,6 +29,7 @@ import com.digitalappsbd.app.epurreader.search.MarkJSSearchEngine
 import com.digitalappsbd.app.epurreader.search.SearchLocator
 import com.digitalappsbd.app.epurreader.search.SearchLocatorAdapter
 import com.digitalappsbd.app.epurreader.settings.UserSettings
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.gson.Gson
 import kotlinx.android.synthetic.main.activity_epub.*
 import kotlinx.coroutines.CoroutineScope
@@ -182,26 +183,33 @@ class EpubActivity : R2EpubActivity(), CoroutineScope,
   }
 
   private fun initBottomNavSettings() {
-    val anchorView = this.findViewById(R.id.button_container) as LinearLayout
-
-    button_appearance.setOnClickListener {
-      userSettings.userAppearancePopUp()
-        .showAtLocation(anchorView, Gravity.BOTTOM, 0, anchorView.height)
+    val anchorView = this.findViewById(R.id.bottom_nav_settings) as BottomNavigationView
+    bottom_nav_settings.setOnNavigationItemSelectedListener {
+      when (it.itemId) {
+        R.id.appearance -> {
+          userSettings.userAppearancePopUp()
+            .showAtLocation(anchorView, Gravity.BOTTOM, 0, anchorView.height)
+          return@setOnNavigationItemSelectedListener true
+        }
+        R.id.font_size -> {
+          userSettings.fontSettingsPopUp()
+            .showAtLocation(anchorView, Gravity.BOTTOM, 0, anchorView.height)
+          return@setOnNavigationItemSelectedListener true
+        }
+        R.id.font_change -> {
+          userSettings.fontChangePopUp()
+            .showAtLocation(anchorView, Gravity.BOTTOM, 0, anchorView.height)
+          return@setOnNavigationItemSelectedListener true
+        }
+        R.id.brightness -> {
+          userSettings.brightnessSettingsPopUp()
+            .showAtLocation(anchorView, Gravity.BOTTOM, 0, anchorView.height)
+          return@setOnNavigationItemSelectedListener true
+        }
+        else -> return@setOnNavigationItemSelectedListener true
+      }
     }
 
-
-    button_font.setOnClickListener {
-      userSettings.fontSettingsPopUp()
-        .showAtLocation(anchorView, Gravity.BOTTOM, 0, anchorView.height)
-    }
-    button_brightness.setOnClickListener {
-      userSettings.brightnessSettingsPopUp()
-        .showAtLocation(anchorView, Gravity.BOTTOM, 0, anchorView.height)
-    }
-    button_font_change.setOnClickListener {
-      userSettings.fontChangePopUp()
-        .showAtLocation(anchorView, Gravity.BOTTOM, 0, anchorView.height)
-    }
   }
 
   private fun initDatabase() {
