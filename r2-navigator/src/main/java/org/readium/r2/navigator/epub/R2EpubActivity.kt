@@ -10,8 +10,6 @@ import android.os.Bundle
 import android.util.DisplayMetrics
 import android.view.ActionMode
 import android.view.View
-import android.widget.Button
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager.widget.ViewPager
 import kotlinx.android.synthetic.main.activity_epub_r2.*
@@ -259,12 +257,9 @@ open class R2EpubActivity : AppCompatActivity(), IR2Activity, IR2Selectable, IR2
 
   protected var navigatorDelegate: NavigatorDelegate? = null
 
-  protected var button: Button? = null
-
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
     setContentView(R.layout.activity_epub_r2)
-    button = findViewById(R.id.button_appearance)
     preferences = getSharedPreferences("org.readium.r2.settings", Context.MODE_PRIVATE)
     resourcePager = findViewById(R.id.resourcePager)
     resourcePager.type = Publication.TYPE.EPUB
@@ -538,14 +533,12 @@ open class R2EpubActivity : AppCompatActivity(), IR2Activity, IR2Selectable, IR2
               or View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
               or View.SYSTEM_UI_FLAG_FULLSCREEN
               or View.SYSTEM_UI_FLAG_IMMERSIVE)
-          Toast.makeText(this@R2EpubActivity, "Hide Actionbar", Toast.LENGTH_LONG).show()
-          button_container.visibility = View.GONE
+          bottom_nav_settings.visibility = View.GONE
         } else {
           resourcePager.systemUiVisibility = (View.SYSTEM_UI_FLAG_LAYOUT_STABLE
               or View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
               or View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN)
-          Toast.makeText(this@R2EpubActivity, "Show Actionbar", Toast.LENGTH_LONG).show()
-          button_container.visibility = View.VISIBLE
+          bottom_nav_settings.visibility = View.VISIBLE
         }
       }
     }
