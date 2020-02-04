@@ -458,7 +458,7 @@ class EpubActivity : R2EpubActivity(), CoroutineScope,
       }
       R.id.settings -> {
         userSettings.userSettingsPopUp()
-          .showAsDropDown(this.findViewById(R.id.settings), 0, 0, Gravity.END)
+          .showAsDropDown(this.findViewById(R.id.settings), 0, 0, Gravity.START)
         return true
       }
       R.id.screen_reader -> {
