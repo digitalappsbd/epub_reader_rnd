@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.digitalappsbd.app.epurreader.R
 import com.digitalappsbd.app.epurreader.epub.EpubActivity
 import com.digitalappsbd.app.epurreader.utils.color
+import com.mcxiaoke.koi.ext.dpToPx
 import org.json.JSONArray
 import org.readium.r2.navigator.R2BasicWebView
 import org.readium.r2.navigator.R2WebView
@@ -248,14 +249,11 @@ class UserSettings(
 
       override fun getDropDownView(position: Int, convertView: View?, parent: ViewGroup): View {
         val v: View? = super.getDropDownView(position, null, parent)
-        // Makes the selected font appear in dark
-        // If this is the selected item position
         if (position == fontFamily.index) {
           v!!.setBackgroundColor(context.color(R.color.colorPrimaryDark))
           v.findViewById<TextView>(android.R.id.text1).setTextColor(Color.WHITE)
 
         } else {
-          // for other views
           v!!.setBackgroundColor(Color.WHITE)
           v.findViewById<TextView>(android.R.id.text1).setTextColor(Color.BLACK)
 
@@ -282,7 +280,7 @@ class UserSettings(
         // fontSpinner.setSelection(selectedFontIndex)
       }
     }
-    fontSettingsPopup.setBackgroundDrawable(context.getDrawable(android.R.drawable.picture_frame))
+    fontSettingsPopup.setBackgroundDrawable(null)
     return fontSettingsPopup
 
   }
@@ -294,7 +292,7 @@ class UserSettings(
     val layout = layoutInflater.inflate(R.layout.popup_window_user_settings, null)
     val userSettingsPopup = PopupWindow(context)
     userSettingsPopup.contentView = layout
-    userSettingsPopup.width = ListPopupWindow.MATCH_PARENT
+    userSettingsPopup.width = 320.dpToPx()
     userSettingsPopup.height = ListPopupWindow.WRAP_CONTENT
     userSettingsPopup.isOutsideTouchable = true
     userSettingsPopup.isFocusable = true
@@ -593,7 +591,7 @@ class UserSettings(
           (context as EpubActivity).updateScreenReaderSpeed(speechSpeed, true)
         }
       })
-    userSettingsPopup.setBackgroundDrawable(context.getDrawable(android.R.drawable.picture_frame))
+    userSettingsPopup.setBackgroundDrawable(null)
     return userSettingsPopup
   }
 
@@ -665,7 +663,7 @@ class UserSettings(
         updateViewCSS(APPEARANCE_REF)
       }
     }
-    userSettingsPopup.setBackgroundDrawable(context.getDrawable(android.R.drawable.picture_frame))
+    userSettingsPopup.setBackgroundDrawable(null)
 
     return userSettingsPopup
   }
@@ -700,7 +698,7 @@ class UserSettings(
         updateViewCSS(FONT_SIZE_REF)
       }
     }
-    popupWindow.setBackgroundDrawable(context.getDrawable(android.R.drawable.picture_frame))
+    popupWindow.setBackgroundDrawable(null)
     return popupWindow
 
   }
@@ -736,7 +734,7 @@ class UserSettings(
           // Nothing
         }
       })
-    brightnessPopUp.setBackgroundDrawable(context.getDrawable(android.R.drawable.picture_frame))
+    brightnessPopUp.setBackgroundDrawable(null)
     return brightnessPopUp
   }
 }
