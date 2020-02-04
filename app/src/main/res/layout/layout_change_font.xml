@@ -1,25 +1,26 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:tools="http://schemas.android.com/tools"
   android:layout_width="match_parent"
   android:layout_height="wrap_content"
   android:layout_gravity="center_vertical"
   android:background="@android:color/white"
-  android:padding="16dp"
-  android:orientation="horizontal">
+  android:orientation="vertical">
 
 
   <TextView
+    style="@style/TextAppearance.MaterialComponents.Headline6"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_gravity="center_vertical"
-    android:layout_marginEnd="20dp"
-    android:gravity="center_horizontal"
-    android:text="@string/usersettings_label_font"
-    android:textSize="16sp" />
+    android:layout_marginStart="16dp"
+    android:gravity="center_vertical"
+    android:text="@string/usersettings_label_font" />
 
 
-  <Spinner
+  <androidx.recyclerview.widget.RecyclerView
     android:id="@+id/spinner_action_settings_intervall_values"
     android:layout_width="match_parent"
-    android:layout_height="48dp"
-    android:spinnerMode="dialog" />
+    android:layout_height="56dp"
+    android:orientation="horizontal"
+    tools:listitem="@layout/item_spinner_font" />
 </LinearLayout>
