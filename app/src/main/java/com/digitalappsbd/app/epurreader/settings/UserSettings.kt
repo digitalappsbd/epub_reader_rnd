@@ -4,13 +4,12 @@ import android.content.Context
 import android.content.SharedPreferences
 import android.graphics.Color
 import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.digitalappsbd.app.epurreader.R
 import com.digitalappsbd.app.epurreader.epub.EpubActivity
-import com.digitalappsbd.app.epurreader.utils.color
 import com.mcxiaoke.koi.ext.dpToPx
 import org.json.JSONArray
 import org.readium.r2.navigator.R2BasicWebView
@@ -21,6 +20,7 @@ import org.readium.r2.navigator.pager.R2PagerAdapter
 import org.readium.r2.navigator.pager.R2ViewPager
 import org.readium.r2.shared.*
 import java.io.File
+
 
 class UserSettings(
   var preferences: SharedPreferences,
@@ -240,51 +240,63 @@ class UserSettings(
 
     val fontFamily = (userProperties.getByRef<Enumerable>(FONT_FAMILY_REF))
     val fontOverride = (userProperties.getByRef<Switchable>(FONT_OVERRIDE_REF))
-    val fontSpinner: Spinner =
-      layout.findViewById(R.id.spinner_action_settings_intervall_values) as Spinner
+    val recylerview: RecyclerView =
+      layout.findViewById(R.id.spinner_action_settings_intervall_values) as RecyclerView
 
     val fonts = context.resources.getStringArray(R.array.font_list)
-
-    val dataAdapter = object : ArrayAdapter<String>(context, R.layout.item_spinner_font, fonts) {
-
-      override fun getDropDownView(position: Int, convertView: View?, parent: ViewGroup): View {
-        val v: View? = super.getDropDownView(position, null, parent)
-        if (position == fontFamily.index) {
-          v!!.setBackgroundColor(context.color(R.color.colorPrimaryDark))
-          v.findViewById<TextView>(android.R.id.text1).setTextColor(Color.WHITE)
-
-        } else {
-          v!!.setBackgroundColor(Color.WHITE)
-          v.findViewById<TextView>(android.R.id.text1).setTextColor(Color.BLACK)
-
-        }
-        return v
-      }
+    val fontChangeAdapter = FontChangeAdapter { pos ->
+      fontFamily.index = pos
+      fontOverride.on = (pos != 0)
+      updateSwitchable(fontOverride)
+      updateEnumerable(fontFamily)
+      updateViewCSS(FONT_OVERRIDE_REF)
+      updateViewCSS(FONT_FAMILY_REF)
     }
+    recylerview.adapter = fontChangeAdapter
+    recylerview.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+    fontChangeAdapter.submitList(fonts.asList())
+
+//    val dataAdapter = object : ArrayAdapter<String>(context, R.layout.item_spinner_font, fonts) {
+//
+//      override fun getDropDownView(position: Int, convertView: View?, parent: ViewGroup): View {
+//        val v: View? = super.getDropDownView(position, null, parent)
+//        if (position == fontFamily.index) {
+//          v!!.setBackgroundColor(context.color(R.color.colorPrimaryDark))
+//          v.findViewById<TextView>(android.R.id.text1).setTextColor(Color.WHITE)
+//
+//        } else {
+//          v!!.setBackgroundColor(Color.WHITE)
+//          v.findViewById<TextView>(android.R.id.text1).setTextColor(Color.BLACK)
+//
+//        }
+//        return v
+//      }
+//    }
     // Font family
-    dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-    fontSpinner.adapter = dataAdapter
-    fontSpinner.setSelection(fontFamily.index)
-    fontSpinner.contentDescription = "Font Family"
-    fontSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-      override fun onItemSelected(parent: AdapterView<*>, view: View, pos: Int, id: Long) {
-        fontFamily.index = pos
-        fontOverride.on = (pos != 0)
-        updateSwitchable(fontOverride)
-        updateEnumerable(fontFamily)
-        updateViewCSS(FONT_OVERRIDE_REF)
-        updateViewCSS(FONT_FAMILY_REF)
-      }
+//    dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+//    fontSpinner.adapter = dataAdapter
+//    fontSpinner.setSelection(fontFamily.index)
+//    fontSpinner.contentDescription = "Font Family"
 
-      override fun onNothingSelected(parent: AdapterView<out Adapter>?) {
-        // fontSpinner.setSelection(selectedFontIndex)
-      }
-    }
+//    fontSpinner. = object : AdapterView.OnItemSelectedListener {
+//      override fun onItemSelected(parent: AdapterView<*>, view: View, pos: Int, id: Long) {
+//        fontFamily.index = pos
+//        fontOverride.on = (pos != 0)
+//        updateSwitchable(fontOverride)
+//        updateEnumerable(fontFamily)
+//        updateViewCSS(FONT_OVERRIDE_REF)
+//        updateViewCSS(FONT_FAMILY_REF)
+//      }
+//
+//      override fun onNothingSelected(parent: AdapterView<out Adapter>?) {
+//        // fontSpinner.setSelection(selectedFontIndex)
+//      }
+//    }
+
     fontSettingsPopup.setBackgroundDrawable(null)
     return fontSettingsPopup
 
   }
-
 
   fun userSettingsPopUp(): PopupWindow {
 
@@ -296,7 +308,6 @@ class UserSettings(
     userSettingsPopup.height = ListPopupWindow.WRAP_CONTENT
     userSettingsPopup.isOutsideTouchable = true
     userSettingsPopup.isFocusable = true
-
 
     val publisherDefault = userProperties.getByRef<Switchable>(PUBLISHER_DEFAULT_REF)
     val scrollMode = userProperties.getByRef<Switchable>(SCROLL_REF)

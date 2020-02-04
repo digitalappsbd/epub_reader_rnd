@@ -11,7 +11,7 @@
     android:id="@+id/resourcePager"
     android:layout_width="0dp"
     android:layout_height="0dp"
-    app:layout_constraintBottom_toTopOf="@+id/button_container"
+    app:layout_constraintBottom_toTopOf="@+id/bottom_nav_settings"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toTopOf="parent" />
@@ -24,7 +24,7 @@
     android:background="@color/colorAccent"
     android:fitsSystemWindows="true"
     android:visibility="invisible"
-    app:layout_constraintBottom_toTopOf="@+id/button_container"
+    app:layout_constraintBottom_toTopOf="@+id/bottom_nav_settings"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toTopOf="parent">
@@ -46,7 +46,7 @@
     android:layout_height="match_parent"
     android:background="@color/colorAccent"
     android:visibility="invisible"
-    app:layout_constraintBottom_toTopOf="@+id/button_container"
+    app:layout_constraintBottom_toTopOf="@+id/bottom_nav_settings"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toTopOf="parent">
@@ -184,56 +184,18 @@
     </LinearLayout>
 
   </androidx.constraintlayout.widget.ConstraintLayout>
-  <LinearLayout
-    android:id="@+id/button_container"
+  <com.google.android.material.bottomnavigation.BottomNavigationView
+    android:id="@+id/bottom_nav_settings"
     android:layout_width="0dp"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
     android:weightSum="4"
+    android:background="@android:color/white"
+    app:labelVisibilityMode="unlabeled"
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintStart_toStartOf="parent">
-    <Button
-      android:textAllCaps="false"
-      android:id="@+id/button_appearance"
-      android:layout_width="0dp"
-      android:layout_height="wrap_content"
-      android:layout_weight="1"
-      android:text="Appearance"
-      app:layout_constraintBottom_toBottomOf="parent"
-      app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintStart_toStartOf="parent" />
-    <Button
-      android:text="Font Size"
-      android:id="@+id/button_font"
-      android:layout_width="0dp"
-      android:layout_height="wrap_content"
-      android:layout_weight="1"
-      android:textAllCaps="false"
-      app:layout_constraintBottom_toBottomOf="parent"
-      app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintStart_toStartOf="parent" />
-    <Button
-      android:id="@+id/button_brightness"
-      android:layout_width="0dp"
-      android:layout_height="wrap_content"
-      android:layout_weight="1"
-      android:text="Brightness"
-      android:textAllCaps="false"
-      app:layout_constraintBottom_toBottomOf="parent"
-      app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintStart_toStartOf="parent" />
-    <Button
-      android:id="@+id/button_font_change"
-      android:layout_width="0dp"
-      android:layout_height="wrap_content"
-      android:layout_weight="1"
-      android:text="Font Change"
-      android:textAllCaps="false"
-      app:layout_constraintBottom_toBottomOf="parent"
-      app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintStart_toStartOf="parent" />
-  </LinearLayout>
+    app:layout_constraintStart_toStartOf="parent"
+    app:menu="@menu/bottom_menu" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
