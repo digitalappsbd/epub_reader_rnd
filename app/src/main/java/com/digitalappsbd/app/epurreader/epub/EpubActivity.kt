@@ -187,13 +187,7 @@ class EpubActivity : R2EpubActivity(), CoroutineScope,
     bottom_nav_settings.setOnNavigationItemSelectedListener {
       when (it.itemId) {
         R.id.appearance -> {
-          userSettings.userAppearancePopUp()
-            .showAtLocation(
-              anchorView,
-              Gravity.BOTTOM,
-              ListPopupWindow.MATCH_PARENT,
-              anchorView.height
-            )
+          // Todo
           return@setOnNavigationItemSelectedListener true
         }
         R.id.font_size -> {

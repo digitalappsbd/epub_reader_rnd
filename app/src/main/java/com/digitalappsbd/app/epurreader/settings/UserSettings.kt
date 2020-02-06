@@ -255,44 +255,6 @@ class UserSettings(
     recylerview.adapter = fontChangeAdapter
     recylerview.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
     fontChangeAdapter.submitList(fonts.asList())
-
-//    val dataAdapter = object : ArrayAdapter<String>(context, R.layout.item_spinner_font, fonts) {
-//
-//      override fun getDropDownView(position: Int, convertView: View?, parent: ViewGroup): View {
-//        val v: View? = super.getDropDownView(position, null, parent)
-//        if (position == fontFamily.index) {
-//          v!!.setBackgroundColor(context.color(R.color.colorPrimaryDark))
-//          v.findViewById<TextView>(android.R.id.text1).setTextColor(Color.WHITE)
-//
-//        } else {
-//          v!!.setBackgroundColor(Color.WHITE)
-//          v.findViewById<TextView>(android.R.id.text1).setTextColor(Color.BLACK)
-//
-//        }
-//        return v
-//      }
-//    }
-    // Font family
-//    dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-//    fontSpinner.adapter = dataAdapter
-//    fontSpinner.setSelection(fontFamily.index)
-//    fontSpinner.contentDescription = "Font Family"
-
-//    fontSpinner. = object : AdapterView.OnItemSelectedListener {
-//      override fun onItemSelected(parent: AdapterView<*>, view: View, pos: Int, id: Long) {
-//        fontFamily.index = pos
-//        fontOverride.on = (pos != 0)
-//        updateSwitchable(fontOverride)
-//        updateEnumerable(fontFamily)
-//        updateViewCSS(FONT_OVERRIDE_REF)
-//        updateViewCSS(FONT_FAMILY_REF)
-//      }
-//
-//      override fun onNothingSelected(parent: AdapterView<out Adapter>?) {
-//        // fontSpinner.setSelection(selectedFontIndex)
-//      }
-//    }
-
     fontSettingsPopup.setBackgroundDrawable(null)
     return fontSettingsPopup
 
@@ -606,78 +568,6 @@ class UserSettings(
     return userSettingsPopup
   }
 
-  fun userAppearancePopUp(): PopupWindow {
-
-    val layoutInflater = LayoutInflater.from(context)
-    val layout = layoutInflater.inflate(R.layout.layout_appearance_settings, null)
-    val userSettingsPopup = PopupWindow(context)
-    userSettingsPopup.contentView = layout
-    userSettingsPopup.width = ListPopupWindow.MATCH_PARENT
-    userSettingsPopup.height = ListPopupWindow.WRAP_CONTENT
-    userSettingsPopup.isOutsideTouchable = true
-    userSettingsPopup.isFocusable = true
-    val appearance = userProperties.getByRef<Enumerable>(APPEARANCE_REF)
-
-    fun findIndexOfId(id: Int, list: MutableList<RadioButton>): Int {
-      for (i in 0..list.size) {
-        if (list[i].id == id) {
-          return i
-        }
-      }
-      return 0
-    }
-    // Appearance
-    val appearanceGroup = layout.findViewById(R.id.appearance) as RadioGroup
-    val appearanceRadios = mutableListOf<RadioButton>()
-    appearanceRadios.add(layout.findViewById(R.id.appearance_default) as RadioButton)
-    (layout.findViewById(R.id.appearance_default) as RadioButton).contentDescription =
-      "Appearance Default"
-    appearanceRadios.add(layout.findViewById(R.id.appearance_sepia) as RadioButton)
-    (layout.findViewById(R.id.appearance_sepia) as RadioButton).contentDescription =
-      "Appearance Sepia"
-    appearanceRadios.add(layout.findViewById(R.id.appearance_night) as RadioButton)
-    (layout.findViewById(R.id.appearance_night) as RadioButton).contentDescription =
-      "Appearance Night"
-
-    UIPreset[ReadiumCSSName.appearance]?.let {
-      appearanceGroup.isEnabled = false
-      for (appearanceRadio in appearanceRadios) {
-        appearanceRadio.isEnabled = false
-      }
-    } ?: run {
-      appearanceRadios[appearance.index].isChecked = true
-
-      appearanceGroup.setOnCheckedChangeListener { _, id ->
-        val i = findIndexOfId(id, list = appearanceRadios)
-        appearance.index = i
-        when (i) {
-          0 -> {
-            resourcePager.setBackgroundColor(Color.parseColor("#ffffff"))
-            (resourcePager.focusedChild?.findViewById(R.id.book_title) as? TextView)?.setTextColor(
-              Color.parseColor("#000000")
-            )
-          }
-          1 -> {
-            resourcePager.setBackgroundColor(Color.parseColor("#faf4e8"))
-            (resourcePager.focusedChild?.findViewById(R.id.book_title) as? TextView)?.setTextColor(
-              Color.parseColor("#000000")
-            )
-          }
-          2 -> {
-            resourcePager.setBackgroundColor(Color.parseColor("#000000"))
-            (resourcePager.focusedChild?.findViewById(R.id.book_title) as? TextView)?.setTextColor(
-              Color.parseColor("#ffffff")
-            )
-          }
-        }
-        updateEnumerable(appearance)
-        updateViewCSS(APPEARANCE_REF)
-      }
-    }
-    userSettingsPopup.setBackgroundDrawable(null)
-
-    return userSettingsPopup
-  }
 
   fun fontSettingsPopUp(): PopupWindow {
     val layoutInflater = LayoutInflater.from(context)
@@ -745,6 +635,66 @@ class UserSettings(
           // Nothing
         }
       })
+
+    // Appearance
+    val appearance = userProperties.getByRef<Enumerable>(APPEARANCE_REF)
+
+    fun findIndexOfId(id: Int, list: MutableList<RadioButton>): Int {
+      for (i in 0..list.size) {
+        if (list[i].id == id) {
+          return i
+        }
+      }
+      return 0
+    }
+
+    val appearanceGroup = layout.findViewById(R.id.appearance) as RadioGroup
+    val appearanceRadios = mutableListOf<RadioButton>()
+    appearanceRadios.add(layout.findViewById(R.id.appearance_default) as RadioButton)
+    (layout.findViewById(R.id.appearance_default) as RadioButton).contentDescription =
+      "Appearance Default"
+    appearanceRadios.add(layout.findViewById(R.id.appearance_sepia) as RadioButton)
+    (layout.findViewById(R.id.appearance_sepia) as RadioButton).contentDescription =
+      "Appearance Sepia"
+    appearanceRadios.add(layout.findViewById(R.id.appearance_night) as RadioButton)
+    (layout.findViewById(R.id.appearance_night) as RadioButton).contentDescription =
+      "Appearance Night"
+
+    UIPreset[ReadiumCSSName.appearance]?.let {
+      appearanceGroup.isEnabled = false
+      for (appearanceRadio in appearanceRadios) {
+        appearanceRadio.isEnabled = false
+      }
+    } ?: run {
+      appearanceRadios[appearance.index].isChecked = true
+
+      appearanceGroup.setOnCheckedChangeListener { _, id ->
+        val i = findIndexOfId(id, list = appearanceRadios)
+        appearance.index = i
+        when (i) {
+          0 -> {
+            resourcePager.setBackgroundColor(Color.parseColor("#ffffff"))
+            (resourcePager.focusedChild?.findViewById(R.id.book_title) as? TextView)?.setTextColor(
+              Color.parseColor("#000000")
+            )
+          }
+          1 -> {
+            resourcePager.setBackgroundColor(Color.parseColor("#faf4e8"))
+            (resourcePager.focusedChild?.findViewById(R.id.book_title) as? TextView)?.setTextColor(
+              Color.parseColor("#000000")
+            )
+          }
+          2 -> {
+            resourcePager.setBackgroundColor(Color.parseColor("#000000"))
+            (resourcePager.focusedChild?.findViewById(R.id.book_title) as? TextView)?.setTextColor(
+              Color.parseColor("#ffffff")
+            )
+          }
+        }
+        updateEnumerable(appearance)
+        updateViewCSS(APPEARANCE_REF)
+      }
+    }
     brightnessPopUp.setBackgroundDrawable(null)
     return brightnessPopUp
   }
