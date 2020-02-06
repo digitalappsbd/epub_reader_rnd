@@ -1531,7 +1531,6 @@ id book_title
 id bottom
 id bottom_btn
 id bottom_nav_settings
-id brightness
 id buttonPanel
 id cancel_action
 id cancel_button

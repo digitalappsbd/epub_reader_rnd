@@ -25,7 +25,6 @@ id appearance
 id book_title
 id bottom_btn
 id bottom_nav_settings
-id brightness
 id chapterTime
 id chapterView
 id constraint

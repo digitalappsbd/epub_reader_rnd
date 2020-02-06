@@ -604,9 +604,9 @@ class UserSettings(
 
   }
 
-  fun brightnessSettingsPopUp(): PopupWindow {
+  fun appearanceSettingsPopUp(): PopupWindow {
     val layoutInflater = LayoutInflater.from(context)
-    val layout = layoutInflater.inflate(R.layout.layout_brightness_settings, null)
+    val layout = layoutInflater.inflate(R.layout.layout_appearance_controller, null)
     val brightnessPopUp = PopupWindow(context)
     brightnessPopUp.contentView = layout
     brightnessPopUp.width = ListPopupWindow.MATCH_PARENT
@@ -627,13 +627,9 @@ class UserSettings(
           preferences.edit().putInt("reader_brightness", progress).apply()
         }
 
-        override fun onStartTrackingTouch(bar: SeekBar) {
-          // Nothing
-        }
+        override fun onStartTrackingTouch(bar: SeekBar) {}
 
-        override fun onStopTrackingTouch(bar: SeekBar) {
-          // Nothing
-        }
+        override fun onStopTrackingTouch(bar: SeekBar) {}
       })
 
     // Appearance

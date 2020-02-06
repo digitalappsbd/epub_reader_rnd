@@ -187,7 +187,13 @@ class EpubActivity : R2EpubActivity(), CoroutineScope,
     bottom_nav_settings.setOnNavigationItemSelectedListener {
       when (it.itemId) {
         R.id.appearance -> {
-          // Todo
+          userSettings.appearanceSettingsPopUp()
+            .showAtLocation(
+              anchorView,
+              Gravity.BOTTOM,
+              ListPopupWindow.MATCH_PARENT,
+              anchorView.height
+            )
           return@setOnNavigationItemSelectedListener true
         }
         R.id.font_size -> {
@@ -202,16 +208,6 @@ class EpubActivity : R2EpubActivity(), CoroutineScope,
         }
         R.id.font_change -> {
           userSettings.fontChangePopUp()
-            .showAtLocation(
-              anchorView,
-              Gravity.BOTTOM,
-              ListPopupWindow.MATCH_PARENT,
-              anchorView.height
-            )
-          return@setOnNavigationItemSelectedListener true
-        }
-        R.id.brightness -> {
-          userSettings.brightnessSettingsPopUp()
             .showAtLocation(
               anchorView,
               Gravity.BOTTOM,
