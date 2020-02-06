@@ -196,18 +196,8 @@ class EpubActivity : R2EpubActivity(), CoroutineScope,
             )
           return@setOnNavigationItemSelectedListener true
         }
-        R.id.font_size -> {
-          userSettings.fontSettingsPopUp()
-            .showAtLocation(
-              anchorView,
-              Gravity.BOTTOM,
-              ListPopupWindow.MATCH_PARENT,
-              anchorView.height
-            )
-          return@setOnNavigationItemSelectedListener true
-        }
-        R.id.font_change -> {
-          userSettings.fontChangePopUp()
+        R.id.font -> {
+          userSettings.fontControllerPopUp()
             .showAtLocation(
               anchorView,
               Gravity.BOTTOM,

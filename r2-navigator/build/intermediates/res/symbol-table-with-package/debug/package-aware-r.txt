@@ -1581,8 +1581,7 @@ id fill
 id filled
 id firstWebView
 id fixed
-id font_change
-id font_size
+id font
 id footnote
 id forever
 id ghost_view

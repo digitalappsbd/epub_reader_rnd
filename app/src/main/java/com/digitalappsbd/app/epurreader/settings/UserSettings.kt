@@ -227,7 +227,7 @@ class UserSettings(
     view.setProperty(userSetting.name, userSetting.toString())
   }
 
-  fun fontChangePopUp(): PopupWindow {
+  fun fontControllerPopUp(): PopupWindow {
 
     val layoutInflater = LayoutInflater.from(context)
     val layout = layoutInflater.inflate(R.layout.layout_change_font, null)
@@ -255,6 +255,29 @@ class UserSettings(
     recylerview.adapter = fontChangeAdapter
     recylerview.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
     fontChangeAdapter.submitList(fonts.asList())
+
+    val fontSize = userProperties.getByRef<Incremental>(FONT_SIZE_REF)
+
+    val fontDecreaseButton = layout.findViewById(R.id.font_decrease) as ImageButton
+    val fontIncreaseButton = layout.findViewById(R.id.font_increase) as ImageButton
+
+    UIPreset[ReadiumCSSName.fontSize]?.let {
+      fontDecreaseButton.isEnabled = false
+      fontIncreaseButton.isEnabled = false
+    } ?: run {
+      fontDecreaseButton.setOnClickListener {
+        fontSize.decrement()
+        updateIncremental(fontSize)
+        updateViewCSS(FONT_SIZE_REF)
+      }
+
+      fontIncreaseButton.setOnClickListener {
+        fontSize.increment()
+        updateIncremental(fontSize)
+        updateViewCSS(FONT_SIZE_REF)
+      }
+    }
+
     fontSettingsPopup.setBackgroundDrawable(null)
     return fontSettingsPopup
 
@@ -568,41 +591,6 @@ class UserSettings(
     return userSettingsPopup
   }
 
-
-  fun fontSettingsPopUp(): PopupWindow {
-    val layoutInflater = LayoutInflater.from(context)
-    val layout = layoutInflater.inflate(R.layout.layout_font_settings, null)
-    val popupWindow = PopupWindow(context)
-    popupWindow.contentView = layout
-    popupWindow.width = androidx.appcompat.widget.ListPopupWindow.MATCH_PARENT
-    popupWindow.height = androidx.appcompat.widget.ListPopupWindow.WRAP_CONTENT
-    popupWindow.isOutsideTouchable = true
-    popupWindow.isFocusable = true
-    val fontSize = userProperties.getByRef<Incremental>(FONT_SIZE_REF)
-
-    val fontDecreaseButton = layout.findViewById(R.id.font_decrease) as ImageButton
-    val fontIncreaseButton = layout.findViewById(R.id.font_increase) as ImageButton
-
-    UIPreset[ReadiumCSSName.fontSize]?.let {
-      fontDecreaseButton.isEnabled = false
-      fontIncreaseButton.isEnabled = false
-    } ?: run {
-      fontDecreaseButton.setOnClickListener {
-        fontSize.decrement()
-        updateIncremental(fontSize)
-        updateViewCSS(FONT_SIZE_REF)
-      }
-
-      fontIncreaseButton.setOnClickListener {
-        fontSize.increment()
-        updateIncremental(fontSize)
-        updateViewCSS(FONT_SIZE_REF)
-      }
-    }
-    popupWindow.setBackgroundDrawable(null)
-    return popupWindow
-
-  }
 
   fun appearanceSettingsPopUp(): PopupWindow {
     val layoutInflater = LayoutInflater.from(context)

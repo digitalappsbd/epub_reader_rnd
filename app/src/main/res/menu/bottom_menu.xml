@@ -7,13 +7,8 @@
     android:title=""
     app:showAsAction="always" />
   <item
-    android:id="@+id/font_size"
+    android:id="@+id/font"
     android:icon="@drawable/ic_font_size"
-    android:title=""
-    app:showAsAction="always" />
-  <item
-    android:id="@+id/font_change"
-    android:icon="@drawable/ic_font_change"
     android:title=""
     app:showAsAction="always" />
 

@@ -35,8 +35,7 @@ id divinaWebView
 id fast_back
 id fast_forward
 id firstWebView
-id font_change
-id font_size
+id font
 id footnote
 id ib_close
 id imageView
