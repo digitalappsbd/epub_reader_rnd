@@ -255,44 +255,6 @@ class UserSettings(
     recylerview.adapter = fontChangeAdapter
     recylerview.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
     fontChangeAdapter.submitList(fonts.asList())
-
-//    val dataAdapter = object : ArrayAdapter<String>(context, R.layout.item_spinner_font, fonts) {
-//
-//      override fun getDropDownView(position: Int, convertView: View?, parent: ViewGroup): View {
-//        val v: View? = super.getDropDownView(position, null, parent)
-//        if (position == fontFamily.index) {
-//          v!!.setBackgroundColor(context.color(R.color.colorPrimaryDark))
-//          v.findViewById<TextView>(android.R.id.text1).setTextColor(Color.WHITE)
-//
-//        } else {
-//          v!!.setBackgroundColor(Color.WHITE)
-//          v.findViewById<TextView>(android.R.id.text1).setTextColor(Color.BLACK)
-//
-//        }
-//        return v
-//      }
-//    }
-    // Font family
-//    dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-//    fontSpinner.adapter = dataAdapter
-//    fontSpinner.setSelection(fontFamily.index)
-//    fontSpinner.contentDescription = "Font Family"
-
-//    fontSpinner. = object : AdapterView.OnItemSelectedListener {
-//      override fun onItemSelected(parent: AdapterView<*>, view: View, pos: Int, id: Long) {
-//        fontFamily.index = pos
-//        fontOverride.on = (pos != 0)
-//        updateSwitchable(fontOverride)
-//        updateEnumerable(fontFamily)
-//        updateViewCSS(FONT_OVERRIDE_REF)
-//        updateViewCSS(FONT_FAMILY_REF)
-//      }
-//
-//      override fun onNothingSelected(parent: AdapterView<out Adapter>?) {
-//        // fontSpinner.setSelection(selectedFontIndex)
-//      }
-//    }
-
     fontSettingsPopup.setBackgroundDrawable(null)
     return fontSettingsPopup
 
@@ -606,16 +568,71 @@ class UserSettings(
     return userSettingsPopup
   }
 
-  fun userAppearancePopUp(): PopupWindow {
 
+  fun fontSettingsPopUp(): PopupWindow {
     val layoutInflater = LayoutInflater.from(context)
-    val layout = layoutInflater.inflate(R.layout.layout_appearance_settings, null)
-    val userSettingsPopup = PopupWindow(context)
-    userSettingsPopup.contentView = layout
-    userSettingsPopup.width = ListPopupWindow.MATCH_PARENT
-    userSettingsPopup.height = ListPopupWindow.WRAP_CONTENT
-    userSettingsPopup.isOutsideTouchable = true
-    userSettingsPopup.isFocusable = true
+    val layout = layoutInflater.inflate(R.layout.layout_font_settings, null)
+    val popupWindow = PopupWindow(context)
+    popupWindow.contentView = layout
+    popupWindow.width = androidx.appcompat.widget.ListPopupWindow.MATCH_PARENT
+    popupWindow.height = androidx.appcompat.widget.ListPopupWindow.WRAP_CONTENT
+    popupWindow.isOutsideTouchable = true
+    popupWindow.isFocusable = true
+    val fontSize = userProperties.getByRef<Incremental>(FONT_SIZE_REF)
+
+    val fontDecreaseButton = layout.findViewById(R.id.font_decrease) as ImageButton
+    val fontIncreaseButton = layout.findViewById(R.id.font_increase) as ImageButton
+
+    UIPreset[ReadiumCSSName.fontSize]?.let {
+      fontDecreaseButton.isEnabled = false
+      fontIncreaseButton.isEnabled = false
+    } ?: run {
+      fontDecreaseButton.setOnClickListener {
+        fontSize.decrement()
+        updateIncremental(fontSize)
+        updateViewCSS(FONT_SIZE_REF)
+      }
+
+      fontIncreaseButton.setOnClickListener {
+        fontSize.increment()
+        updateIncremental(fontSize)
+        updateViewCSS(FONT_SIZE_REF)
+      }
+    }
+    popupWindow.setBackgroundDrawable(null)
+    return popupWindow
+
+  }
+
+  fun appearanceSettingsPopUp(): PopupWindow {
+    val layoutInflater = LayoutInflater.from(context)
+    val layout = layoutInflater.inflate(R.layout.layout_appearance_controller, null)
+    val brightnessPopUp = PopupWindow(context)
+    brightnessPopUp.contentView = layout
+    brightnessPopUp.width = ListPopupWindow.MATCH_PARENT
+    brightnessPopUp.height = ListPopupWindow.WRAP_CONTENT
+    brightnessPopUp.isOutsideTouchable = true
+    brightnessPopUp.isFocusable = true
+    // Brightness
+    val brightnessSeekBar = layout.findViewById(R.id.brightness) as SeekBar
+    val brightness = preferences.getInt("reader_brightness", 50)
+    brightnessSeekBar.progress = brightness
+    brightnessSeekBar.setOnSeekBarChangeListener(
+      object : SeekBar.OnSeekBarChangeListener {
+        override fun onProgressChanged(bar: SeekBar, progress: Int, from_user: Boolean) {
+          val backLightValue = progress.toFloat() / 100
+          val layoutParams = (context as AppCompatActivity).window.attributes
+          layoutParams.screenBrightness = backLightValue
+          context.window.attributes = layoutParams
+          preferences.edit().putInt("reader_brightness", progress).apply()
+        }
+
+        override fun onStartTrackingTouch(bar: SeekBar) {}
+
+        override fun onStopTrackingTouch(bar: SeekBar) {}
+      })
+
+    // Appearance
     val appearance = userProperties.getByRef<Enumerable>(APPEARANCE_REF)
 
     fun findIndexOfId(id: Int, list: MutableList<RadioButton>): Int {
@@ -626,7 +643,7 @@ class UserSettings(
       }
       return 0
     }
-    // Appearance
+
     val appearanceGroup = layout.findViewById(R.id.appearance) as RadioGroup
     val appearanceRadios = mutableListOf<RadioButton>()
     appearanceRadios.add(layout.findViewById(R.id.appearance_default) as RadioButton)
@@ -674,77 +691,6 @@ class UserSettings(
         updateViewCSS(APPEARANCE_REF)
       }
     }
-    userSettingsPopup.setBackgroundDrawable(null)
-
-    return userSettingsPopup
-  }
-
-  fun fontSettingsPopUp(): PopupWindow {
-    val layoutInflater = LayoutInflater.from(context)
-    val layout = layoutInflater.inflate(R.layout.layout_font_settings, null)
-    val popupWindow = PopupWindow(context)
-    popupWindow.contentView = layout
-    popupWindow.width = androidx.appcompat.widget.ListPopupWindow.MATCH_PARENT
-    popupWindow.height = androidx.appcompat.widget.ListPopupWindow.WRAP_CONTENT
-    popupWindow.isOutsideTouchable = true
-    popupWindow.isFocusable = true
-    val fontSize = userProperties.getByRef<Incremental>(FONT_SIZE_REF)
-
-    val fontDecreaseButton = layout.findViewById(R.id.font_decrease) as ImageButton
-    val fontIncreaseButton = layout.findViewById(R.id.font_increase) as ImageButton
-
-    UIPreset[ReadiumCSSName.fontSize]?.let {
-      fontDecreaseButton.isEnabled = false
-      fontIncreaseButton.isEnabled = false
-    } ?: run {
-      fontDecreaseButton.setOnClickListener {
-        fontSize.decrement()
-        updateIncremental(fontSize)
-        updateViewCSS(FONT_SIZE_REF)
-      }
-
-      fontIncreaseButton.setOnClickListener {
-        fontSize.increment()
-        updateIncremental(fontSize)
-        updateViewCSS(FONT_SIZE_REF)
-      }
-    }
-    popupWindow.setBackgroundDrawable(null)
-    return popupWindow
-
-  }
-
-  fun brightnessSettingsPopUp(): PopupWindow {
-    val layoutInflater = LayoutInflater.from(context)
-    val layout = layoutInflater.inflate(R.layout.layout_brightness_settings, null)
-    val brightnessPopUp = PopupWindow(context)
-    brightnessPopUp.contentView = layout
-    brightnessPopUp.width = ListPopupWindow.MATCH_PARENT
-    brightnessPopUp.height = ListPopupWindow.WRAP_CONTENT
-    brightnessPopUp.isOutsideTouchable = true
-    brightnessPopUp.isFocusable = true
-    // Brightness
-    val brightnessSeekBar = layout.findViewById(R.id.brightness) as SeekBar
-    val brightness = preferences.getInt("reader_brightness", 50)
-    brightnessSeekBar.progress = brightness
-    brightnessSeekBar.setOnSeekBarChangeListener(
-      object : SeekBar.OnSeekBarChangeListener {
-        override fun onProgressChanged(bar: SeekBar, progress: Int, from_user: Boolean) {
-          val backLightValue = progress.toFloat() / 100
-          val layoutParams = (context as AppCompatActivity).window.attributes
-          layoutParams.screenBrightness = backLightValue
-          context.window.attributes = layoutParams
-          preferences.edit().putInt("reader_brightness", progress).apply()
-        }
-
-        override fun onStartTrackingTouch(bar: SeekBar) {
-          // Nothing
-        }
-
-        override fun onStopTrackingTouch(bar: SeekBar) {
-          // Nothing
-        }
-      })
     brightnessPopUp.setBackgroundDrawable(null)
     return brightnessPopUp
   }

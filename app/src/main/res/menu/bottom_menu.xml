@@ -16,10 +16,5 @@
     android:icon="@drawable/ic_font_change"
     android:title=""
     app:showAsAction="always" />
-  <item
-    android:id="@+id/brightness"
-    android:icon="@drawable/ic_brightness"
-    android:title=""
-    app:showAsAction="always" />
 
 </menu>

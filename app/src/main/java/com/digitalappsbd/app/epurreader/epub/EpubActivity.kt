@@ -187,7 +187,7 @@ class EpubActivity : R2EpubActivity(), CoroutineScope,
     bottom_nav_settings.setOnNavigationItemSelectedListener {
       when (it.itemId) {
         R.id.appearance -> {
-          userSettings.userAppearancePopUp()
+          userSettings.appearanceSettingsPopUp()
             .showAtLocation(
               anchorView,
               Gravity.BOTTOM,
@@ -208,16 +208,6 @@ class EpubActivity : R2EpubActivity(), CoroutineScope,
         }
         R.id.font_change -> {
           userSettings.fontChangePopUp()
-            .showAtLocation(
-              anchorView,
-              Gravity.BOTTOM,
-              ListPopupWindow.MATCH_PARENT,
-              anchorView.height
-            )
-          return@setOnNavigationItemSelectedListener true
-        }
-        R.id.brightness -> {
-          userSettings.brightnessSettingsPopUp()
             .showAtLocation(
               anchorView,
               Gravity.BOTTOM,
