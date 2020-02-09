@@ -115,24 +115,26 @@
     <string name="drm_label_prints_left">Prints left</string>
     <string name="drm_label_copies_left">Copies left</string>
     <string name="drm_label_start">Start</string>
-    <string name="drm_label_end">End</string>
-    <string name="drm_label_potential_right_end">Potential right end</string>
-    <string name="drm_label_actions">ACTIONS</string>
-    <string name="drm_label_renew">RENEW</string>
-    <string name="drm_label_return">RETURN</string>
-    <string name="zero">00:00</string>
-    <string name="chapter">Chapter</string>
-    <string name="chapter_page">Chapter / Page</string>
-    <string name="progression">Progression</string>
-    <string name="timestamp">Timestamp</string>
+  <string name="drm_label_end">End</string>
+  <string name="drm_label_potential_right_end">Potential right end</string>
+  <string name="drm_label_actions">ACTIONS</string>
+  <string name="drm_label_renew">RENEW</string>
+  <string name="drm_label_return">RETURN</string>
+  <string name="zero">00:00</string>
+  <string name="chapter">Chapter</string>
+  <string name="chapter_page">Chapter / Page</string>
+  <string name="progression">Progression</string>
+  <string name="timestamp">Timestamp</string>
+  <string name="navigation_drawer_open">open</string>
+  <string name="navigation_drawer_close">close</string>
 
-    <string-array name="font_list">
-        <item>Original</item>
-        <item>PT Serif</item>
-        <item>Roboto</item>
-        <item>Source Sans Pro</item>
-        <item>Vollkorn</item>
-        <item>OpenDyslexic</item>
-    </string-array>
+  <string-array name="font_list">
+    <item>Original</item>
+    <item>PT Serif</item>
+    <item>Roboto</item>
+    <item>Source Sans Pro</item>
+    <item>Vollkorn</item>
+    <item>OpenDyslexic</item>
+  </string-array>
 
 </resources>

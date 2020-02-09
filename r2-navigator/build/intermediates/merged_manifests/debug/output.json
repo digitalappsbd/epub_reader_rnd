@@ -1,1 +1,26 @@
-[{"outputType":{"type":"MERGED_MANIFESTS"},"apkData":{"type":"MAIN","splits":[],"versionCode":-1,"enabled":true,"outputFile":"r2-navigator-debug.aar","fullName":"debug","baseName":"debug"},"path":"..\\..\\library_manifest\\debug\\AndroidManifest.xml","properties":{"packageId":"org.readium.r2.navigator","split":""}}]
+{
+  "version": 1,
+  "applicationId": "org.readium.r2.navigator",
+  "variantType": "LIBRARY",
+  "elements": [
+    {
+      "outputType": {
+        "type": "MERGED_MANIFESTS"
+      },
+      "apkData": {
+        "type": "MAIN",
+        "splits": [],
+        "versionCode": -1,
+        "outputFile": "r2-navigator-debug.aar",
+        "fullName": "debug",
+        "baseName": "debug",
+        "dirName": ""
+      },
+      "path": "../../library_manifest/debug/AndroidManifest.xml",
+      "properties": {
+        "packageId": "org.readium.r2.navigator",
+        "split": ""
+      }
+    }
+  ]
+}

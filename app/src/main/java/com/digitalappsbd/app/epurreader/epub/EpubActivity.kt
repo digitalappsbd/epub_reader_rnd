@@ -15,6 +15,7 @@ import android.view.*
 import android.view.accessibility.AccessibilityManager
 import android.view.inputmethod.InputMethodManager
 import android.widget.*
+import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.widget.SearchView
 import androidx.core.widget.TextViewCompat
@@ -32,6 +33,8 @@ import com.digitalappsbd.app.epurreader.settings.UserSettings
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.gson.Gson
 import kotlinx.android.synthetic.main.activity_epub.*
+import kotlinx.android.synthetic.main.layout_appbar_epub.*
+import kotlinx.android.synthetic.main.layout_content_epub.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -177,9 +180,9 @@ class EpubActivity : R2EpubActivity(), CoroutineScope,
     search_listView.layoutManager = LinearLayoutManager(this)
 
     accesssibiltyManager = getSystemService(ACCESSIBILITY_SERVICE) as AccessibilityManager
-
+    setSupportActionBar(toolbar)
     initBottomNavSettings()
-
+    drawerInit()
   }
 
   private fun initBottomNavSettings() {
@@ -722,6 +725,22 @@ class EpubActivity : R2EpubActivity(), CoroutineScope,
       }
     }
 
+  }
+
+  private fun drawerInit() {
+    val toggle = ActionBarDrawerToggle(
+      this,
+      drawer_layout,
+      toolbar,
+      R.string.navigation_drawer_open,
+      R.string.navigation_drawer_close
+    )
+    drawer_layout.addDrawerListener(toggle)
+    toggle.syncState()
+
+    drawer_layout.setViewScale(Gravity.START, 0.96f)
+    drawer_layout.setRadius(Gravity.START, 20f)
+    drawer_layout.setViewElevation(Gravity.START, 8f)
   }
 
   private fun changeHighlightColor(
