@@ -4,11 +4,13 @@ import android.content.Context
 import android.content.SharedPreferences
 import android.graphics.Color
 import android.view.LayoutInflater
+import android.view.ViewGroup
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.digitalappsbd.app.epurreader.R
+import com.digitalappsbd.app.epurreader.epub.ChapterAdapter
 import com.digitalappsbd.app.epurreader.epub.EpubActivity
 import com.mcxiaoke.koi.ext.dpToPx
 import org.json.JSONArray
@@ -25,7 +27,9 @@ import java.io.File
 class UserSettings(
   var preferences: SharedPreferences,
   val context: Context,
-  private val UIPreset: MutableMap<ReadiumCSSName, Boolean>
+  private val UIPreset: MutableMap<ReadiumCSSName, Boolean>,
+  val publication: Publication,
+  val bookId: Long
 ) {
 
   lateinit var resourcePager: R2ViewPager
@@ -682,4 +686,57 @@ class UserSettings(
     brightnessPopUp.setBackgroundDrawable(null)
     return brightnessPopUp
   }
+
+  fun chapterPopUp(): PopupWindow {
+    val layoutInflater = LayoutInflater.from(context)
+    val layout = layoutInflater.inflate(R.layout.layout_chapter, null)
+    val brightnessPopUp = PopupWindow(
+      layout,
+      ViewGroup.LayoutParams.WRAP_CONTENT,
+      ViewGroup.LayoutParams.MATCH_PARENT,
+      true
+    )
+    val chapterAdapter = ChapterAdapter()
+    val recylerview: RecyclerView =
+      layout.findViewById(R.id.chapter_list) as RecyclerView
+    recylerview.layoutManager = LinearLayoutManager(context)
+    recylerview.adapter = chapterAdapter
+    val tableOfContext = mutableListOf<Pair<Int, Link>>()
+
+    val contents: MutableList<Link> = when {
+      publication.tableOfContents.isNotEmpty() -> {
+        publication.tableOfContents
+      }
+      publication.readingOrder.isNotEmpty() -> {
+        publication.readingOrder
+      }
+      publication.images.isNotEmpty() -> {
+        publication.images
+      }
+      else -> mutableListOf()
+    }
+
+    for (link in contents) {
+      val children = childrenOf(Pair(0, link))
+      // Append parent.
+      tableOfContext.add(Pair(0, link))
+      // Append children, and their children... recursive.
+      tableOfContext.addAll(children)
+    }
+
+    chapterAdapter.submitData(tableOfContext.toMutableList())
+    brightnessPopUp.setBackgroundDrawable(null)
+    return brightnessPopUp
+  }
+
+  private fun childrenOf(parent: Pair<Int, Link>): MutableList<Pair<Int, Link>> {
+    val indentation = parent.first + 1
+    val children = mutableListOf<Pair<Int, Link>>()
+    for (link in parent.second.children) {
+      children.add(Pair(indentation, link))
+      children.addAll(childrenOf(Pair(indentation, link)))
+    }
+    return children
+  }
+
 }

@@ -31,6 +31,7 @@ import com.digitalappsbd.app.epurreader.search.SearchLocatorAdapter
 import com.digitalappsbd.app.epurreader.settings.UserSettings
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.gson.Gson
+import com.mcxiaoke.koi.ext.dpToPx
 import kotlinx.android.synthetic.main.activity_epub.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -186,6 +187,11 @@ class EpubActivity : R2EpubActivity(), CoroutineScope,
     val anchorView = this.findViewById(R.id.bottom_nav_settings) as BottomNavigationView
     bottom_nav_settings.setOnNavigationItemSelectedListener {
       when (it.itemId) {
+        R.id.chapter->{
+          userSettings.chapterPopUp()
+            .showAsDropDown(anchorView)
+          return@setOnNavigationItemSelectedListener true
+        }
         R.id.appearance -> {
           userSettings.appearanceSettingsPopUp()
             .showAtLocation(
@@ -958,6 +964,7 @@ class EpubActivity : R2EpubActivity(), CoroutineScope,
         preferences,
         this,
         publication.userSettingsUIPreset
+        , publication, bookId
       )
       userSettings.saveChanges()
 
@@ -974,6 +981,7 @@ class EpubActivity : R2EpubActivity(), CoroutineScope,
         preferences,
         this,
         publication.userSettingsUIPreset
+        , publication, bookId
       )
       userSettings.resourcePager = resourcePager
     }
