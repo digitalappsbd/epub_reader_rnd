@@ -8,7 +8,8 @@ import com.digitalappsbd.app.epurreader.R
 import kotlinx.android.synthetic.main.layout_chapter_item.view.*
 import org.readium.r2.shared.Link
 
-class ChapterAdapter : RecyclerView.Adapter<ChapterAdapter.ChapterViewHolder>() {
+class ChapterAdapter(private val clickListener: (Int) -> Unit) :
+  RecyclerView.Adapter<ChapterAdapter.ChapterViewHolder>() {
 
   private var tableOfContext = mutableListOf<Any>()
   fun submitData(tableOfContext: MutableList<Any> = mutableListOf()) {
@@ -17,7 +18,7 @@ class ChapterAdapter : RecyclerView.Adapter<ChapterAdapter.ChapterViewHolder>() 
   }
 
   class ChapterViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-    fun bind(item: Any?) = with(itemView) {
+    fun bind(item: Any?, clickListener: (Int) -> Unit,position: Int) = with(itemView) {
       if (item is Pair<*, *>) {
         item as Pair<Int, Link>
         navigation_textView.text = item.second.title
@@ -25,7 +26,11 @@ class ChapterAdapter : RecyclerView.Adapter<ChapterAdapter.ChapterViewHolder>() 
         item as Link
         navigation_textView.text = item.title
       }
+      setOnClickListener {
+        clickListener(position)
+      }
     }
+
   }
 
   override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ChapterViewHolder {
@@ -40,7 +45,6 @@ class ChapterAdapter : RecyclerView.Adapter<ChapterAdapter.ChapterViewHolder>() 
 
   override fun getItemCount(): Int = tableOfContext.size
   override fun onBindViewHolder(holder: ChapterViewHolder, position: Int) {
-    holder.bind(tableOfContext[position])
+    holder.bind(tableOfContext[position], clickListener,position)
   }
-
 }

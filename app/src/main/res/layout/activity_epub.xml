@@ -187,9 +187,9 @@
   <com.google.android.material.bottomnavigation.BottomNavigationView
     android:id="@+id/bottom_nav_settings"
     android:layout_width="0dp"
+    android:fitsSystemWindows="false"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
-    android:weightSum="4"
     android:background="@android:color/white"
     app:labelVisibilityMode="unlabeled"
     app:layout_constraintBottom_toBottomOf="parent"

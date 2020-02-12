@@ -31,7 +31,6 @@ import com.digitalappsbd.app.epurreader.search.SearchLocatorAdapter
 import com.digitalappsbd.app.epurreader.settings.UserSettings
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.gson.Gson
-import com.mcxiaoke.koi.ext.dpToPx
 import kotlinx.android.synthetic.main.activity_epub.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -55,7 +54,7 @@ import kotlin.coroutines.CoroutineContext
 
 
 class EpubActivity : R2EpubActivity(), CoroutineScope,
-  NavigatorDelegate {
+  NavigatorDelegate, UserSettings.OnChapterInterceptor {
 
   override val currentLocation: Locator?
     get() {
@@ -180,14 +179,13 @@ class EpubActivity : R2EpubActivity(), CoroutineScope,
     accesssibiltyManager = getSystemService(ACCESSIBILITY_SERVICE) as AccessibilityManager
 
     initBottomNavSettings()
-
   }
 
   private fun initBottomNavSettings() {
     val anchorView = this.findViewById(R.id.bottom_nav_settings) as BottomNavigationView
     bottom_nav_settings.setOnNavigationItemSelectedListener {
       when (it.itemId) {
-        R.id.chapter->{
+        R.id.chapter -> {
           userSettings.chapterPopUp()
             .showAsDropDown(anchorView)
           return@setOnNavigationItemSelectedListener true
@@ -636,9 +634,7 @@ class EpubActivity : R2EpubActivity(), CoroutineScope,
               null
             }
           }
-          showHighlightPopup(size = rect) {
-            mode.finish()
-          }
+          showHighlightPopup(size = rect)
         }
         true
       }
@@ -652,8 +648,7 @@ class EpubActivity : R2EpubActivity(), CoroutineScope,
 
   private fun showHighlightPopup(
     highlightID: String? = null,
-    size: Rect?,
-    dismissCallback: () -> Unit
+    size: Rect?
   ) {
     popupWindow?.let {
       if (it.isShowing) {
@@ -851,8 +846,7 @@ class EpubActivity : R2EpubActivity(), CoroutineScope,
 
   override fun highlightActivated(id: String) {
     rectangleForHighlightWithID(id) {
-      showHighlightPopup(id, it) {
-      }
+      showHighlightPopup(id, it)
     }
   }
 
@@ -984,6 +978,7 @@ class EpubActivity : R2EpubActivity(), CoroutineScope,
         , publication, bookId
       )
       userSettings.resourcePager = resourcePager
+
     }
 
   }
@@ -1049,4 +1044,44 @@ class EpubActivity : R2EpubActivity(), CoroutineScope,
     }
   }
 
+  override fun onChapterClick(locator: Locator) {
+    Timber.d("Locator-> ${locator.locations?.fragment}")
+    locator.locations?.fragment?.let { fragment ->
+      try {
+        val fragments = JSONArray(fragment).getString(0).split(",").associate {
+          val (left, right) = it.split("=")
+          left to right.toInt()
+        }
+
+        val index = fragments.getValue("i").toInt()
+        val searchStorage = getSharedPreferences("org.readium.r2.search", Context.MODE_PRIVATE)
+        Handler().postDelayed({
+          if (publication.metadata.rendition.layout == RenditionLayout.Reflowable) {
+            val currentFragment =
+              (resourcePager.adapter as R2PagerAdapter).getCurrentFragment() as R2EpubPageFragment
+            val resource = publication.readingOrder[resourcePager.currentItem]
+            val resourceHref = resource.href ?: ""
+            val resourceType = resource.typeLink ?: ""
+            val resourceTitle = resource.title ?: ""
+
+            currentFragment.webView.runJavaScript(
+              "markSearch('${searchStorage.getString(
+                "term",
+                null
+              )}', null, '$resourceHref', '$resourceType', '$resourceTitle', '$index')"
+            ) { result ->
+
+              if (BuildConfig.DEBUG) Timber.d("###### $result")
+
+            }
+          }
+        }, 1200)
+        userSettings.chapterPopUp().dismiss()
+      } catch (e: Exception) {
+        Timber.d("Locator: Error-> $e")
+        userSettings.chapterPopUp().dismiss()
+      }
+    }
+
+  }
 }
