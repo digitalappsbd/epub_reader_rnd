@@ -6,7 +6,7 @@
     android:id="@+id/chapter"
     android:icon="@android:drawable/ic_menu_agenda"
     android:title=""
-    app:showAsAction="always" />
+    app:showAsAction="ifRoom" />
 
   <item
     android:id="@+id/appearance"

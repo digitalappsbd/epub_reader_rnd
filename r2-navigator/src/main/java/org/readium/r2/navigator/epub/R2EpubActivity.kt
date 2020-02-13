@@ -247,8 +247,8 @@ open class R2EpubActivity : AppCompatActivity(), IR2Activity, IR2Selectable, IR2
 
   override var allowToggleActionBar = true
 
-  private lateinit var resourcesSingle: ArrayList<Pair<Int, String>>
-  private lateinit var resourcesDouble: ArrayList<Triple<Int, String, String>>
+   lateinit var resourcesSingle: ArrayList<Pair<Int, String>>
+   lateinit var resourcesDouble: ArrayList<Triple<Int, String, String>>
 
   var pagerPosition = 0
 
@@ -509,7 +509,7 @@ open class R2EpubActivity : AppCompatActivity(), IR2Activity, IR2Selectable, IR2
           }
         }
 
-        if (supportActionBar!!.isShowing && allowToggleActionBar) {
+        if ((supportActionBar?.isShowing == true) && allowToggleActionBar) {
           resourcePager.systemUiVisibility = (View.SYSTEM_UI_FLAG_LAYOUT_STABLE
               or View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
               or View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
@@ -522,7 +522,6 @@ open class R2EpubActivity : AppCompatActivity(), IR2Activity, IR2Selectable, IR2
     super.onActivityResult(requestCode, resultCode, data)
   }
 
-
   override fun toggleActionBar() {
     if (allowToggleActionBar) {
       launch {
@@ -532,7 +531,7 @@ open class R2EpubActivity : AppCompatActivity(), IR2Activity, IR2Selectable, IR2
               or View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
               or View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
               or View.SYSTEM_UI_FLAG_FULLSCREEN
-              or View.SYSTEM_UI_FLAG_IMMERSIVE)
+              or View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY)
           bottom_nav_settings.visibility = View.GONE
         } else {
           resourcePager.systemUiVisibility = (View.SYSTEM_UI_FLAG_LAYOUT_STABLE

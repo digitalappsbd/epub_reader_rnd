@@ -1046,42 +1046,86 @@ class EpubActivity : R2EpubActivity(), CoroutineScope,
 
   override fun onChapterClick(locator: Locator) {
     Timber.d("Locator-> ${locator.locations?.position}")
-    locator.locations?.fragment?.let { fragment ->
-      try {
-        val fragments = JSONArray(fragment).getString(0).split(",").associate {
-          val (left, right) = it.split("=")
-          left to right.toInt()
-        }
+    pagerPosition = 0
+    navigatorDelegate?.locationDidChange(locator = locator)
+    var href = locator.href
+    if (href!!.indexOf("#") > 0) {
+      href = href.substring(0, href.indexOf("#"))
+    }
 
-        val index = fragments.getValue("i").toInt()
-        val searchStorage = getSharedPreferences("org.readium.r2.search", Context.MODE_PRIVATE)
-        Handler().postDelayed({
-          if (publication.metadata.rendition.layout == RenditionLayout.Reflowable) {
-            val currentFragment =
-              (resourcePager.adapter as R2PagerAdapter).getCurrentFragment() as R2EpubPageFragment
-            val resource = publication.readingOrder[resourcePager.currentItem]
-            val resourceHref = resource.href ?: ""
-            val resourceType = resource.typeLink ?: ""
-            val resourceTitle = resource.title ?: ""
+    fun setCurrent(resources: ArrayList<*>) {
+      for (resource in resources) {
+        if (resource is Pair<*, *>) {
+          resource as Pair<Int, String>
+          if (resource.second.endsWith(href)) {
+            if (resourcePager.currentItem == resource.first) {
+              // reload webview if it has an anchor
+              val currentFragent = ((resourcePager.adapter as R2PagerAdapter).mFragments.get(
+                (resourcePager.adapter as R2PagerAdapter).getItemId(resourcePager.currentItem)
+              )) as? R2EpubPageFragment
+              locator.locations?.fragment?.let { fragment ->
 
-            currentFragment.webView.runJavaScript(
-              "markSearch('${searchStorage.getString(
-                "term",
-                null
-              )}', null, '$resourceHref', '$resourceType', '$resourceTitle', '$index')"
-            ) { result ->
+                val fragments = JSONArray(fragment).getString(0).split(",").associate {
+                  val (left, right) = it.split("=")
+                  left to right.toInt()
+                }
+                //            val id = fragments.getValue("id")
+                if (fragments.isEmpty()) {
+                  var anchor = fragment
+                  if (!anchor.startsWith("#")) {
+                    anchor = "#$anchor"
+                  }
+                  val goto = resource.second + anchor
+                  currentFragent?.webView?.loadUrl(goto)
+                } else {
+                  currentFragent?.webView?.loadUrl(resource.second)
+                }
 
-              if (BuildConfig.DEBUG) Timber.d("###### $result")
-
+              } ?: run {
+                currentFragent?.webView?.loadUrl(resource.second)
+              }
+            } else {
+              resourcePager.currentItem = resource.first
             }
+            break
           }
-        }, 1200)
-        userSettings.chapterPopUp().dismiss()
-      } catch (e: Exception) {
-        Timber.d("Locator: Error-> $e")
-        userSettings.chapterPopUp().dismiss()
+        } else {
+          resource as Triple<Int, String, String>
+          if (resource.second.endsWith(href) || resource.third.endsWith(href)) {
+            resourcePager.currentItem = resource.first
+            break
+          }
+        }
       }
     }
 
+    resourcePager.adapter = adapter
+
+    if (publication.metadata.rendition.layout == RenditionLayout.Reflowable) {
+      setCurrent(resourcesSingle)
+    } else {
+
+      when (preferences.getInt(COLUMN_COUNT_REF, 0)) {
+        1 -> {
+          setCurrent(resourcesSingle)
+        }
+        2 -> {
+          setCurrent(resourcesDouble)
+        }
+        else -> {
+          setCurrent(resourcesSingle)
+        }
+      }
+    }
+
+    if ((supportActionBar?.isShowing == true) && allowToggleActionBar) {
+      resourcePager.systemUiVisibility = (View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+          or View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+          or View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+          or View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+          or View.SYSTEM_UI_FLAG_FULLSCREEN // hide status bar
+          or View.SYSTEM_UI_FLAG_IMMERSIVE)
+    }
+    userSettings.chapterPopUp().dismiss()
   }
 }
