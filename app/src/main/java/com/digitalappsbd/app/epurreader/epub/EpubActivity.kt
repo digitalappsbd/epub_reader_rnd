@@ -1045,7 +1045,7 @@ class EpubActivity : R2EpubActivity(), CoroutineScope,
   }
 
   override fun onChapterClick(locator: Locator) {
-    Timber.d("Locator-> ${locator.locations?.fragment}")
+    Timber.d("Locator-> ${locator.locations?.position}")
     locator.locations?.fragment?.let { fragment ->
       try {
         val fragments = JSONArray(fragment).getString(0).split(",").associate {
