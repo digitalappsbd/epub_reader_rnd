@@ -1,0 +1,13 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="270dp"
+  android:layout_height="56dp"
+  android:background="@android:color/darker_gray">
+  <TextView
+    android:id="@+id/navigation_textView"
+    android:layout_width="match_parent"
+    android:layout_height="55dp"
+    android:background="@android:color/white"
+    android:gravity="center_vertical"
+    android:paddingStart="16dp"
+    android:paddingEnd="8dp" />
+</LinearLayout>

@@ -54,7 +54,7 @@ import kotlin.coroutines.CoroutineContext
 
 
 class EpubActivity : R2EpubActivity(), CoroutineScope,
-  NavigatorDelegate {
+  NavigatorDelegate, UserSettings.OnChapterInterceptor {
 
   override val currentLocation: Locator?
     get() {
@@ -179,13 +179,17 @@ class EpubActivity : R2EpubActivity(), CoroutineScope,
     accesssibiltyManager = getSystemService(ACCESSIBILITY_SERVICE) as AccessibilityManager
 
     initBottomNavSettings()
-
   }
 
   private fun initBottomNavSettings() {
     val anchorView = this.findViewById(R.id.bottom_nav_settings) as BottomNavigationView
     bottom_nav_settings.setOnNavigationItemSelectedListener {
       when (it.itemId) {
+        R.id.chapter -> {
+          userSettings.chapterPopUp()
+            .showAsDropDown(anchorView)
+          return@setOnNavigationItemSelectedListener true
+        }
         R.id.appearance -> {
           userSettings.appearanceSettingsPopUp()
             .showAtLocation(
@@ -630,9 +634,7 @@ class EpubActivity : R2EpubActivity(), CoroutineScope,
               null
             }
           }
-          showHighlightPopup(size = rect) {
-            mode.finish()
-          }
+          showHighlightPopup(size = rect)
         }
         true
       }
@@ -646,8 +648,7 @@ class EpubActivity : R2EpubActivity(), CoroutineScope,
 
   private fun showHighlightPopup(
     highlightID: String? = null,
-    size: Rect?,
-    dismissCallback: () -> Unit
+    size: Rect?
   ) {
     popupWindow?.let {
       if (it.isShowing) {
@@ -845,8 +846,7 @@ class EpubActivity : R2EpubActivity(), CoroutineScope,
 
   override fun highlightActivated(id: String) {
     rectangleForHighlightWithID(id) {
-      showHighlightPopup(id, it) {
-      }
+      showHighlightPopup(id, it)
     }
   }
 
@@ -958,6 +958,7 @@ class EpubActivity : R2EpubActivity(), CoroutineScope,
         preferences,
         this,
         publication.userSettingsUIPreset
+        , publication, bookId
       )
       userSettings.saveChanges()
 
@@ -974,8 +975,10 @@ class EpubActivity : R2EpubActivity(), CoroutineScope,
         preferences,
         this,
         publication.userSettingsUIPreset
+        , publication, bookId
       )
       userSettings.resourcePager = resourcePager
+
     }
 
   }
@@ -1041,4 +1044,88 @@ class EpubActivity : R2EpubActivity(), CoroutineScope,
     }
   }
 
+  override fun onChapterClick(locator: Locator) {
+    Timber.d("Locator-> ${locator.locations?.position}")
+    pagerPosition = 0
+    navigatorDelegate?.locationDidChange(locator = locator)
+    var href = locator.href
+    if (href!!.indexOf("#") > 0) {
+      href = href.substring(0, href.indexOf("#"))
+    }
+
+    fun setCurrent(resources: ArrayList<*>) {
+      for (resource in resources) {
+        if (resource is Pair<*, *>) {
+          resource as Pair<Int, String>
+          if (resource.second.endsWith(href)) {
+            if (resourcePager.currentItem == resource.first) {
+              // reload webview if it has an anchor
+              val currentFragent = ((resourcePager.adapter as R2PagerAdapter).mFragments.get(
+                (resourcePager.adapter as R2PagerAdapter).getItemId(resourcePager.currentItem)
+              )) as? R2EpubPageFragment
+              locator.locations?.fragment?.let { fragment ->
+
+                val fragments = JSONArray(fragment).getString(0).split(",").associate {
+                  val (left, right) = it.split("=")
+                  left to right.toInt()
+                }
+                //            val id = fragments.getValue("id")
+                if (fragments.isEmpty()) {
+                  var anchor = fragment
+                  if (!anchor.startsWith("#")) {
+                    anchor = "#$anchor"
+                  }
+                  val goto = resource.second + anchor
+                  currentFragent?.webView?.loadUrl(goto)
+                } else {
+                  currentFragent?.webView?.loadUrl(resource.second)
+                }
+
+              } ?: run {
+                currentFragent?.webView?.loadUrl(resource.second)
+              }
+            } else {
+              resourcePager.currentItem = resource.first
+            }
+            break
+          }
+        } else {
+          resource as Triple<Int, String, String>
+          if (resource.second.endsWith(href) || resource.third.endsWith(href)) {
+            resourcePager.currentItem = resource.first
+            break
+          }
+        }
+      }
+    }
+
+    resourcePager.adapter = adapter
+
+    if (publication.metadata.rendition.layout == RenditionLayout.Reflowable) {
+      setCurrent(resourcesSingle)
+    } else {
+
+      when (preferences.getInt(COLUMN_COUNT_REF, 0)) {
+        1 -> {
+          setCurrent(resourcesSingle)
+        }
+        2 -> {
+          setCurrent(resourcesDouble)
+        }
+        else -> {
+          setCurrent(resourcesSingle)
+        }
+      }
+    }
+
+    if ((supportActionBar?.isShowing == true) && allowToggleActionBar) {
+      resourcePager.systemUiVisibility = (View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+          or View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+          or View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+          or View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+          or View.SYSTEM_UI_FLAG_FULLSCREEN // hide status bar
+          or View.SYSTEM_UI_FLAG_IMMERSIVE)
+    }
+    userSettings.chapterPopUp().dismiss()
+  }
 }
