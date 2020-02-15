@@ -511,11 +511,12 @@ open class R2EpubActivity : AppCompatActivity(), IR2Activity, IR2Selectable, IR2
 
         if ((supportActionBar?.isShowing == true) && allowToggleActionBar) {
           resourcePager.systemUiVisibility = (View.SYSTEM_UI_FLAG_LAYOUT_STABLE
-              or View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
-              or View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+//              or View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+//              or View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
               or View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
               or View.SYSTEM_UI_FLAG_FULLSCREEN // hide status bar
-              or View.SYSTEM_UI_FLAG_IMMERSIVE)
+              or View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY)
+          bottom_nav_settings.visibility = View.GONE
         }
       }
     }
@@ -525,18 +526,19 @@ open class R2EpubActivity : AppCompatActivity(), IR2Activity, IR2Selectable, IR2
   override fun toggleActionBar() {
     if (allowToggleActionBar) {
       launch {
-        if (supportActionBar!!.isShowing) {
+        if (supportActionBar?.isShowing == true) {
           resourcePager.systemUiVisibility = (View.SYSTEM_UI_FLAG_LAYOUT_STABLE
-              or View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
-              or View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+//              or View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+//              or View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
               or View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
               or View.SYSTEM_UI_FLAG_FULLSCREEN
               or View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY)
           bottom_nav_settings.visibility = View.GONE
         } else {
           resourcePager.systemUiVisibility = (View.SYSTEM_UI_FLAG_LAYOUT_STABLE
-              or View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
-              or View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN)
+//              or View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+              or View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+              )
           bottom_nav_settings.visibility = View.VISIBLE
         }
       }
