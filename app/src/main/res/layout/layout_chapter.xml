@@ -1,12 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-  android:layout_width="wrap_content"
+  android:layout_width="280dp"
   android:layout_height="match_parent"
+  android:background="@android:color/white"
   android:orientation="vertical">
+  <TextView
+    android:layout_width="match_parent"
+    android:layout_height="56dp"
+    android:layout_marginStart="8dp"
+    android:gravity="center_vertical"
+    android:text="Chapters"
+    android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6" />
   <androidx.recyclerview.widget.RecyclerView
+    android:layout_width="match_parent"
     android:id="@+id/chapter_list"
-    android:layout_width="wrap_content"
+    android:fadeScrollbars="false"
+    android:minWidth="250dp"
+    android:scrollbarSize="5dp"
+    android:scrollbarThumbVertical="@drawable/recycler_view_scroll"
     android:layout_height="match_parent"
-    android:minWidth="200dp"
+    android:scrollbars="vertical"
     android:textColor="@android:color/white" />
 </LinearLayout>
