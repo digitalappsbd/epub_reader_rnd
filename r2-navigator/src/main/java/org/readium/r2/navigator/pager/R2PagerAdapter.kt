@@ -13,6 +13,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import org.readium.r2.shared.Publication
+import timber.log.Timber
 
 
 class R2PagerAdapter(
@@ -20,7 +21,8 @@ class R2PagerAdapter(
   private val resources: List<Any>,
   private val title: String,
   private val type: Publication.TYPE,
-  private val publicationPath: String
+  private val publicationPath: String,
+  private var onPageChangeCallback: ((Int, Int) -> Unit?)? = null
 ) : R2FragmentPagerAdapter(fm) {
 
   private var currentFragment: Fragment? = null
@@ -51,6 +53,8 @@ class R2PagerAdapter(
   override fun getItem(position: Int): Fragment =
     when (type) {
       Publication.TYPE.EPUB, Publication.TYPE.WEBPUB, Publication.TYPE.AUDIO -> {
+        Timber.d("Page-> Current page: $position Total page: ${resources.size} Book title $title")
+        onPageChangeCallback?.let { it(position, resources.size) }
         val single = resources[position] as Pair<Int, String>
         R2EpubPageFragment.newInstance(single.second, title)
       }

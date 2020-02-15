@@ -247,8 +247,8 @@ open class R2EpubActivity : AppCompatActivity(), IR2Activity, IR2Selectable, IR2
 
   override var allowToggleActionBar = true
 
-   lateinit var resourcesSingle: ArrayList<Pair<Int, String>>
-   lateinit var resourcesDouble: ArrayList<Triple<Int, String, String>>
+  lateinit var resourcesSingle: ArrayList<Pair<Int, String>>
+  lateinit var resourcesDouble: ArrayList<Triple<Int, String, String>>
 
   var pagerPosition = 0
 
@@ -256,6 +256,9 @@ open class R2EpubActivity : AppCompatActivity(), IR2Activity, IR2Selectable, IR2
   lateinit var adapter: R2PagerAdapter
 
   protected var navigatorDelegate: NavigatorDelegate? = null
+  private fun onPageChangeCallback(currentPage: Int, totalPage: Int) {
+    text_page_number.text = "$currentPage / $totalPage"
+  }
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
@@ -330,7 +333,9 @@ open class R2EpubActivity : AppCompatActivity(), IR2Activity, IR2Selectable, IR2
         publication.metadata.title,
         Publication.TYPE.EPUB,
         publicationPath
-      )
+      ) { current, total ->
+        onPageChangeCallback(current, total)
+      }
       resourcePager.type = Publication.TYPE.EPUB
     } else {
       resourcePager.type = Publication.TYPE.FXL

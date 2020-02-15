@@ -1,15 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
   xmlns:app="http://schemas.android.com/apk/res-auto"
   xmlns:tools="http://schemas.android.com/tools"
   android:layout_width="match_parent"
   android:layout_height="match_parent"
   tools:context=".epub.R2EpubActivity">
   <androidx.constraintlayout.widget.ConstraintLayout
-    android:layout_above="@+id/bottom_nav_settings"
     android:id="@+id/constraint"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_width="0dp"
+    android:layout_height="0dp"
+    app:layout_constraintBottom_toTopOf="@+id/text_page_number"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent">
 
     <org.readium.r2.navigator.pager.R2ViewPager
       android:id="@+id/resourcePager"
@@ -188,14 +191,31 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
   </androidx.constraintlayout.widget.ConstraintLayout>
+  <TextView
+    android:id="@+id/text_page_number"
+    android:layout_width="match_parent"
+    android:layout_height="40dp"
+    android:layout_marginBottom="-2dp"
+    android:background="@android:color/white"
+    android:gravity="center"
+    android:text="1/2"
+    android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
+    app:layout_constraintBottom_toTopOf="@+id/bottom_nav_settings"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/constraint" />
   <com.google.android.material.bottomnavigation.BottomNavigationView
     android:id="@+id/bottom_nav_settings"
     android:layout_width="match_parent"
     android:layout_height="56dp"
-    android:layout_alignParentBottom="true"
     android:background="@android:color/white"
     android:visibility="visible"
+    app:labelVisibilityMode="unlabeled"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/text_page_number"
     app:menu="@menu/bottom_menu" />
 
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
 

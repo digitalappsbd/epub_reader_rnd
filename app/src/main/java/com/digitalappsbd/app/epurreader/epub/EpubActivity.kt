@@ -179,6 +179,7 @@ class EpubActivity : R2EpubActivity(), CoroutineScope,
     accesssibiltyManager = getSystemService(ACCESSIBILITY_SERVICE) as AccessibilityManager
 
     initBottomNavSettings()
+
   }
 
   private fun initBottomNavSettings() {
