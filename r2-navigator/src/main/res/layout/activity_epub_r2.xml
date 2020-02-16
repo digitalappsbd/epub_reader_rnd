@@ -9,7 +9,7 @@
     android:id="@+id/constraint"
     android:layout_width="0dp"
     android:layout_height="0dp"
-    app:layout_constraintBottom_toTopOf="@+id/text_page_number"
+    app:layout_constraintBottom_toTopOf="@+id/progression_container"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toTopOf="parent">
@@ -191,30 +191,52 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
   </androidx.constraintlayout.widget.ConstraintLayout>
-  <TextView
-    android:id="@+id/text_page_number"
+  <androidx.constraintlayout.widget.ConstraintLayout
+    android:id="@+id/progression_container"
     android:layout_width="match_parent"
-    android:layout_height="40dp"
-    android:layout_marginBottom="-2dp"
+    android:layout_height="wrap_content"
     android:background="@android:color/white"
-    android:gravity="center"
-    android:text="1/2"
-    android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
     app:layout_constraintBottom_toTopOf="@+id/bottom_nav_settings"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toBottomOf="@+id/constraint" />
+    app:layout_constraintTop_toBottomOf="@+id/constraint">
+    <TextView
+      android:id="@+id/text_page_number"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:gravity="center"
+      android:padding="4dp"
+      android:text="1/2"
+      android:textAppearance="@style/TextAppearance.MaterialComponents.Caption"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent" />
+    <SeekBar
+      android:id="@+id/seekbar_progress"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginStart="16dp"
+      android:layout_marginEnd="16dp"
+      android:padding="2dp"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/text_page_number" />
+  </androidx.constraintlayout.widget.ConstraintLayout>
+
   <com.google.android.material.bottomnavigation.BottomNavigationView
     android:id="@+id/bottom_nav_settings"
     android:layout_width="match_parent"
     android:layout_height="56dp"
     android:background="@android:color/white"
+    android:elevation="0dp"
     android:visibility="visible"
+    app:elevation="0dp"
     app:labelVisibilityMode="unlabeled"
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toBottomOf="@+id/text_page_number"
+    app:layout_constraintTop_toBottomOf="@+id/progression_container"
     app:menu="@menu/bottom_menu" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

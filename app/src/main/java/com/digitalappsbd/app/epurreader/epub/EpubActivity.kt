@@ -981,6 +981,7 @@ class EpubActivity : R2EpubActivity(), CoroutineScope,
       userSettings.resourcePager = resourcePager
 
     }
+    chapterProgress()
 
   }
 
@@ -1127,7 +1128,9 @@ class EpubActivity : R2EpubActivity(), CoroutineScope,
           or View.SYSTEM_UI_FLAG_FULLSCREEN // hide status bar
           or View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY)
       bottom_nav_settings.visibility = View.GONE
+      seekbar_progress.visibility = View.GONE
     }
     userSettings.chapterPopUp().dismiss()
+    chapterProgress()
   }
 }
