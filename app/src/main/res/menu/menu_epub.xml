@@ -16,7 +16,7 @@
     android:id="@+id/drm"
     android:icon="@drawable/icon_drm"
     android:title="@string/epubactivity_drm_info"
-    app:showAsAction="always"
+    app:showAsAction="never"
     tools:ignore="AlwaysShowAction" />
 
   <item

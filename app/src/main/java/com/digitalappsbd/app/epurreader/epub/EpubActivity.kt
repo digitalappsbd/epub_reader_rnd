@@ -306,6 +306,7 @@ class EpubActivity : R2EpubActivity(), CoroutineScope,
     searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
 
       override fun onQueryTextSubmit(query: String?): Boolean {
+        Timber.d("SearchView-> onQueryTextSubmit")
 
         searchResult.clear()
         searchResultAdapter.notifyDataSetChanged()
@@ -347,6 +348,7 @@ class EpubActivity : R2EpubActivity(), CoroutineScope,
       }
 
       override fun onQueryTextChange(s: String): Boolean {
+        Timber.d("SearchView-> onQueryTextChange")
         return false
       }
     })
@@ -357,10 +359,11 @@ class EpubActivity : R2EpubActivity(), CoroutineScope,
         search_overlay.visibility = View.VISIBLE
         resourcePager.offscreenPageLimit = publication.readingOrder.size
       }
+      Timber.d("SearchView-> setOnQueryTextFocusChangeListener")
     }
     searchView.onClose {
       search_overlay.visibility = View.INVISIBLE
-
+      Timber.d("SearchView-> onClose")
     }
     searchView.setOnCloseListener {
       if (searchView.isShown) {
@@ -368,6 +371,7 @@ class EpubActivity : R2EpubActivity(), CoroutineScope,
       }
       search_overlay.visibility = View.INVISIBLE
 
+      Timber.d("SearchView-> setOnCloseListener")
       true
     }
     searchView.setOnSearchClickListener {
@@ -394,17 +398,30 @@ class EpubActivity : R2EpubActivity(), CoroutineScope,
 
       search_overlay.visibility = View.VISIBLE
       resourcePager.offscreenPageLimit = publication.readingOrder.size
+      Timber.d("SearchView-> setOnSearchClickListener")
     }
 
     menuSearch?.setOnActionExpandListener(object : MenuItem.OnActionExpandListener {
       override fun onMenuItemActionExpand(item: MenuItem?): Boolean {
         search_overlay.visibility = View.VISIBLE
         resourcePager.offscreenPageLimit = publication.readingOrder.size
+        Timber.d("SearchView-> setOnActionExpandListener")
+
+        menuSearch?.let { item ->
+          setMenuItemsVisibility(menu, item, false)
+        }
+
+
         return true
       }
 
       override fun onMenuItemActionCollapse(item: MenuItem?): Boolean {
         search_overlay.visibility = View.INVISIBLE
+        Timber.d("SearchView-> onMenuItemActionCollapse")
+        menuSearch?.let { it ->
+          setMenuItemsVisibility(menu, it, true)
+        }
+
         return true
       }
     })
@@ -425,11 +442,22 @@ class EpubActivity : R2EpubActivity(), CoroutineScope,
       editor.remove("result")
       editor.remove("term")
       editor.apply()
+      Timber.d("SearchView-> closeButton.setOnClickListener")
     }
-
     return true
   }
 
+  private fun setMenuItemsVisibility(menu: Menu?, exception: MenuItem, visible: Boolean) {
+    var size: Int? = menu?.size()
+    if (size != null && size > 0) {
+      size -= 1
+      for (i in 0..size) {
+        val item = menu?.getItem(i)
+        if (item != exception) item?.isVisible = visible
+      }
+    }
+
+  }
 
   override fun onOptionsItemSelected(item: MenuItem): Boolean {
     when (item.itemId) {
