@@ -94,7 +94,7 @@ class R2WebView(context: Context, attrs: AttributeSet) : R2BasicWebView(context,
 
   private val mTempRect = Rect()
 
-  internal var mCurItem: Int = 0   // Index of currently displayed page.
+  var mCurItem: Int = 0   // Index of currently displayed page.
 
   private var mScroller: Scroller? = null
   private var mIsScrollStarted: Boolean = false

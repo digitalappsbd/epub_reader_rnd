@@ -10,9 +10,11 @@ import android.os.Bundle
 import android.util.DisplayMetrics
 import android.view.ActionMode
 import android.view.View
+import android.widget.SeekBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager.widget.ViewPager
 import kotlinx.android.synthetic.main.activity_epub_r2.*
+import kotlinx.android.synthetic.main.viewpager_fragment_epub.view.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -26,6 +28,7 @@ import org.readium.r2.navigator.pager.R2EpubPageFragment
 import org.readium.r2.navigator.pager.R2PagerAdapter
 import org.readium.r2.navigator.pager.R2ViewPager
 import org.readium.r2.shared.*
+import timber.log.Timber
 import java.net.URI
 import kotlin.coroutines.CoroutineContext
 
@@ -247,8 +250,8 @@ open class R2EpubActivity : AppCompatActivity(), IR2Activity, IR2Selectable, IR2
 
   override var allowToggleActionBar = true
 
-   lateinit var resourcesSingle: ArrayList<Pair<Int, String>>
-   lateinit var resourcesDouble: ArrayList<Triple<Int, String, String>>
+  lateinit var resourcesSingle: ArrayList<Pair<Int, String>>
+  lateinit var resourcesDouble: ArrayList<Triple<Int, String, String>>
 
   var pagerPosition = 0
 
@@ -256,6 +259,23 @@ open class R2EpubActivity : AppCompatActivity(), IR2Activity, IR2Selectable, IR2
   lateinit var adapter: R2PagerAdapter
 
   protected var navigatorDelegate: NavigatorDelegate? = null
+  private var chapterIndex = 0
+
+  private fun onPageChangeCallback(currentPage: Int, totalPage: Int) {
+    chapterIndex = currentPage
+  }
+
+  override fun onPageChanged(pageIndex: Int, totalPages: Int, url: String) {
+    super.onPageChanged(pageIndex, totalPages, url)
+    seekbar_progress.max = totalPages
+    seekbar_progress.progress = pageIndex
+
+    var chapter: String? = ""
+    if (chapterIndex <= publication.tableOfContents.size - 1) {
+      chapter = publication.tableOfContents[chapterIndex].title
+    }
+    text_page_number.text = "$chapter  Page ($pageIndex / $totalPages)"
+  }
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
@@ -330,7 +350,9 @@ open class R2EpubActivity : AppCompatActivity(), IR2Activity, IR2Selectable, IR2
         publication.metadata.title,
         Publication.TYPE.EPUB,
         publicationPath
-      )
+      ) { current, total ->
+        onPageChangeCallback(current, total)
+      }
       resourcePager.type = Publication.TYPE.EPUB
     } else {
       resourcePager.type = Publication.TYPE.FXL
@@ -374,8 +396,6 @@ open class R2EpubActivity : AppCompatActivity(), IR2Activity, IR2Selectable, IR2
       resourcePager.direction = PageProgressionDirection.rtl.name
     }
 
-
-
     resourcePager.addOnPageChangeListener(object : ViewPager.OnPageChangeListener {
 
       override fun onPageScrollStateChanged(state: Int) {
@@ -416,7 +436,27 @@ open class R2EpubActivity : AppCompatActivity(), IR2Activity, IR2Selectable, IR2
 
     })
 
+  }
 
+  override fun onResume() {
+    super.onResume()
+    chapterProgress()
+  }
+
+  fun chapterProgress() {
+    seekbar_progress.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
+      override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
+        Timber.d("Seekbar $progress")
+      }
+
+      override fun onStartTrackingTouch(seekBar: SeekBar?) {
+        seekBar?.progress?.let { resourcePager.webView.setCurrentItem(it, false) }
+      }
+
+      override fun onStopTrackingTouch(seekBar: SeekBar?) {
+
+      }
+    })
   }
 
   override fun onActionModeStarted(mode: ActionMode?) {
@@ -517,6 +557,7 @@ open class R2EpubActivity : AppCompatActivity(), IR2Activity, IR2Selectable, IR2
               or View.SYSTEM_UI_FLAG_FULLSCREEN // hide status bar
               or View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY)
           bottom_nav_settings.visibility = View.GONE
+          seekbar_progress.visibility = View.GONE
         }
       }
     }
@@ -534,12 +575,14 @@ open class R2EpubActivity : AppCompatActivity(), IR2Activity, IR2Selectable, IR2
               or View.SYSTEM_UI_FLAG_FULLSCREEN
               or View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY)
           bottom_nav_settings.visibility = View.GONE
+          seekbar_progress.visibility = View.GONE
         } else {
           resourcePager.systemUiVisibility = (View.SYSTEM_UI_FLAG_LAYOUT_STABLE
 //              or View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
               or View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
               )
           bottom_nav_settings.visibility = View.VISIBLE
+          seekbar_progress.visibility = View.VISIBLE
         }
       }
     }
