@@ -1,6 +1,5 @@
 package com.digitalappsbd.app.epurreader.settings
 
-import android.app.Activity
 import android.content.Context
 import android.content.SharedPreferences
 import android.graphics.Color
@@ -10,9 +9,11 @@ import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.digitalappsbd.app.epurreader.R
 import com.digitalappsbd.app.epurreader.epub.ChapterAdapter
 import com.digitalappsbd.app.epurreader.epub.EpubActivity
 import com.mcxiaoke.koi.ext.dpToPx
+import com.mcxiaoke.koi.ext.getActivity
 import org.json.JSONArray
 import org.readium.r2.navigator.R2BasicWebView
 import org.readium.r2.navigator.R2WebView
@@ -22,8 +23,6 @@ import org.readium.r2.navigator.pager.R2PagerAdapter
 import org.readium.r2.navigator.pager.R2ViewPager
 import org.readium.r2.shared.*
 import java.io.File
-import com.digitalappsbd.app.epurreader.R
-import com.mcxiaoke.koi.ext.getActivity
 
 
 class UserSettings(
@@ -39,7 +38,15 @@ class UserSettings(
   private val appearanceValues =
     listOf("readium-default-on", "readium-sepia-on", "readium-night-on")
   private val fontFamilyValues =
-    listOf("Original", "PT Serif", "Roboto", "Source Sans Pro", "Vollkorn", "OpenDyslexic")
+    listOf(
+      "Original",
+      "PT Serif",
+      "Roboto",
+      "Source Sans Pro",
+      "Vollkorn",
+      "OpenDyslexic",
+      "SiyamRupali"
+    )
   private val textAlignmentValues = listOf("justify", "start")
   private val columnCountValues = listOf("auto", "1", "2")
 
