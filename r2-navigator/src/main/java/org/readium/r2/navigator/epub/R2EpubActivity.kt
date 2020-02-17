@@ -275,6 +275,9 @@ open class R2EpubActivity : AppCompatActivity(), IR2Activity, IR2Selectable, IR2
       chapter = publication.tableOfContents[chapterIndex].title
     }
     text_page_number.text = "$chapter  Page ($pageIndex / $totalPages)"
+    supportActionBar?.let {
+      it.subtitle = chapter
+    }
   }
 
   override fun onCreate(savedInstanceState: Bundle?) {

@@ -112,6 +112,13 @@ class EpubActivity : R2EpubActivity(), CoroutineScope,
   private var popupWindow: PopupWindow? = null
   private lateinit var accesssibiltyManager: AccessibilityManager
 
+  override fun onPageChanged(pageIndex: Int, totalPages: Int, url: String) {
+    super.onPageChanged(pageIndex, totalPages, url)
+    supportActionBar?.let {
+      it.title = booksDB.books.currentLocator(bookId)?.title
+    }
+  }
+
   override fun onCreate(savedInstanceState: Bundle?) {
     if (activitiesLaunched.incrementAndGet() > 1) {
       finish()
