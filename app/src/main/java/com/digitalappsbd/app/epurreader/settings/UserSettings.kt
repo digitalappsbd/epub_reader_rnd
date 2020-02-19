@@ -751,6 +751,7 @@ class UserSettings(
       ViewGroup.LayoutParams.MATCH_PARENT,
       true
     )
+    brightnessPopUp.animationStyle = R.style.popup_window_animation_phone
     val chapterAdapter = ChapterAdapter { onChapterClick(it) }
     val recylerview: RecyclerView =
       layout.findViewById(R.id.chapter_list) as RecyclerView

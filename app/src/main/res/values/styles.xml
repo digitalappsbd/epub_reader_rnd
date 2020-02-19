@@ -22,4 +22,13 @@
     <item name="android:textAlignment">center</item>
   </style>
 
+  <style name="animation" parent="android:Animation">
+
+  </style>
+
+  <style name="popup_window_animation_phone">
+    <item name="android:windowEnterAnimation">@android:anim/slide_in_left</item>
+    <item name="android:windowExitAnimation">@anim/slide_out_left_</item>
+  </style>
+
 </resources>
