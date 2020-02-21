@@ -218,6 +218,10 @@ class EpubActivity : R2EpubActivity(), CoroutineScope,
             )
           return@setOnNavigationItemSelectedListener true
         }
+        R.id.highlight -> {
+          userSettings.highlightPopUp(this).showAsDropDown(anchorView)
+          return@setOnNavigationItemSelectedListener true
+        }
         else -> return@setOnNavigationItemSelectedListener true
       }
     }

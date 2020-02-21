@@ -73,6 +73,7 @@ dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
     implementation 'com.jakewharton.timber:timber:4.7.1'
+    implementation 'androidx.webkit:webkit:1.1.0'
     if (findProject(':r2-shared')) {
         implementation project(':r2-shared')
     } else {
@@ -91,6 +92,7 @@ dependencies {
     }
     if (findProject(':r2-lcp')) {
         implementation project(':r2-lcp')
+        exclude module: 'support-v4'
     }
 
 
@@ -101,7 +103,7 @@ dependencies {
         exclude module: 'support-v4'
     }
 
-    implementation "androidx.appcompat:appcompat:1.2.0-alpha01"
+    implementation "androidx.appcompat:appcompat:1.2.0-alpha02"
     implementation "androidx.recyclerview:recyclerview:1.1.0"
     implementation "androidx.cardview:cardview:1.0.0"
     implementation 'androidx.webkit:webkit:1.1.0'
@@ -162,9 +164,12 @@ dependencies {
     implementation 'com.github.abacritt:sectionedmergeadapter:0.2'
     implementation 'org.jsoup:jsoup:1.12.1'
 
-    testImplementation 'junit:junit:4.12'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    testImplementation 'junit:junit:4.13'
     androidTestImplementation 'androidx.test:runner:1.2.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
     testImplementation "org.jetbrains.kotlin:kotlin-test-junit:$kotlin_version"
     implementation 'com.google.android:flexbox:2.0.1'
+
+    implementation 'androidx.viewpager2:viewpager2:1.0.0'
 }
