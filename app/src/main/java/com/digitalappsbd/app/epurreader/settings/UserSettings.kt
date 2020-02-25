@@ -707,7 +707,7 @@ class UserSettings(
     return brightnessPopUp
   }
 
-  private fun onChapterClick(position: Int) {
+  private fun onChapterClick(position: Int, brightnessPopUp: PopupWindow? = null) {
     val resource = tableOfContext[position].second
     val resourceHref = resource.href
     val resourceType = resource.typeLink ?: ""
@@ -744,6 +744,8 @@ class UserSettings(
       callBack.onChapterClick(it)
     }
 
+    brightnessPopUp?.dismiss()
+
   }
 
 
@@ -757,7 +759,7 @@ class UserSettings(
       true
     )
     brightnessPopUp.animationStyle = R.style.popup_window_animation_phone
-    val chapterAdapter = ChapterAdapter { onChapterClick(it) }
+    val chapterAdapter = ChapterAdapter { onChapterClick(it, brightnessPopUp) }
     val recylerview: RecyclerView =
       layout.findViewById(R.id.chapter_list) as RecyclerView
     recylerview.layoutManager = LinearLayoutManager(context)
@@ -808,11 +810,12 @@ class UserSettings(
       ViewGroup.LayoutParams.MATCH_PARENT,
       true
     )
+    highlightPopUp.isTouchable = true
     highlightPopUp.animationStyle = R.style.popup_window_animation_phone
     val viewpager: ViewPager2 =
       layout.findViewById(R.id.viewpager)
     val tabLayout: TabLayout = layout.findViewById(R.id.tabLayout)
-    val pagerAdapter = SavedContentPagerAdapter(activity as FragmentActivity)
+    val pagerAdapter = SavedContentPagerAdapter(activity as FragmentActivity, bookId, publication)
     viewpager.apply {
       adapter = pagerAdapter
       orientation = ViewPager2.ORIENTATION_HORIZONTAL
@@ -821,6 +824,10 @@ class UserSettings(
       tab.text = pagerAdapter.getPageTitle(position)
     }.attach()
     highlightPopUp.setBackgroundDrawable(null)
+    val backHome = layout.findViewById<ImageView>(R.id.image_back)
+    backHome.setOnClickListener {
+      highlightPopUp.dismiss()
+    }
     return highlightPopUp
   }
 }
