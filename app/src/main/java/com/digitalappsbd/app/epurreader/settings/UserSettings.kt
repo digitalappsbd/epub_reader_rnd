@@ -1,5 +1,6 @@
 package com.digitalappsbd.app.epurreader.settings
 
+import android.app.Activity
 import android.content.Context
 import android.content.SharedPreferences
 import android.graphics.Color
@@ -7,11 +8,15 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.viewpager2.widget.ViewPager2
 import com.digitalappsbd.app.epurreader.R
 import com.digitalappsbd.app.epurreader.epub.ChapterAdapter
 import com.digitalappsbd.app.epurreader.epub.EpubActivity
+import com.google.android.material.tabs.TabLayout
+import com.google.android.material.tabs.TabLayoutMediator
 import com.mcxiaoke.koi.ext.dpToPx
 import com.mcxiaoke.koi.ext.getActivity
 import org.json.JSONArray
@@ -702,7 +707,7 @@ class UserSettings(
     return brightnessPopUp
   }
 
-  private fun onChapterClick(position: Int) {
+  private fun onChapterClick(position: Int, brightnessPopUp: PopupWindow? = null) {
     val resource = tableOfContext[position].second
     val resourceHref = resource.href
     val resourceType = resource.typeLink ?: ""
@@ -739,6 +744,8 @@ class UserSettings(
       callBack.onChapterClick(it)
     }
 
+    brightnessPopUp?.dismiss()
+
   }
 
 
@@ -752,7 +759,7 @@ class UserSettings(
       true
     )
     brightnessPopUp.animationStyle = R.style.popup_window_animation_phone
-    val chapterAdapter = ChapterAdapter { onChapterClick(it) }
+    val chapterAdapter = ChapterAdapter { onChapterClick(it, brightnessPopUp) }
     val recylerview: RecyclerView =
       layout.findViewById(R.id.chapter_list) as RecyclerView
     recylerview.layoutManager = LinearLayoutManager(context)
@@ -792,5 +799,35 @@ class UserSettings(
       children.addAll(childrenOf(Pair(indentation, link)))
     }
     return children
+  }
+
+  fun highlightPopUp(activity: Activity): PopupWindow {
+    val layoutInflater = LayoutInflater.from(context)
+    val layout = layoutInflater.inflate(R.layout.layout_highlights_bookmark, null)
+    val highlightPopUp = PopupWindow(
+      layout,
+      ViewGroup.LayoutParams.WRAP_CONTENT,
+      ViewGroup.LayoutParams.MATCH_PARENT,
+      true
+    )
+    highlightPopUp.isTouchable = true
+    highlightPopUp.animationStyle = R.style.popup_window_animation_phone
+    val viewpager: ViewPager2 =
+      layout.findViewById(R.id.viewpager)
+    val tabLayout: TabLayout = layout.findViewById(R.id.tabLayout)
+    val pagerAdapter = SavedContentPagerAdapter(activity as FragmentActivity, bookId, publication)
+    viewpager.apply {
+      adapter = pagerAdapter
+      orientation = ViewPager2.ORIENTATION_HORIZONTAL
+    }
+    TabLayoutMediator(tabLayout, viewpager, true) { tab, position ->
+      tab.text = pagerAdapter.getPageTitle(position)
+    }.attach()
+    highlightPopUp.setBackgroundDrawable(null)
+    val backHome = layout.findViewById<ImageView>(R.id.image_back)
+    backHome.setOnClickListener {
+      highlightPopUp.dismiss()
+    }
+    return highlightPopUp
   }
 }
